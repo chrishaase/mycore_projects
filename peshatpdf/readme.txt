@@ -1,17 +1,22 @@
 PeshatPDF Beta 0.1
 
-1. Abstract: The app creates a PDF from a MyCoRe Peshat xml-Document. 
-The app's main-pdf-create servlet runs on 8080/peshatpdf/create. PDF creation is triggered by
-an HTTP post-request, sending a mycoreid and a formatid. After receiving the IDs, 
-the app loads the peshat document (with the mycoreid) via the MCR-Peshat-Rest api, transforms the xml into 
-tex and the tex-file via Mik-Tex into PDF, which is returned. the pdf should display Hebrew.
-A landing page for testing runs on 8080/peshatpdf where test-input boxes for the ids can be triggered
+1. Abstract: 
+- The app creates a PDF from a MyCoRe Peshat xml-Document. 
+- The servlet runs on 8080/peshatpdf/create. 
+- you need to send an HTTP post-request with a mycoreid and a formatid. 
+- After receiving the IDs, the app loads the peshat document from the MCR-Peshat-Rest api (specified in web.xml)
+- saves the xml.file to a local directory (web.xml specified). 
+- then transforms the xml.file into a tex.file in the local directory with an xslt transformer
+- it then produces a pdf from the tex.file via calling mixktex pdflatex in the local directory
+- it returns the pdf
+- A landing page for testing runs on 8080/peshatpdf where test-input boxes for the ids can be triggered
 
 2. Configuration
 The app needs the following:
 -- War deployment on standard Servlet-Container (Tomcat etc.)
 -- Access to a working directory on the Server for triggering pdflatex and storing of the docs
 -- filepath to working directory in web.xml
+-- urlpath to mycore-rest api
 -- An installed version of MikTex on the Server with an additional activated! Hebrew-Language-Set
 that can be downloaded from https://latex.org/forum/viewtopic.php?t=22173
 You will find additional info on that webpage.
