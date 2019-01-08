@@ -16,7 +16,7 @@ The app needs the following:
 -- War deployment on standard Servlet-Container (Tomcat etc.)
 -- Access to a working directory on the Server for triggering pdflatex and storing of the docs
 -- filepath to working directory in web.xml
--- urlpath to mycore-rest api
+-- urlpath to mycore-rest api in web.xml
 -- An installed version of MikTex on the Server with an additional activated! Hebrew-Language-Set
 that can be downloaded from https://latex.org/forum/viewtopic.php?t=22173
 You will find additional info on that webpage.
