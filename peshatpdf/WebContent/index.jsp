@@ -13,16 +13,18 @@ and open the template in the editor.
     </head>
     <body>
         <p>PeshatPDF V0.1</p>
-        Please insert the exact MyCoRePeshat-ID and format-typ (noch nicht implementiert)
+        Please insert the exact ID
         <br>
         <br>
-        <form method="post" action="/peshatpdf/create">
-        <input type="text" name="mycoreid" size="35" value="peshat_bibliographical-sources_00000002"><br><br>
-        <form method="post" action="/peshatpdf/create">
-        <input type="text" name="formatid" size="35" value="standard"><br><br>
+        <form method="post" action="${pageContext.request.contextPath}/create">
+
+            <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
+            <label for="mycoreid">MyCore-Peshat-ID :</label>
+            <br><br>
+            <!-- mglw einbauen format-typ
+            <input type="text" name="formatid" size="40" value="standard"><br><br>
+            -->
         <input type="submit" value="Submit and CreatePDF">
-  
-</form>
-           
-            </body>
+        </form>
+    </body>
 </html>
