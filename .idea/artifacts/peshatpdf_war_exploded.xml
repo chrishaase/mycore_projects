@@ -1,0 +1,36 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="peshatpdf:war exploded">
+    <output-path>$PROJECT_DIR$/peshatpdf/target/peshatpdf-0.0.1-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>peshatpdf</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="peshatpdf" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
+          <element id="library" level="project" name="Maven: com.mashape.unirest:unirest-java:1.4.9" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.5.2" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.4" />
+          <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" />
+          <element id="library" level="project" name="Maven: org.json:json:20160212" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/peshatpdf/target/peshatpdf-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="peshatpdf/web/Web" />
+    </root>
+  </artifact>
+</component>
