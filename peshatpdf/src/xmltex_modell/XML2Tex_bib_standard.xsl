@@ -10,19 +10,15 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
    \usepackage[utf8x]{inputenc}
    \usepackage[hebrew, english]{babel}</xsl:text>
     <xsl:text>&#xa;</xsl:text>
-
-<xsl:text>&#xa;</xsl:text>
 <xsl:text>\begin{document}</xsl:text>
-    <xsl:text>&#xa;</xsl:text>
-    <xsl:text>\selectlanguage{english}</xsl:text>
-<xsl:text>&#xa;</xsl:text>
+   <xsl:text>&#xa;</xsl:text>
     <xsl:text>\begin{flushright}</xsl:text>
     <xsl:text>&#xa;</xsl:text>
 <xsl:text>Author - Year - Title - Place - Publisher \par</xsl:text>
 <xsl:text>&#xa;</xsl:text>
     <xsl:text>\end{flushright}</xsl:text>
     <xsl:text>&#xa;</xsl:text>
- <xsl:text>\selectlanguage{hebrew}</xsl:text>
+ <xsl:text>\begin{otherlanguage*}{hebrew}</xsl:text>
  <xsl:text>&#xa;</xsl:text>
     <xsl:text>\newline</xsl:text>
     <xsl:text>&#xa;</xsl:text>
@@ -55,7 +51,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
 <xsl:text>&#xa;</xsl:text>
     <xsl:text>\par</xsl:text>
     <xsl:text>&#xa;</xsl:text>
-    <xsl:text>\selectlanguage{english}</xsl:text>
+    <xsl:text>\end{otherlanguage*}</xsl:text>
       <xsl:text>&#xa;</xsl:text>
        <xsl:text>\begin{flushright}</xsl:text>
     <xsl:text>&#xa;</xsl:text>
