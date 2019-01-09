@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="peshatpdf:war">
+    <output-path>$PROJECT_DIR$/peshatpdf/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>peshatpdf</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="peshatpdf-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="peshatpdf:war exploded" />
+    </root>
+  </artifact>
+</component>
