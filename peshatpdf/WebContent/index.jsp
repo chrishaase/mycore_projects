@@ -17,9 +17,8 @@ and open the template in the editor.
         <br>
         <br>
         <form method="post" action="${pageContext.request.contextPath}/create">
-
-            <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
             <label for="mycoreid">MyCore-Peshat-ID :</label>
+            <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
             <br><br>
             <!-- mglw einbauen format-typ
             <input type="text" name="formatid" size="40" value="standard"><br><br>
