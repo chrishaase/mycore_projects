@@ -6,20 +6,20 @@ import xml2pdf_service.xml2pdfTex.Xml2Tex;
 
 public class Xml2PdfTexImpl implements Xml2Pdf {
 
-    public Boolean createPdf(RequestData requestData) {
+    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
 
         Boolean b = false;
 
         // init service objects
-        Xml2Tex generateTex = new Xml2Tex();
-        Tex2PDF generatePDF = new Tex2PDF();
+        Xml2Tex xml2Tex = new Xml2Tex();
+        Tex2PDF tex2PDF = new Tex2PDF();
 
         //. create Tex
-        b= generateTex.createTexFile(requestData);
+        b= xml2Tex.transform(requestData);
 
         // create PDF
         if (b) {
-            b = generatePDF.createPDFFile(requestData);
+            b = tex2PDF.transform(requestData);
         }
 
        return b;

@@ -21,7 +21,7 @@ import javax.xml.transform.*;
  */
 public class Xml2Tex {
      
-    public Boolean createTexFile(RequestData requestData)  {
+    public Boolean transform(RequestData requestData)  {
 
         Boolean b = false;
 

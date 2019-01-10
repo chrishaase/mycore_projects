@@ -9,7 +9,7 @@ import java.io.File;
 public class XmlDaoRestImpl implements XmlDao {
 
 
-    public Boolean getXmlFile(RequestData requestData){
+    public Boolean getXmlFileInPath(RequestData requestData){
 
         boolean b = false;
         String xmlFileName = requestData.getMycoreid() + ".xml";
@@ -18,7 +18,7 @@ public class XmlDaoRestImpl implements XmlDao {
         //. check if xml in xml-filestore
         b = fileExists(xmlFile);
 
-        // if not load from rest service and save to file
+        // if not load from rest service and save to filepath
 
         if (b){
             RestGetXml rest = new RestGetXml();

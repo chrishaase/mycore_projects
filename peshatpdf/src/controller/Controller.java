@@ -34,11 +34,11 @@ public class Controller {
     public Boolean createPDF(){
         
         //1. ensure xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFile(requestData);
+        erfolg = xmlDao.getXmlFileInPath(requestData);
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.createPdf(requestData);
+            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
         }
 
 

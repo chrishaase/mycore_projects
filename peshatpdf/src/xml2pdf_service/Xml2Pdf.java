@@ -4,5 +4,5 @@ import controller.RequestData;
 
 public interface Xml2Pdf {
 
-    Boolean createPdf(RequestData requestData);
+    Boolean transformXmlFile2PdfFile(RequestData requestData);
 }

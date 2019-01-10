@@ -17,7 +17,7 @@ import java.io.File;
 
 public class Tex2PDF {
     
-    public Boolean createPDFFile(RequestData requestData){
+    public Boolean transform(RequestData requestData){
 
         Boolean b = false;
 

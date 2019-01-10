@@ -4,6 +4,6 @@ import controller.RequestData;
 
 public interface XmlDao {
 
-    Boolean getXmlFile(RequestData requestData);
+    Boolean getXmlFileInPath(RequestData requestData);
 
 }
