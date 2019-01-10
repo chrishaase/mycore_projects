@@ -31,7 +31,7 @@ public class ServletFrontController extends HttpServlet {
         String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
         String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
 
-        //1.b. Set init-params for mycore-rest-service (if this pdf-printer is implemented on external-server)
+        //1.b. Set init-params for mycore-rest-service
         String urlpath = getServletContext().getInitParameter("urlpath");
 
         //1.d. create RequestData object
