@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmltex_modell;
+package xml2tex2pdf_service;
 
 import java.io.File;
 import java.io.InputStream;
@@ -17,16 +17,16 @@ import javax.xml.transform.*;
  * Diese klasse muss noch an verschiedene Typen angepasst werden - stylesheets je nach DatenTyp
  * @author chase
  */
-public class XML2Tex {
+public class Xml2Tex {
      
-    public void createBibStandardFile(String mycoreid, String filepath)  {
+    public void createBibStandardFile(String mycoreid, String outfilepath)  {
 
         
         String texFileName = mycoreid + ".tex";
 	String xmlFileName = mycoreid + ".xml";
-        File texFile = new File(filepath, texFileName);
-        File xmlFile = new File(filepath, xmlFileName);
-        InputStream stylesheet = XML2Tex.class.getResourceAsStream("XML2Tex_bib_standard.xsl");
+        File texFile = new File(outfilepath, texFileName);
+        File xmlFile = new File(outfilepath, xmlFileName);
+        InputStream stylesheet = Xml2Tex.class.getResourceAsStream("XML2Tex_bib_standard.xsl");
                 
         
         // 1. create the .tex file

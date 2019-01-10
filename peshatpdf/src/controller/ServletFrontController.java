@@ -1,6 +1,8 @@
 
 package controller;
 
+import sun.misc.Request;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,21 +27,27 @@ public class ServletFrontController extends HttpServlet {
     {
         //1. init: Get init url&filepaths from web.xml and mycore ID from HTTP-request
         
-        String filepath = getServletContext().getInitParameter("filepath");
-        String urlpath = getServletContext().getInitParameter("urlpath");
-       
-        String mycoreid = request.getParameter("mycoreid");
-        String formatid = request.getParameter("formatid");
+        String outfilepath = getServletContext().getInitParameter("outfilepath"); // directory for pdfs
+        String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
+        String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
 
+        //1.b. Set init-params for mycore-rest-service (if this pdf-printer is implemented on external-server)
+        String urlpath = getServletContext().getInitParameter("urlpath");
+        String xmldao = "rest"; // can be later changed/switched to "filestore" - attempts to load missing xml-file from rest
+
+        //1.c. Set init-params for xml2pdf_service-conversion service: first impl via "tex"
+        String xmlpdfservice = "tex";
+
+        //1.d. create RequestData object
+        RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, xmldao, xmlpdfservice);
         
-        //2. Create Subcontroller fuer AufgabenAbarbeitung - 
-        Controller controller = new Controller (filepath, urlpath, mycoreid, formatid);
+        //2. Create Subcontroller fuer AufgabenAbarbeitung - and initiate controller.createpdf
+        Controller controller = new Controller (requestData);
         Boolean erfolg = controller.createPDF();
-        
-                              
+
        // 3. checken, dass pdf kreiert wurde und ausgabe
        if (erfolg) {
-        sendPDFResponse(response, mycoreid, filepath);
+        sendPDFResponse(response, requestData);
        } else {
         sendErrorHTMLResponse(response);
        }
@@ -57,10 +65,10 @@ public class ServletFrontController extends HttpServlet {
         }
       }
       
-      protected void sendPDFResponse (HttpServletResponse response, String mycoreid, String filepath){
+      protected void sendPDFResponse (HttpServletResponse response, RequestData requestData){
        
-        String pdfFileName = mycoreid + ".pdf";
-        File pdfFile = new File(filepath, pdfFileName);
+        String pdfFileName = requestData.getMycoreid() + ".pdf";
+        File pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
         try{
         response.setContentType("application/pdf");
 	response.addHeader("Content-Disposition", "attachment; "

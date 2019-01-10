@@ -1,7 +1,7 @@
 /*
  * author chase
  */
-package texpdf_view;
+package xml2tex2pdf_service;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -13,11 +13,11 @@ import java.io.IOException;
  */
 public class MockString2Tex {
      
-    public void createFile(String mycoreid, String filepath) {
+    public void createFile(String mycoreid, String outfilepath) {
 
         
         String texFileName = mycoreid + ".tex";
-	File texFile = new File(filepath, texFileName);
+	File texFile = new File(outfilepath, texFileName);
         
         // 1. create the .tex file
         String newLineWithSeparation = System.getProperty("line.separator") 

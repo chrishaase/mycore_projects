@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package texpdf_view;
+package xml2tex2pdf_service;
+
+import utility.StreamPrinter;
 
 import java.io.File;
 
@@ -15,16 +17,16 @@ import java.io.File;
 
 public class Tex2PDF {
     
-    public void createSingleIdFile (String mycoreid, String filepath){
+    public void createSingleIdFile (String mycoreid, String outfilepath){
         
         String pdfFileName = mycoreid + ".pdf";
         String texFileName = mycoreid + ".tex";
-	File pdfFile = new File(filepath, pdfFileName);
-        File texFile = new File(filepath, texFileName);
+	File pdfFile = new File(outfilepath, pdfFileName);
+        File texFile = new File(outfilepath, texFileName);
         
      ProcessBuilder pb = new ProcessBuilder("pdflatex", "-interaction=nonstopmode", 
                 texFileName);
-        pb.directory(new File(filepath));
+        pb.directory(new File(outfilepath));
         try {
             Process p = pb.start();
             StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
