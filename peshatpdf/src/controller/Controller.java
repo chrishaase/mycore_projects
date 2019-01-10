@@ -1,9 +1,8 @@
-/**
- *
- * Controlled Ausfuehrung der xml2pdf conversion und stellt pdf im outfilepath bereit
- * im Momemt implementiert: pdf-creation via "tex" / dao via "rest" (siehe factory)
- * Vorbedingung: mycoreid - correct - noch einbauen und xml-objekt mit mycore-id available in xmlfilepath oder on rest
- * Nachbedingung: pdf existiert im outfilepath
+/*
+  Controlled Ausfuehrung der xml2pdf conversion und stellt pdf im outfilepath bereit
+  im Momemt implementiert: pdf-creation via "tex" / dao via "rest" (siehe factory)
+  Vorbedingung: mycoreid - correct - noch einbauen und xml-objekt mit mycore-id available in xmlfilepath oder on rest
+  Nachbedingung: pdf existiert im outfilepath
  */     
 package controller;
 
@@ -28,8 +27,8 @@ public class Controller {
     public Controller (RequestData requestData) {
 
         this.requestData = requestData;
-        this.xml2PDF = getXml2PDF(requestData);
-        this.xmlDao = getXmlDao(requestData);
+        this.xml2PDF = getXml2PDF();
+        this.xmlDao = getXmlDao();
     }
     
     public Boolean createPDF(){
@@ -48,13 +47,13 @@ public class Controller {
     }
     
 
-    private Xml2Pdf getXml2PDF(RequestData requestData){
+    private Xml2Pdf getXml2PDF(){
 
                 return new Xml2PdfTexImpl();
 
         }
 
-   private XmlDao getXmlDao (RequestData requestData){
+   private XmlDao getXmlDao (){
 
                return new XmlDaoRestImpl();
 
