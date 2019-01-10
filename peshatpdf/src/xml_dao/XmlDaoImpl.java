@@ -1,4 +1,4 @@
 package xml_dao;
 
-public class XmlDaoImpl {
+public class XmlDaoImpl implements XmlDao {
 }
