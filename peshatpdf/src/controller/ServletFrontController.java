@@ -23,7 +23,7 @@ public class ServletFrontController extends HttpServlet {
                
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse 
-            response) throws ServletException, IOException
+            response)
     {
         //1. init: Get init url&filepaths from web.xml and mycore ID from HTTP-request
         
@@ -31,7 +31,7 @@ public class ServletFrontController extends HttpServlet {
         String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
         String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
 
-        //1.b. Set init-params for mycore-rest-service
+        //1.b. Set init-params for mycore-rest-service - if needed
         String urlpath = getServletContext().getInitParameter("urlpath");
 
         //1.d. create RequestData object
@@ -49,7 +49,7 @@ public class ServletFrontController extends HttpServlet {
        }
        
 }
-      protected void sendErrorHTMLResponse  (HttpServletResponse response) {
+      private void sendErrorHTMLResponse  (HttpServletResponse response) {
         try{
           response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
@@ -61,7 +61,7 @@ public class ServletFrontController extends HttpServlet {
         }
       }
       
-      protected void sendPDFResponse (HttpServletResponse response, RequestData requestData){
+      private void sendPDFResponse (HttpServletResponse response, RequestData requestData){
        
         String pdfFileName = requestData.getMycoreid() + ".pdf";
         File pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
@@ -88,7 +88,7 @@ public class ServletFrontController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse 
-            response) throws ServletException, IOException
+            response)
     {
         doGet(request, response);
     }
