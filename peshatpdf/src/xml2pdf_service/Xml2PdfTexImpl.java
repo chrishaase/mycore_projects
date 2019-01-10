@@ -1,8 +1,8 @@
 package xml2pdf_service;
 
 import controller.RequestData;
-import xml2pdf_service.xml2tex2pdf.Tex2PDF;
-import xml2pdf_service.xml2tex2pdf.Xml2Tex;
+import xml2pdf_service.xml2pdfTex.Tex2PDF;
+import xml2pdf_service.xml2pdfTex.Xml2Tex;
 
 public class Xml2PdfTexImpl implements Xml2Pdf {
 
