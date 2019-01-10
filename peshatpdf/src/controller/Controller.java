@@ -1,16 +1,16 @@
 /**
  *
- * fuehrt Programme aus -
+ * Controlled Ausfuehrung der xml2pdf conversion und stellt pdf im outfilepath bereit
  * im Momemt implementiert: pdf-creation via "tex" / dao via "rest" (siehe factory)
- * Vorbedingung: mycoreid - correct - noch einbauen
- * Nachbedingung: pdf kreiert - noch einbauen
+ * Vorbedingung: mycoreid - correct - noch einbauen und xml-objekt mit mycore-id available in xmlfilepath oder on rest
+ * Nachbedingung: pdf existiert im outfilepath
  */     
 package controller;
 
 import xml2pdf_service.Xml2Pdf;
 import xml2pdf_service.Xml2PdfTexImpl;
 import xml_dao.XmlDao;
-import xml_dao.XmlDaoImpl;
+import xml_dao.XmlDaoRestImpl;
 
 /**
  *
@@ -34,14 +34,15 @@ public class Controller {
     public Boolean createPDF(){
         
         //1. ensure xml.file is loaded to xmlfilepath
-        // implement via xmlDao();
+        erfolg = xmlDao.getXmlFile(requestData);
        
         //2. transform to pdf and ensure pdf is created in outfilepath
-        // implmenent via xml2pdf
-                        
-               
+        if (erfolg) {
+            erfolg= xml2PDF.createPdf(requestData);
+        }
+
+
         // 3. return erfolgsmeldung (noch checking einbauen)
-        erfolg = true;
         return erfolg;
     }
     
@@ -51,16 +52,16 @@ public class Controller {
             case "tex":
                 return new Xml2PdfTexImpl();
             default:
-                return new Xml2PdfTexImpl;
+                return new Xml2PdfTexImpl();
         }
         }
 
    public XmlDao getXmlDao (RequestData requestData){
        switch (requestData.getXmldao()) {
            case "rest":
-               return new XmlDaoImpl();
+               return new XmlDaoRestImpl();
            default:
-               return new XmlDaoImpl();
+               return new XmlDaoRestImpl();
        }
    }
     

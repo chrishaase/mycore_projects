@@ -5,6 +5,8 @@
  */
 package xml2tex2pdf_service;
 
+import controller.RequestData;
+
 import java.io.File;
 import java.io.InputStream;
 import javax.xml.transform.stream.StreamSource; 
@@ -19,13 +21,14 @@ import javax.xml.transform.*;
  */
 public class Xml2Tex {
      
-    public void createBibStandardFile(String mycoreid, String outfilepath)  {
+    public Boolean createTexFile(RequestData requestData)  {
 
-        
-        String texFileName = mycoreid + ".tex";
-	String xmlFileName = mycoreid + ".xml";
-        File texFile = new File(outfilepath, texFileName);
-        File xmlFile = new File(outfilepath, xmlFileName);
+        Boolean b = false;
+
+        String texFileName = requestData.getMycoreid() + ".tex";
+	String xmlFileName = requestData.getMycoreid() + ".xml";
+        File texFile = new File(requestData.getOutfilepath(), texFileName);
+        File xmlFile = new File(requestData.getOutfilepath(), xmlFileName);
         InputStream stylesheet = Xml2Tex.class.getResourceAsStream("XML2Tex_bib_standard.xsl");
                 
         
@@ -41,8 +44,21 @@ public class Xml2Tex {
         } catch (Exception e){
             e.printStackTrace();
         }
-        
-        }
-        
 
+        b = fileExists(texFile);
+
+        return b;
+
+
+        }
+
+    Boolean fileExists(File file){
+        boolean bFile = false;
+        try {
+            bFile = file.exists();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bFile;
+    }
 }

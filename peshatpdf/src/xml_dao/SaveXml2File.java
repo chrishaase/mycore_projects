@@ -1,7 +1,7 @@
 /*
  * 
  */
-package utility;
+package xml_dao;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,7 +14,7 @@ import controller.RequestData;
  */
 
 
-public class SaveXML2File {
+public class SaveXml2File {
     
     public void save(RequestData requestData, String mcrObjString){
         

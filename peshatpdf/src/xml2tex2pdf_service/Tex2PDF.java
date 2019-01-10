@@ -5,6 +5,7 @@
  */
 package xml2tex2pdf_service;
 
+import controller.RequestData;
 import utility.StreamPrinter;
 
 import java.io.File;
@@ -17,16 +18,17 @@ import java.io.File;
 
 public class Tex2PDF {
     
-    public void createSingleIdFile (String mycoreid, String outfilepath){
-        
-        String pdfFileName = mycoreid + ".pdf";
-        String texFileName = mycoreid + ".tex";
-	File pdfFile = new File(outfilepath, pdfFileName);
-        File texFile = new File(outfilepath, texFileName);
+    public Boolean createPDFFile(RequestData requestData){
+
+        Boolean b = false;
+        String pdfFileName = requestData.getMycoreid() + ".pdf";
+        String texFileName = requestData.getMycoreid() + ".tex";
+	File pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
+        File texFile = new File(requestData.getOutfilepath(), texFileName);
         
      ProcessBuilder pb = new ProcessBuilder("pdflatex", "-interaction=nonstopmode", 
                 texFileName);
-        pb.directory(new File(outfilepath));
+        pb.directory(new File(requestData.getOutfilepath()));
         try {
             Process p = pb.start();
             StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
@@ -37,5 +39,23 @@ public class Tex2PDF {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
+        // check if file exists
+        b = fileExists(pdfFile);
+
+        return b;
+
+
     }
+
+    Boolean fileExists(File file){
+        boolean bFile = false;
+        try {
+            bFile = file.exists();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bFile;
+    }
+
 }
