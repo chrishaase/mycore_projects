@@ -1,4 +1,4 @@
-package xml_dao;
+package xml_dao.xml_util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

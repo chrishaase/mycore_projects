@@ -1,14 +1,14 @@
 package xml2pdf_service;
 
 import controller.RequestData;
-import xml2tex2pdf_service.Tex2PDF;
-import xml2tex2pdf_service.Xml2Tex;
+import xml2pdf_service.xml2tex2pdf.Tex2PDF;
+import xml2pdf_service.xml2tex2pdf.Xml2Tex;
 
 public class Xml2PdfTexImpl implements Xml2Pdf {
 
     public Boolean createPdf(RequestData requestData) {
 
-        Boolean b = true;
+        Boolean b = false;
 
         // init service objects
         Xml2Tex generateTex = new Xml2Tex();
@@ -18,11 +18,11 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
         b= generateTex.createTexFile(requestData);
 
         // create PDF
-        if (true) {
+        if (b) {
             b = generatePDF.createPDFFile(requestData);
         }
 
-       return true;
+       return b;
     }
 
 }

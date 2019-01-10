@@ -1,7 +1,7 @@
 /*
  * author chase
  */
-package xml2tex2pdf_service;
+package xml2pdf_service.xml2tex2pdf;
 
 import java.io.File;
 import java.io.FileWriter;

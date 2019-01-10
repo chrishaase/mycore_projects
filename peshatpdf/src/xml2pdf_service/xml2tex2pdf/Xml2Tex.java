@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xml2tex2pdf_service;
+package xml2pdf_service.xml2tex2pdf;
 
 import controller.RequestData;
 
@@ -23,7 +23,7 @@ public class Xml2Tex {
      
     public Boolean createTexFile(RequestData requestData)  {
 
-        Boolean b = true;
+        Boolean b = false;
 
         String texFileName = requestData.getMycoreid() + ".tex";
 	String xmlFileName = requestData.getMycoreid() + ".xml";
@@ -47,7 +47,7 @@ public class Xml2Tex {
 
         b = fileExists(texFile);
 
-        return true;
+        return b;
 
 
         }

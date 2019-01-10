@@ -1,7 +1,7 @@
 /*
  * 
  */
-package xml_dao;
+package xml_dao.xml_util;
 
 import java.io.File;
 import java.io.FileWriter;

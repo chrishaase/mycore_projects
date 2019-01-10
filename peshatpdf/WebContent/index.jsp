@@ -20,7 +20,7 @@ and open the template in the editor.
             <label for="mycoreid">MyCore-Peshat-ID :</label>
             <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
             <br><br>
-            </form>
+
 
 
         <input type="submit" value="Submit and CreatePDF">

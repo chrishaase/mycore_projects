@@ -1,6 +1,9 @@
 package xml_dao;
 
 import controller.RequestData;
+import xml_dao.xml_util.RestGetXml;
+import xml_dao.xml_util.SaveXml2File;
+
 import java.io.File;
 
 public class XmlDaoRestImpl implements XmlDao {
@@ -8,7 +11,7 @@ public class XmlDaoRestImpl implements XmlDao {
 
     public Boolean getXmlFile(RequestData requestData){
 
-        boolean b = true;
+        boolean b = false;
         String xmlFileName = requestData.getMycoreid() + ".xml";
         File xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
 
@@ -17,7 +20,7 @@ public class XmlDaoRestImpl implements XmlDao {
 
         // if not load from rest service and save to file
 
-        if (true){
+        if (b){
             RestGetXml rest = new RestGetXml();
             String xmlString = rest.httpGet(requestData);
             SaveXml2File save = new SaveXml2File();
@@ -28,7 +31,7 @@ public class XmlDaoRestImpl implements XmlDao {
         b = fileExists(xmlFile);
 
 
-        return true;
+        return b;
     }
 
     Boolean fileExists(File xmlFile){

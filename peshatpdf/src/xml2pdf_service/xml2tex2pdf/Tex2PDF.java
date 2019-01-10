@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package xml2tex2pdf_service;
+package xml2pdf_service.xml2tex2pdf;
 
 import controller.RequestData;
 import utility.StreamPrinter;
-
 import java.io.File;
 
 /**
@@ -20,7 +19,8 @@ public class Tex2PDF {
     
     public Boolean createPDFFile(RequestData requestData){
 
-        Boolean b = true;
+        Boolean b = false;
+
         String pdfFileName = requestData.getMycoreid() + ".pdf";
         String texFileName = requestData.getMycoreid() + ".tex";
 	File pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
@@ -43,7 +43,7 @@ public class Tex2PDF {
         // check if file exists
         b = fileExists(pdfFile);
 
-        return true;
+        return b;
 
 
     }

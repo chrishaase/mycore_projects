@@ -11,6 +11,7 @@ import xml2pdf_service.Xml2Pdf;
 import xml2pdf_service.Xml2PdfTexImpl;
 import xml_dao.XmlDao;
 import xml_dao.XmlDaoRestImpl;
+import java.io.File;
 
 /**
  *
@@ -47,22 +48,27 @@ public class Controller {
     }
     
 
-    public Xml2Pdf getXml2PDF(RequestData requestData){
-        switch (requestData.getXmlpdfservice()) {
-            case "tex":
+    private Xml2Pdf getXml2PDF(RequestData requestData){
+
                 return new Xml2PdfTexImpl();
-            default:
-                return new Xml2PdfTexImpl();
-        }
+
         }
 
-   public XmlDao getXmlDao (RequestData requestData){
-       switch (requestData.getXmldao()) {
-           case "rest":
+   private XmlDao getXmlDao (RequestData requestData){
+
                return new XmlDaoRestImpl();
-           default:
-               return new XmlDaoRestImpl();
-       }
+
    }
-    
+
+
+    public Boolean fileExists(File file){
+        boolean bFile = false;
+        try {
+            bFile = file.exists();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bFile;
+    }
+
 }

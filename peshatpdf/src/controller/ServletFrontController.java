@@ -33,15 +33,10 @@ public class ServletFrontController extends HttpServlet {
 
         //1.b. Set init-params for mycore-rest-service (if this pdf-printer is implemented on external-server)
         String urlpath = getServletContext().getInitParameter("urlpath");
-        String xmldao = "rest"; // can be later changed/switched to "filestore" - attempts to load missing xml-file from rest
-
-        //1.c. Set init-params for xml2pdf_service-conversion service: first impl via "tex"
-        String xmlpdfservice = "tex";
 
         //1.d. create RequestData object
-        RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, xmldao, xmlpdfservice);
-        System.out.println(mycoreid + " " + outfilepath + " " + urlpath + " " + xmlfilepath + " " + xmldao + " " + xmlpdfservice);
-        
+        RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
+
         //2. Create Subcontroller fuer AufgabenAbarbeitung - and initiate controller.createpdf
         Controller controller = new Controller (requestData);
         Boolean erfolg = controller.createPDF();
