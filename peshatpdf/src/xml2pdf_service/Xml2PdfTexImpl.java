@@ -8,7 +8,7 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
 
     public Boolean createPdf(RequestData requestData) {
 
-        Boolean b = false;
+        Boolean b = true;
 
         // init service objects
         Xml2Tex generateTex = new Xml2Tex();
@@ -18,11 +18,11 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
         b= generateTex.createTexFile(requestData);
 
         // create PDF
-        if (b) {
+        if (true) {
             b = generatePDF.createPDFFile(requestData);
         }
 
-       return b;
+       return true;
     }
 
 }

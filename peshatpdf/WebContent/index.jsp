@@ -20,9 +20,7 @@ and open the template in the editor.
             <label for="mycoreid">MyCore-Peshat-ID :</label>
             <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
             <br><br>
-            <label for="formatid">MyCore-Peshat-ID :</label>
-                <input type="checkbox" id="formatid" name="formatid" value="tex2pdf">tex2pdf<BR>
-        </form>
+            </form>
 
 
         <input type="submit" value="Submit and CreatePDF">

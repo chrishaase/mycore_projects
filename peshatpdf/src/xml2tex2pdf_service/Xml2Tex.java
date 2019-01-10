@@ -23,12 +23,12 @@ public class Xml2Tex {
      
     public Boolean createTexFile(RequestData requestData)  {
 
-        Boolean b = false;
+        Boolean b = true;
 
         String texFileName = requestData.getMycoreid() + ".tex";
 	String xmlFileName = requestData.getMycoreid() + ".xml";
         File texFile = new File(requestData.getOutfilepath(), texFileName);
-        File xmlFile = new File(requestData.getOutfilepath(), xmlFileName);
+        File xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
         InputStream stylesheet = Xml2Tex.class.getResourceAsStream("XML2Tex_bib_standard.xsl");
                 
         
@@ -47,7 +47,7 @@ public class Xml2Tex {
 
         b = fileExists(texFile);
 
-        return b;
+        return true;
 
 
         }

@@ -40,6 +40,7 @@ public class ServletFrontController extends HttpServlet {
 
         //1.d. create RequestData object
         RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, xmldao, xmlpdfservice);
+        System.out.println(mycoreid + " " + outfilepath + " " + urlpath + " " + xmlfilepath + " " + xmldao + " " + xmlpdfservice);
         
         //2. Create Subcontroller fuer AufgabenAbarbeitung - and initiate controller.createpdf
         Controller controller = new Controller (requestData);

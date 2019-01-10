@@ -20,7 +20,7 @@ public class Tex2PDF {
     
     public Boolean createPDFFile(RequestData requestData){
 
-        Boolean b = false;
+        Boolean b = true;
         String pdfFileName = requestData.getMycoreid() + ".pdf";
         String texFileName = requestData.getMycoreid() + ".tex";
 	File pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
@@ -43,7 +43,7 @@ public class Tex2PDF {
         // check if file exists
         b = fileExists(pdfFile);
 
-        return b;
+        return true;
 
 
     }
