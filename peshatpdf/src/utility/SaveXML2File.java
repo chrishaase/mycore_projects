@@ -6,6 +6,7 @@ package utility;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import controller.RequestData;
 
 /**
  *
@@ -15,11 +16,11 @@ import java.io.IOException;
 
 public class SaveXML2File {
     
-    public void save(String mycoreid, String mcrObjString, String xmlfilepath){
+    public void save(RequestData requestData, String mcrObjString){
         
         
-        String xmlFileName = mycoreid + ".xml";
-	File xmlFile = new File(xmlfilepath, xmlFileName);
+        String xmlFileName = requestData.getMycoreid() + ".xml";
+	File xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
         
         FileWriter writer = null;
         try {

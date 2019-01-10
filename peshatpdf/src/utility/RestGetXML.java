@@ -3,6 +3,7 @@ package utility;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import controller.RequestData;
 
 
 /**
@@ -15,12 +16,12 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class RestGetXML {
     
        
-    public String httpGet (String mycoreid, String urlpath){
+    public String httpGet (RequestData requestData){
        
         
         
         String string = "";
-        String urlstr = urlpath + mycoreid;
+        String urlstr = requestData.getUrlpath() + requestData.getMycoreid();
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)
