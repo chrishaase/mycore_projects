@@ -1,6 +1,6 @@
-package xml2pdf_service;
+package main.java.xml2pdf_service;
 
-import controller.RequestData;
+import main.java.controller.RequestData;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;

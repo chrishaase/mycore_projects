@@ -1,6 +1,6 @@
-package xml_dao;
+package main.java.xml_dao;
 
-import xml_rest_util.RestGetXml;
+import main.java.xml_rest_util.RestGetXml;
 
 public interface XmlDao {
 

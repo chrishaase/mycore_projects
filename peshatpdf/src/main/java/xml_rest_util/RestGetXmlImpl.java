@@ -1,4 +1,4 @@
-package xml_rest_util;
+package main.java.xml_rest_util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

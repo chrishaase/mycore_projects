@@ -1,6 +1,4 @@
-package xml2pdf_service;
-
-import controller.RequestData;
+package main.java.xml2pdf_service;
 
 public interface Xml2Pdf {
 

@@ -1,7 +1,7 @@
-package xml_dao;
+package main.java.xml_dao;
 
-import controller.RequestData;
-import xml_rest_util.RestGetXml;
+import main.java.controller.RequestData;
+import main.java.xml_rest_util.RestGetXml;
 
 import java.io.File;
 

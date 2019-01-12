@@ -1,6 +1,4 @@
-package xml_rest_util;
-
-import controller.RequestData;
+package main.java.xml_rest_util;
 
 public interface RestGetXml {
 

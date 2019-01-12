@@ -4,14 +4,14 @@
   Vorbedingung: mycoreid - correct - noch einbauen und xml-objekt mit mycore-id available in xmlfilepath oder on rest
   Nachbedingung: pdf existiert im outfilepath
  */     
-package controller;
+package main.java.controller;
 
-import xml2pdf_service.Xml2Pdf;
-import xml2pdf_service.Xml2PdfTexImpl;
-import xml_dao.XmlDao;
-import xml_dao.XmlDaoRestImpl;
-import xml_rest_util.RestGetXml;
-import xml_rest_util.RestGetXmlImpl;
+import main.java.xml2pdf_service.Xml2Pdf;
+import main.java.xml2pdf_service.Xml2PdfTexImpl;
+import main.java.xml_dao.XmlDao;
+import main.java.xml_dao.XmlDaoRestImpl;
+import main.java.xml_rest_util.RestGetXml;
+import main.java.xml_rest_util.RestGetXmlImpl;
 
 
 /**

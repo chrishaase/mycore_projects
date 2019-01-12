@@ -14,7 +14,7 @@
     </context-param>
     <servlet>
         <servlet-name>CreatePDF</servlet-name>
-        <servlet-class>controller.ServletFrontController</servlet-class>
+        <servlet-class>main.java.controller.ServletFrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreatePDF</servlet-name>
