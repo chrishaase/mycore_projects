@@ -11,10 +11,11 @@ public class XmlDaoRestImpl implements XmlDao {
     private final File xmlFile;
     private RestGetXml rest;
 
-    public XmlDaoRestImpl (RequestData requestData){
+    public XmlDaoRestImpl (RequestData requestData, RestGetXml rest){
         this.requestData = requestData;
         String xmlFileName = requestData.getMycoreid() + ".xml";
         xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+        this.rest = rest;
 
 
     }
@@ -47,9 +48,6 @@ public class XmlDaoRestImpl implements XmlDao {
             e.printStackTrace();
         }
         return bFile;
-    }
-    public void setRest(RestGetXml rest) {
-        this.rest = rest;
     }
 
 

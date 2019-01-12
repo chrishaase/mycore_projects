@@ -6,7 +6,7 @@ public interface XmlDao {
 
     Boolean getXmlFileInPath();
 
-    void setRest(RestGetXml rest);
+
 
 
 }

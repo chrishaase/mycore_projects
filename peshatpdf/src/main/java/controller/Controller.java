@@ -31,8 +31,7 @@ public class Controller {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         this.xml2PDF = new Xml2PdfTexImpl(requestData);
-        this.xmlDao = new XmlDaoRestImpl(requestData);
-        xmlDao.setRest(new RestGetXmlImpl());
+        this.xmlDao = new XmlDaoRestImpl(requestData, new RestGetXmlImpl());
 
     }
     
