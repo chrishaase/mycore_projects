@@ -16,11 +16,11 @@ import controller.RequestData;
 
 public class SaveXml2File {
     
-    public void save(RequestData requestData, String mcrObjString){
+    public void save(String mcrId, String mcrObjString, String filepath){
         
         
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-	File xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+        String xmlFileName = mcrId + ".xml";
+	File xmlFile = new File(filepath, xmlFileName);
         
         FileWriter writer = null;
         try {

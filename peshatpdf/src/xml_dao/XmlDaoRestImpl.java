@@ -31,8 +31,8 @@ public class XmlDaoRestImpl implements XmlDao {
         // if not load from rest service and save to filepath
 
         if (b){
-            String xmlString = rest.httpGet(requestData);
-            save.save(requestData, xmlString);
+            String xmlString = rest.httpGet(requestData.getUrlpath(), requestData.getMycoreid());
+            save.save(requestData.getMycoreid(), xmlString, requestData.getXmlfilepath());
         }
 
         // final evaluation ob file jetzt in filestore

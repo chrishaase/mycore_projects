@@ -17,12 +17,12 @@ public class RestGetXmlImpl implements RestGetXml{
 
 
        
-    public String httpGet (RequestData requestData){
+    public String httpGet (String urlpath, String id){
        
         
         
         String string = "";
-        String urlstr = requestData.getUrlpath() + requestData.getMycoreid();
+        String urlstr = urlpath + id;
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)

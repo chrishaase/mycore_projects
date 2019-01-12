@@ -4,6 +4,6 @@ import controller.RequestData;
 
 public interface RestGetXml {
 
-    String httpGet (RequestData requestData);
+    String httpGet (String urlpath, String id);
 
     }

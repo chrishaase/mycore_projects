@@ -18,8 +18,6 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
     private final File texFile;
     private final File xmlFile;
     private final String texFileName;
-    private final String pdfFileName;
-    private final String xmlFileName;
     private final String xsl_standard = "xml2pdf_bib_standard.xsl";
 
 
@@ -27,9 +25,9 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
     public Xml2PdfTexImpl (RequestData requestData){
 
         this.requestData = requestData;
-        pdfFileName = requestData.getMycoreid() + ".pdf";
+        String pdfFileName = requestData.getMycoreid() + ".pdf";
         texFileName = requestData.getMycoreid() + ".tex";
-        xmlFileName = requestData.getMycoreid() + ".xml";
+        String xmlFileName = requestData.getMycoreid() + ".xml";
         pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
         texFile = new File(requestData.getOutfilepath(), texFileName);
         xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);

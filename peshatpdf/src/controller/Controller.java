@@ -30,7 +30,7 @@ public class Controller {
 
         this.requestData = requestData;
 
-        // verdrahtet alle Services mit Implementationen (app laueft ohne Dependency Injection Framework...)
+        // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         this.xml2PDF = new Xml2PdfTexImpl(requestData);
         this.xmlDao = new XmlDaoRestImpl(requestData);
         RestGetXml rest = new RestGetXmlImpl();
