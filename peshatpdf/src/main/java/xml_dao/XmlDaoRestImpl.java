@@ -26,8 +26,8 @@ public class XmlDaoRestImpl implements XmlDao {
         b = fileExists(xmlFile);
 
         // if not load from rest service and save to filepath
-        if (b){
-            rest.httpGetAndSave2File();
+        if (!b){
+           b = rest.httpGetAndSave2File();
         }
 
         // final evaluation ob file jetzt in filestore
