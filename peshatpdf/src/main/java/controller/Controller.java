@@ -10,7 +10,6 @@ import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2PdfTexImpl;
 import main.java.xml_dao.XmlDao;
 import main.java.xml_dao.XmlDaoRestImpl;
-import main.java.xml_rest_util.RestGetXml;
 import main.java.xml_rest_util.RestGetXmlImpl;
 
 
@@ -33,8 +32,7 @@ public class Controller {
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         this.xml2PDF = new Xml2PdfTexImpl(requestData);
         this.xmlDao = new XmlDaoRestImpl(requestData);
-        RestGetXml rest = new RestGetXmlImpl();
-        xmlDao.setRest(rest);
+        xmlDao.setRest(new RestGetXmlImpl());
 
     }
     
@@ -48,13 +46,9 @@ public class Controller {
             erfolg= xml2PDF.transformXmlFile2PdfFile();
         }
 
-
         // 3. return erfolgsmeldung
         return erfolg;
     }
     
-
-
-
 
 }
