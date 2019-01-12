@@ -1,4 +1,4 @@
-package xml_dao.xml_util;
+package xml_rest_util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -13,8 +13,9 @@ import controller.RequestData;
 
 
 
-public class RestGetXml {
-    
+public class RestGetXmlImpl implements RestGetXml{
+
+
        
     public String httpGet (RequestData requestData){
        

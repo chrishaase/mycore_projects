@@ -31,7 +31,7 @@ public class ServletFrontController extends HttpServlet {
         String urlpath = getServletContext().getInitParameter("urlpath");
         RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
 
-        //2. Create Subcontroller fuer AufgabenAbarbeitung - and initiate controller.createpdf
+        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
         Controller controller = new Controller (requestData);
         Boolean erfolg = controller.createPDF();
 

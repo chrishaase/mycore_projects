@@ -1,4 +1,4 @@
-package utility;
+package xml2pdfTex_util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

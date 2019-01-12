@@ -1,9 +1,12 @@
 package xml_dao;
 
-import controller.RequestData;
+import xml_rest_util.RestGetXml;
 
 public interface XmlDao {
 
-    Boolean getXmlFileInPath(RequestData requestData);
+    Boolean getXmlFileInPath();
+
+    void setRest(RestGetXml rest);
+
 
 }

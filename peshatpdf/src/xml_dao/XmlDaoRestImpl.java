@@ -1,19 +1,29 @@
 package xml_dao;
 
 import controller.RequestData;
-import xml_dao.xml_util.RestGetXml;
-import xml_dao.xml_util.SaveXml2File;
+import xml_rest_util.RestGetXml;
+import xml_rest_util.SaveXml2File;
 
 import java.io.File;
 
 public class XmlDaoRestImpl implements XmlDao {
 
+    private final RequestData requestData;
+    private final File xmlFile;
+    private final SaveXml2File save;
+    private RestGetXml rest;
 
-    public Boolean getXmlFileInPath(RequestData requestData){
+    public XmlDaoRestImpl (RequestData requestData){
+        this.requestData = requestData;
+        String xmlFileName = requestData.getMycoreid() + ".xml";
+        xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+        save = new SaveXml2File();
+
+    }
+
+    public Boolean getXmlFileInPath(){
 
         boolean b = false;
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-        File xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
 
         //. check if xml in xml-filestore
         b = fileExists(xmlFile);
@@ -21,9 +31,7 @@ public class XmlDaoRestImpl implements XmlDao {
         // if not load from rest service and save to filepath
 
         if (b){
-            RestGetXml rest = new RestGetXml();
             String xmlString = rest.httpGet(requestData);
-            SaveXml2File save = new SaveXml2File();
             save.save(requestData, xmlString);
         }
 
@@ -43,5 +51,9 @@ public class XmlDaoRestImpl implements XmlDao {
         }
         return bFile;
     }
+    public void setRest(RestGetXml rest) {
+        this.rest = rest;
+    }
+
 
 }

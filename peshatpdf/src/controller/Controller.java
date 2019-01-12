@@ -7,9 +7,11 @@
 package controller;
 
 import xml2pdf_service.Xml2Pdf;
-import xml2pdf_service.Xml2PdfTexImpl;
+import xml2pdfTex_util.Xml2PdfTexImpl;
 import xml_dao.XmlDao;
 import xml_dao.XmlDaoRestImpl;
+import xml_rest_util.RestGetXml;
+import xml_rest_util.RestGetXmlImpl;
 
 
 /**
@@ -27,37 +29,32 @@ public class Controller {
     public Controller (RequestData requestData) {
 
         this.requestData = requestData;
-        this.xml2PDF = getXml2PDF();
-        this.xmlDao = getXmlDao();
+
+        // verdrahtet alle Services mit Implementationen (app laueft ohne Dependency Injection Framework...)
+        this.xml2PDF = new Xml2PdfTexImpl(requestData);
+        this.xmlDao = new XmlDaoRestImpl(requestData);
+        RestGetXml rest = new RestGetXmlImpl();
+        xmlDao.setRest(rest);
+
     }
     
     public Boolean createPDF(){
         
         //1. ensure xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFileInPath(requestData);
+        erfolg = xmlDao.getXmlFileInPath();
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
+            erfolg= xml2PDF.transformXmlFile2PdfFile();
         }
 
 
-        // 3. return erfolgsmeldung (noch checking einbauen)
+        // 3. return erfolgsmeldung
         return erfolg;
     }
     
 
-    private Xml2Pdf getXml2PDF(){
 
-                return new Xml2PdfTexImpl();
-
-        }
-
-   private XmlDao getXmlDao (){
-
-               return new XmlDaoRestImpl();
-
-   }
 
 
 }
