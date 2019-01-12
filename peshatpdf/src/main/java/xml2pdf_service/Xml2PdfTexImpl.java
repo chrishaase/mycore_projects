@@ -52,26 +52,6 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
        return b;
     }
 
-    public void transformTex2PDF(){
-
-        ProcessBuilder pb = new ProcessBuilder("pdflatex", "-interaction=nonstopmode",
-                texFileName);
-        pb.directory(new File(requestData.getOutfilepath()));
-        try {
-            Process p = pb.start();
-            StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
-            StreamPrinter sError = new StreamPrinter(p.getErrorStream(), false);
-            new Thread(sPrint).start();
-            new Thread(sError).start();
-            p.waitFor();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-
-    }
-
-
     public void transformXml2Tex(String xml2TexResource)  {
 
 
@@ -91,8 +71,28 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
             e.printStackTrace();
         }
 
+    }
+
+
+    public void transformTex2PDF(){
+
+        ProcessBuilder pb = new ProcessBuilder("pdflatex", "-interaction=nonstopmode",
+                texFileName);
+        pb.directory(new File(requestData.getOutfilepath()));
+        try {
+            Process p = pb.start();
+            StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
+            StreamPrinter sError = new StreamPrinter(p.getErrorStream(), false);
+            new Thread(sPrint).start();
+            new Thread(sError).start();
+            p.waitFor();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 
     }
+
 
 
     Boolean fileExists(File file){
