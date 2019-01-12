@@ -1,7 +1,6 @@
-package xml2pdfTex_util;
+package xml2pdf_service;
 
 import controller.RequestData;
-import xml2pdf_service.Xml2Pdf;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -18,7 +17,7 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
     private final File texFile;
     private final File xmlFile;
     private final String texFileName;
-    private final String xsl_standard = "xml2pdf_bib_standard.xsl";
+    private final String xsl_standard = "xml2tex_bib_standard.xsl";
 
 
 

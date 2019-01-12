@@ -7,7 +7,7 @@
 package controller;
 
 import xml2pdf_service.Xml2Pdf;
-import xml2pdfTex_util.Xml2PdfTexImpl;
+import xml2pdf_service.Xml2PdfTexImpl;
 import xml_dao.XmlDao;
 import xml_dao.XmlDaoRestImpl;
 import xml_rest_util.RestGetXml;

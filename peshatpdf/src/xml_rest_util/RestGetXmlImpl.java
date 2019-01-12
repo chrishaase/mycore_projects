@@ -3,7 +3,10 @@ package xml_rest_util;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import controller.RequestData;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 /**
@@ -16,7 +19,7 @@ import controller.RequestData;
 public class RestGetXmlImpl implements RestGetXml{
 
 
-       
+
     public String httpGet (String urlpath, String id){
        
         
@@ -37,6 +40,24 @@ public class RestGetXmlImpl implements RestGetXml{
         
         return string;
     }
-    
+
+    public void httpGetAndSave2File(String urlpath, String id, String filepath){
+
+        String mcrObjString = httpGet(urlpath, id);
+
+        String xmlFileName = id + ".xml";
+        File xmlFile = new File(filepath, xmlFileName);
+
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(xmlFile, false);
+            writer.write(mcrObjString, 0, mcrObjString.length());
+            writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
     
 }

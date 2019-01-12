@@ -2,7 +2,6 @@ package xml_dao;
 
 import controller.RequestData;
 import xml_rest_util.RestGetXml;
-import xml_rest_util.SaveXml2File;
 
 import java.io.File;
 
@@ -10,14 +9,13 @@ public class XmlDaoRestImpl implements XmlDao {
 
     private final RequestData requestData;
     private final File xmlFile;
-    private final SaveXml2File save;
     private RestGetXml rest;
 
     public XmlDaoRestImpl (RequestData requestData){
         this.requestData = requestData;
         String xmlFileName = requestData.getMycoreid() + ".xml";
         xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
-        save = new SaveXml2File();
+
 
     }
 
@@ -31,8 +29,7 @@ public class XmlDaoRestImpl implements XmlDao {
         // if not load from rest service and save to filepath
 
         if (b){
-            String xmlString = rest.httpGet(requestData.getUrlpath(), requestData.getMycoreid());
-            save.save(requestData.getMycoreid(), xmlString, requestData.getXmlfilepath());
+            rest.httpGetAndSave2File(requestData.getUrlpath(), requestData.getMycoreid(), requestData.getXmlfilepath());
         }
 
         // final evaluation ob file jetzt in filestore
