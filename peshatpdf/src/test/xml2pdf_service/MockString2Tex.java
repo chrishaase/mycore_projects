@@ -1,7 +1,7 @@
 /*
  * author chase
  */
-package test;
+package test.xml2pdf_service;
 
 import java.io.File;
 import java.io.FileWriter;

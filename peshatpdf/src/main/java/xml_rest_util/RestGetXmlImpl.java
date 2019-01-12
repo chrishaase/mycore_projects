@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import main.java.controller.RequestData;
+
+
 
 /**
  *
@@ -18,14 +21,23 @@ import java.io.IOException;
 
 public class RestGetXmlImpl implements RestGetXml{
 
+    private final RequestData requestData;
+    private final File xmlFile;
 
 
-    public String httpGet (String urlpath, String id){
+    public RestGetXmlImpl(RequestData requestData) {
+
+        this.requestData = requestData;
+        String xmlFileName = requestData.getMycoreid() + ".xml";
+        xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+
+    }
+
+    public String httpGet (){
        
-        
-        
+
         String string = "";
-        String urlstr = urlpath + id;
+        String urlstr = requestData.getUrlpath() + requestData.getMycoreid();
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)
@@ -41,23 +53,41 @@ public class RestGetXmlImpl implements RestGetXml{
         return string;
     }
 
-    public void httpGetAndSave2File(String urlpath, String id, String filepath){
+    public Boolean httpGetAndSave2File() {
 
-        String mcrObjString = httpGet(urlpath, id);
+        String mcrObjString = httpGet();
+        Boolean b = save(mcrObjString);
 
-        String xmlFileName = id + ".xml";
-        File xmlFile = new File(filepath, xmlFileName);
+        return b;
 
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(xmlFile, false);
-            writer.write(mcrObjString, 0, mcrObjString.length());
-            writer.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+    }
+
+        public Boolean save (String mcrObjString) {
+
+
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(xmlFile, false);
+                writer.write(mcrObjString, 0, mcrObjString.length());
+                writer.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+
+
+            return fileExists(xmlFile);
         }
+    Boolean fileExists(File file){
+        boolean bFile = false;
+        try {
+            bFile = file.exists();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bFile;
+    }
     }
 
 
     
-}
+

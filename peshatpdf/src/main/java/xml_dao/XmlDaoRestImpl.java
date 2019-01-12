@@ -9,15 +9,13 @@ public class XmlDaoRestImpl implements XmlDao {
 
     private final RequestData requestData;
     private final File xmlFile;
-    private RestGetXml rest;
+    private final RestGetXml rest;
 
     public XmlDaoRestImpl (RequestData requestData, RestGetXml rest){
         this.requestData = requestData;
         String xmlFileName = requestData.getMycoreid() + ".xml";
         xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
         this.rest = rest;
-
-
     }
 
     public Boolean getXmlFileInPath(){
@@ -28,14 +26,12 @@ public class XmlDaoRestImpl implements XmlDao {
         b = fileExists(xmlFile);
 
         // if not load from rest service and save to filepath
-
         if (b){
-            rest.httpGetAndSave2File(requestData.getUrlpath(), requestData.getMycoreid(), requestData.getXmlfilepath());
+            rest.httpGetAndSave2File();
         }
 
         // final evaluation ob file jetzt in filestore
         b = fileExists(xmlFile);
-
 
         return b;
     }

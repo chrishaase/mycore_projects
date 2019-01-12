@@ -19,24 +19,21 @@ import main.java.xml_rest_util.RestGetXmlImpl;
  */
 public class Controller {
     
-    private final RequestData requestData;
     private final Xml2Pdf xml2PDF;
     private final XmlDao xmlDao;
-    private Boolean erfolg;
-       
+
         
     public Controller (RequestData requestData) {
 
-        this.requestData = requestData;
-
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         this.xml2PDF = new Xml2PdfTexImpl(requestData);
-        this.xmlDao = new XmlDaoRestImpl(requestData, new RestGetXmlImpl());
-
+        this.xmlDao = new XmlDaoRestImpl(requestData, new RestGetXmlImpl(requestData));
     }
     
-    public Boolean createPDF(){
-        
+    Boolean createPDF(){
+
+        Boolean erfolg;
+
         //1. ensure xml.file is loaded to xmlfilepath
         erfolg = xmlDao.getXmlFileInPath();
        
