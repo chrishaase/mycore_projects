@@ -8,23 +8,18 @@ import java.io.File;
 public abstract class Xml2Pdf {
 
    protected final RequestData requestData;
-   protected final File pdfFile;
-   protected final File xmlFile;
-   protected final String xsl_standard;
-
-   protected final FileHandler fileHandler = new FileHandler();
+   protected FileHandler fileHandler;
 
 
    public Xml2Pdf(RequestData requestData){
 
       this.requestData = requestData;
-      String pdfFileName = requestData.getMycoreid() + ".pdf";
-      String xmlFileName = requestData.getMycoreid() + ".xml";
-      pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
-      xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
-      xsl_standard = requestData.getXsltFile();
 
    }
 
    public abstract Boolean transformXmlFile2PdfFile();
+
+   public void setFileHandler(FileHandler fileHandler) {
+      this.fileHandler = fileHandler;
+   }
 }

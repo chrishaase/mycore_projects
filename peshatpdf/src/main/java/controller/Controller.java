@@ -6,10 +6,11 @@
  */     
 package main.java.controller;
 
+import main.java.util.FileHandler;
 import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
 import main.java.xmlFile_dao.XmlFile_dao;
-import main.java.xmlFile_dao.XmlGetRest_util;
+import main.java.util.XmlGetRest;
 
 
 /**
@@ -26,8 +27,18 @@ class Controller {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         // noch implementieren: falls Apache-FO implementiert wird: factory fuer xml2pdf
-        this.xml2PDF = new Xml2Pdf_Tex(requestData);
-        this.xmlDao = new XmlFile_dao(requestData, new XmlGetRest_util(requestData));
+        FileHandler fileHandler = new FileHandler();
+
+        xml2PDF = new Xml2Pdf_Tex(requestData);
+        xml2PDF.setFileHandler(fileHandler);
+
+        XmlGetRest rest = new XmlGetRest(requestData);
+        rest.setFileHandler(fileHandler);
+
+        xmlDao = new XmlFile_dao(requestData, rest);
+        xmlDao.setFileHandler(fileHandler);
+
+
     }
     
     Boolean createPDF(){

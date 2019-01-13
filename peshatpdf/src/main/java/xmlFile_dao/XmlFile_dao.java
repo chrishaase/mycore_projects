@@ -2,28 +2,27 @@ package main.java.xmlFile_dao;
 
 import main.java.util.FileHandler;
 import main.java.controller.RequestData;
+import main.java.util.XmlGetRest;
 
 import java.io.File;
 
 public class XmlFile_dao {
 
+    private final RequestData requestData;
+    private final XmlGetRest rest;
+    private FileHandler fileHandler;
 
-    private final File xmlFile;
-    private final XmlGetRest_util rest;
-    private final FileHandler fileHandler = new FileHandler();
+    public XmlFile_dao(RequestData requestData, XmlGetRest rest){
 
-    public XmlFile_dao(RequestData requestData, XmlGetRest_util rest){
-
+        this.requestData = requestData;
         this.rest = rest;
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-        xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
 
     }
 
     public Boolean getXmlFileInPath(){
 
         //. check if xml in xml-filestore
-        Boolean b = fileHandler.fileExists(xmlFile);
+        Boolean b = fileHandler.fileExists(requestData.getXmlFile());
 
         // if not present, load from rest service and save to filepath
         if (!b){
@@ -31,11 +30,12 @@ public class XmlFile_dao {
         }
 
         // final evaluation ob file jetzt in filestore
-        b = fileHandler.fileExists(xmlFile);
+        b = fileHandler.fileExists(requestData.getXmlFile());
 
         return b;
     }
 
-
-
+    public void setFileHandler(FileHandler fileHandler) {
+        this.fileHandler = fileHandler;
+    }
 }

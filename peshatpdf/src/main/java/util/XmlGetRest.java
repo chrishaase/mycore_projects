@@ -1,4 +1,4 @@
-package main.java.xmlFile_dao;
+package main.java.util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -14,18 +14,16 @@ import main.java.controller.RequestData;
  */
 
 
-public class XmlGetRest_util {
+public class XmlGetRest {
 
     private final RequestData requestData;
-    private final File xmlFile;
-    private final FileHandler fileHandler = new FileHandler();
+    private FileHandler fileHandler;
 
 
-    public XmlGetRest_util(RequestData requestData) {
+    public XmlGetRest(RequestData requestData) {
 
         this.requestData = requestData;
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-        this.xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+
 
     }
 
@@ -51,8 +49,8 @@ public class XmlGetRest_util {
 
     public Boolean save (String mcrObjString) {
 
-            fileHandler.writeString2File(xmlFile, mcrObjString);
-            return fileHandler.fileExists(xmlFile);
+            fileHandler.writeString2File(requestData.getXmlFile(), mcrObjString);
+            return fileHandler.fileExists(requestData.getXmlFile());
         }
 
     public Boolean httpGetAndSave2File() {
@@ -62,7 +60,9 @@ public class XmlGetRest_util {
 
 
     }
-
+    public void setFileHandler(FileHandler fileHandler) {
+        this.fileHandler = fileHandler;
+    }
 
     }
 
