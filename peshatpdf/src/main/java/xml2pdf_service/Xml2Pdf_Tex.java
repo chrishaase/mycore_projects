@@ -1,12 +1,14 @@
 package main.java.xml2pdf_service;
 
 import main.java.controller.RequestData;
+import main.java.util.StreamPrinter;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import java.io.*;
 
 public class Xml2Pdf_Tex extends Xml2Pdf {
@@ -17,6 +19,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
 
     public Xml2Pdf_Tex(RequestData requestData){
+
         super(requestData);
         texFileName = requestData.getMycoreid() + ".tex";
         texFile = new File(requestData.getOutfilepath(), texFileName);
@@ -28,14 +31,12 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
 
         transformXml2Tex();
-
-        Boolean b = fileChecker.fileExists(texFile);
+        Boolean b = fileHandler.fileExists(texFile);
 
         if (b) {
             transformTex2PDF();
-            b = fileChecker.fileExists(pdfFile);
+            b = fileHandler.fileExists(pdfFile);
         }
-
         return b;
     }
 
@@ -65,8 +66,8 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         pb.directory(new File(requestData.getOutfilepath()));
         try {
             Process p = pb.start();
-            Xml2Pdf_Tex.StreamPrinter sPrint = new Xml2Pdf_Tex.StreamPrinter(p.getInputStream(), false);
-            Xml2Pdf_Tex.StreamPrinter sError = new Xml2Pdf_Tex.StreamPrinter(p.getErrorStream(), false);
+            StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
+            StreamPrinter sError = new StreamPrinter(p.getErrorStream(), false);
             new Thread(sPrint).start();
             new Thread(sError).start();
             p.waitFor();
@@ -75,39 +76,6 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         }
 
 
-    }
-
-       class StreamPrinter implements Runnable {
-
-        private final InputStream inputStream;
-
-        private final boolean print;
-
-        StreamPrinter(InputStream inputStream, boolean print) {
-            this.inputStream = inputStream;
-            this.print = print;
-        }
-
-        private BufferedReader getBufferedReader(InputStream is) {
-            return new BufferedReader(new InputStreamReader(is));
-        }
-
-        @Override
-        public void run() {
-            BufferedReader br = getBufferedReader(inputStream);
-            String line = "";
-            try {
-                while ((line = br.readLine()) != null) {
-                    if (print) {
-                        System.out.println(line);
-                    }
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
 
 

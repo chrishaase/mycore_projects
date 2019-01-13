@@ -5,10 +5,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
-import main.java.util.FileChecker;
+import main.java.util.FileHandler;
 import main.java.controller.RequestData;
 /**
  *
@@ -20,7 +18,7 @@ public class XmlGetRest_util {
 
     private final RequestData requestData;
     private final File xmlFile;
-    private final FileChecker fileChecker = new FileChecker();
+    private final FileHandler fileHandler = new FileHandler();
 
 
     public XmlGetRest_util(RequestData requestData) {
@@ -53,17 +51,8 @@ public class XmlGetRest_util {
 
     public Boolean save (String mcrObjString) {
 
-
-            try {
-                FileWriter writer = new FileWriter(xmlFile, false);
-                writer.write(mcrObjString, 0, mcrObjString.length());
-                writer.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-
-            return fileChecker.fileExists(xmlFile);
+            fileHandler.writeString2File(xmlFile, mcrObjString);
+            return fileHandler.fileExists(xmlFile);
         }
 
     public Boolean httpGetAndSave2File() {

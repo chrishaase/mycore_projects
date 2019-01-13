@@ -1,7 +1,7 @@
 package main.java.xml2pdf_service;
 
 import main.java.controller.RequestData;
-import main.java.util.FileChecker;
+import main.java.util.FileHandler;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ public abstract class Xml2Pdf {
    protected final File xmlFile;
    protected final String xsl_standard;
 
-   protected final FileChecker fileChecker = new FileChecker();
+   protected final FileHandler fileHandler = new FileHandler();
 
 
    public Xml2Pdf(RequestData requestData){
