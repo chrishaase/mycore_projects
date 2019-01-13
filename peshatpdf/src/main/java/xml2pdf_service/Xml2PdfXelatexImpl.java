@@ -10,18 +10,18 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
 
-public class Xml2PdfTexImpl implements Xml2Pdf {
+public class Xml2PdfXelatexImpl implements Xml2Pdf {
 
     private final RequestData requestData;
     private final File pdfFile;
     private final File texFile;
     private final File xmlFile;
     private final String texFileName;
-    private final String xsl_standard = "xml2tex_bib_standard.xsl";
+    private final String xsl_standard = "xml2tex_bib_xelatex.xsl";
 
 
 
-    public Xml2PdfTexImpl (RequestData requestData){
+    public Xml2PdfXelatexImpl(RequestData requestData){
 
         this.requestData = requestData;
         String pdfFileName = requestData.getMycoreid() + ".pdf";
@@ -55,7 +55,7 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
     public void transformXml2Tex(String xml2TexResource)  {
 
 
-        InputStream stylesheet = Xml2PdfTexImpl.class.getResourceAsStream(xml2TexResource);
+        InputStream stylesheet = Xml2PdfXelatexImpl.class.getResourceAsStream(xml2TexResource);
 
 
         // 1. create the .tex file
@@ -76,7 +76,7 @@ public class Xml2PdfTexImpl implements Xml2Pdf {
 
     public void transformTex2PDF(){
 
-        ProcessBuilder pb = new ProcessBuilder("pdflatex", "-interaction=nonstopmode",
+        ProcessBuilder pb = new ProcessBuilder("xelatex", "-interaction=nonstopmode",
                 texFileName);
         pb.directory(new File(requestData.getOutfilepath()));
         try {

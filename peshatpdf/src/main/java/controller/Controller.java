@@ -7,7 +7,8 @@
 package main.java.controller;
 
 import main.java.xml2pdf_service.Xml2Pdf;
-import main.java.xml2pdf_service.Xml2PdfTexImpl;
+import main.java.xml2pdf_service.Xml2PdfMikTexImpl;
+import main.java.xml2pdf_service.Xml2PdfXelatexImpl;
 import main.java.xml_dao.XmlDao;
 import main.java.xml_dao.XmlDaoRestImpl;
 import main.java.xml_rest_util.RestGetXmlImpl;
@@ -26,7 +27,7 @@ public class Controller {
     public Controller (RequestData requestData) {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
-        this.xml2PDF = new Xml2PdfTexImpl(requestData);
+        this.xml2PDF = new Xml2PdfXelatexImpl(requestData);
         this.xmlDao = new XmlDaoRestImpl(requestData, new RestGetXmlImpl(requestData));
     }
     
