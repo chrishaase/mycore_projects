@@ -10,17 +10,12 @@ import java.io.IOException;
 
 import main.java.util.FileChecker;
 import main.java.controller.RequestData;
-
-
-
 /**
  *
  * @author chase
  */
 
 
-
-@SuppressWarnings("WeakerAccess")
 public class XmlGetRest_util {
 
     private final RequestData requestData;
