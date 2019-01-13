@@ -19,17 +19,11 @@ import main.java.controller.RequestData;
 
 
 
-public class RestGetXmlImpl implements RestGetXml{
-
-    private final RequestData requestData;
-    private final File xmlFile;
-
+public class RestGetXmlImpl extends RestGetXml{
 
     public RestGetXmlImpl(RequestData requestData) {
 
-        this.requestData = requestData;
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-        xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+        super(requestData);
 
     }
 

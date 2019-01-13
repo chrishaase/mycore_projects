@@ -1,8 +1,25 @@
 package main.java.xml_rest_util;
 
-public interface RestGetXml {
+import main.java.controller.RequestData;
 
-    String httpGet ();
-    Boolean save(String xmlobject);
-    Boolean httpGetAndSave2File();
+import java.io.File;
+
+public abstract class RestGetXml {
+
+    protected final RequestData requestData;
+    protected final File xmlFile;
+
+
+    public RestGetXml(RequestData requestData) {
+
+        this.requestData = requestData;
+        String xmlFileName = requestData.getMycoreid() + ".xml";
+        this.xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
+
+    }
+
+
+    public abstract String httpGet ();
+    public abstract Boolean save(String xmlobject);
+    public abstract Boolean httpGetAndSave2File();
 }

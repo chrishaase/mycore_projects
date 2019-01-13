@@ -14,7 +14,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
         \par
         \end{flushright}
         \begin{otherlanguage*}{hebrew}
-        \newline</xsl:text>
+        \noindent</xsl:text>
     <xsl:text>&#xa;</xsl:text>
 <xsl:for-each select="mycoreobject/metadata/box.author/author">
 <xsl:value-of select = "." />
@@ -47,7 +47,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
         \end{otherlanguage*}
         \begin{flushright}</xsl:text>
     <xsl:text>&#xa;</xsl:text>
-    <xsl:text>\newline
+    <xsl:text>\noindent
         \null
         \hfill </xsl:text>
     <xsl:text>&#xa;</xsl:text>
