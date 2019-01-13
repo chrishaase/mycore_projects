@@ -13,7 +13,6 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     private final File texFile;
     private final String texFileName;
-
     private final String texCommand;
 
 
@@ -27,12 +26,11 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     public Boolean transformXmlFile2PdfFile() {
 
-        //. create Tex using Standard-Bib-xsl and check if file is present
+
         transformXml2Tex();
-        // check if file exists
+
         Boolean b = fileChecker.fileExists(texFile);
 
-        // create PDF if Tex present and check if present
         if (b) {
             transformTex2PDF();
             b = fileChecker.fileExists(pdfFile);
