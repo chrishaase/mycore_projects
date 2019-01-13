@@ -10,7 +10,8 @@ public abstract class Xml2Pdf {
    protected final RequestData requestData;
    protected final File pdfFile;
    protected final File xmlFile;
-   protected final String texFileName;
+   protected final String xsl_standard;
+
    protected final FileChecker fileChecker = new FileChecker();
 
 
@@ -21,7 +22,8 @@ public abstract class Xml2Pdf {
       String xmlFileName = requestData.getMycoreid() + ".xml";
       pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
       xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
-      texFileName = requestData.getMycoreid() + ".tex";
+      xsl_standard = requestData.getXsltFile();
+
    }
 
    public abstract Boolean transformXmlFile2PdfFile();

@@ -7,17 +7,17 @@ public class RequestData {
     private final String urlpath;
     private final String xmlfilepath;
     private final String pdfTexCommand;
-    private final String pdfTexXslFile;
+    private final String xsltFile;
 
 
-    RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String pdfTexXslFile){
+    RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String xsltFile){
 
         this.mycoreid = mycoreid;
         this.outfilepath = outfilepath;
         this.urlpath = urlpath;
         this.xmlfilepath = xmlfilepath;
         this.pdfTexCommand = pdfTexCommand;
-        this.pdfTexXslFile = pdfTexXslFile;
+        this.xsltFile = xsltFile;
 
 
     }
@@ -42,7 +42,7 @@ public class RequestData {
         return pdfTexCommand;
     }
 
-    public String getPdfTexXslFile() {
-        return pdfTexXslFile;
+    public String getXsltFile() {
+        return xsltFile;
     }
 }

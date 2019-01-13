@@ -12,14 +12,15 @@ import java.io.*;
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
     private final File texFile;
-    private final String xsl_standard;
+    private final String texFileName;
+
     private final String texCommand;
 
 
     public Xml2Pdf_Tex(RequestData requestData){
         super(requestData);
+        texFileName = requestData.getMycoreid() + ".tex";
         texFile = new File(requestData.getOutfilepath(), texFileName);
-        xsl_standard = requestData.getPdfTexXslFile();
         texCommand = requestData.getPdfTexCommand();
 
     }
