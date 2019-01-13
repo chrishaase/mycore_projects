@@ -27,7 +27,7 @@ public class XmlFile_dao {
 
         // if not present, load from rest service and save to filepath
         if (!b){
-           @SuppressWarnings("unused") Boolean c = rest.httpGetAndSave2File();
+          b = rest.httpGetAndSave2File();
         }
 
         // final evaluation ob file jetzt in filestore
