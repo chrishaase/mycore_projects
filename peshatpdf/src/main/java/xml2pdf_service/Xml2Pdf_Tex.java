@@ -11,9 +11,10 @@ import java.io.*;
 
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
-    protected final File texFile;
-    protected final String xsl_standard;
-    protected final String texCommand;
+    private final File texFile;
+    private final String xsl_standard;
+    private final String texCommand;
+
 
     public Xml2Pdf_Tex(RequestData requestData){
         super(requestData);
@@ -25,29 +26,24 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     public Boolean transformXmlFile2PdfFile() {
 
-        Boolean b = false;
-
         //. create Tex using Standard-Bib-xsl and check if file is present
         transformXml2Tex();
         // check if file exists
-        b = fileExists(texFile);
+        Boolean b = fileChecker.fileExists(texFile);
 
         // create PDF if Tex present and check if present
         if (b) {
             transformTex2PDF();
-            b = fileExists(pdfFile);
+            b = fileChecker.fileExists(pdfFile);
         }
 
         return b;
     }
 
-    public void transformXml2Tex()  {
+    private void transformXml2Tex()  {
 
 
         InputStream stylesheet = Xml2Pdf_Tex.class.getResourceAsStream(xsl_standard);
-
-
-        // 1. create the .tex file
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -63,7 +59,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
     }
 
 
-    public void transformTex2PDF(){
+    private void transformTex2PDF(){
 
         ProcessBuilder pb = new ProcessBuilder(texCommand, "-interaction=nonstopmode",
                 texFileName);
@@ -82,23 +78,13 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     }
 
-    Boolean fileExists(File file){
-        boolean bFile = false;
-        try {
-            bFile = file.exists();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return bFile;
-    }
-
-    class StreamPrinter implements Runnable {
+       class StreamPrinter implements Runnable {
 
         private final InputStream inputStream;
 
-        private boolean print;
+        private final boolean print;
 
-        public StreamPrinter(InputStream inputStream, boolean print) {
+        StreamPrinter(InputStream inputStream, boolean print) {
             this.inputStream = inputStream;
             this.print = print;
         }

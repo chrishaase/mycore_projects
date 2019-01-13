@@ -7,12 +7,10 @@ public class RequestData {
     private final String urlpath;
     private final String xmlfilepath;
     private final String pdfTexCommand;
-
-
     private final String pdfTexXslFile;
 
 
-    public RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String pdfTexXslFile){
+    RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String pdfTexXslFile){
 
         this.mycoreid = mycoreid;
         this.outfilepath = outfilepath;

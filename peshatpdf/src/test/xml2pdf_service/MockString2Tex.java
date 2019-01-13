@@ -11,7 +11,7 @@ import java.io.IOException;
  *
  * @author ahzch
  */
-public class MockString2Tex {
+class MockString2Tex {
      
     public void createFile(String mycoreid, String outfilepath) {
 
@@ -41,9 +41,9 @@ public class MockString2Tex {
         mycore += "\\end{document}";
 
         // 2. Save the .tex file
-        FileWriter writer = null;
+
         try {
-            writer = new FileWriter(texFile, false);
+            FileWriter writer = new FileWriter(texFile, false);
             writer.write(mycore, 0, mycore.length());
             writer.close();
         } catch (IOException ex) {

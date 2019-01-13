@@ -1,4 +1,4 @@
-package main.java.xmlFile_rest_util;
+package main.java.xmlFile_dao;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import main.java.util.FileChecker;
 import main.java.controller.RequestData;
 
 
@@ -19,13 +20,15 @@ import main.java.controller.RequestData;
 
 
 
-public class XmlGetFromRest_util {
+@SuppressWarnings("WeakerAccess")
+public class XmlGetRest_util {
 
     private final RequestData requestData;
     private final File xmlFile;
+    private final FileChecker fileChecker = new FileChecker();
 
 
-    public XmlGetFromRest_util(RequestData requestData) {
+    public XmlGetRest_util(RequestData requestData) {
 
         this.requestData = requestData;
         String xmlFileName = requestData.getMycoreid() + ".xml";
@@ -56,9 +59,8 @@ public class XmlGetFromRest_util {
     public Boolean save (String mcrObjString) {
 
 
-            FileWriter writer = null;
             try {
-                writer = new FileWriter(xmlFile, false);
+                FileWriter writer = new FileWriter(xmlFile, false);
                 writer.write(mcrObjString, 0, mcrObjString.length());
                 writer.close();
             } catch (IOException ex) {
@@ -66,27 +68,18 @@ public class XmlGetFromRest_util {
             }
 
 
-            return fileExists(xmlFile);
+            return fileChecker.fileExists(xmlFile);
         }
 
     public Boolean httpGetAndSave2File() {
 
         String mcrObjString = httpGet();
-        Boolean b = save(mcrObjString);
+        return save(mcrObjString);
 
-        return b;
 
     }
 
-    private Boolean fileExists(File file){
-        boolean bFile = false;
-        try {
-            bFile = file.exists();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return bFile;
-    }
+
     }
 
 

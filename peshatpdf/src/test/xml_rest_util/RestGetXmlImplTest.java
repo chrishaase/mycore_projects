@@ -1,7 +1,7 @@
 package test.xml_rest_util;
 
 import main.java.controller.RequestData;
-import main.java.xmlFile_rest_util.XmlGetFromRest_util;
+import main.java.xmlFile_dao.XmlGetRest_util;
 import org.xml.sax.InputSource;
 import java.io.StringReader;
 
@@ -13,13 +13,13 @@ import static org.mockito.Mockito.when;
 
 class RestGetXmlImplTest {
 
-    String urlpath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
-    String xmlfilepath = "/mycore";
-    String outfilepath = "/mycore";
-    String mycoreid = "peshat_bibliographical-sources_00000002";
-    String mycoreidwrong = "peshat_bibliographical-sources_00000003";
-    RequestData requestData;
-    XmlGetFromRest_util restService;
+    private final String urlpath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
+    private final String xmlfilepath = "/mycore";
+    private final String outfilepath = "/mycore";
+    private final String mycoreid = "peshat_bibliographical-sources_00000002";
+    private final String mycoreidwrong = "peshat_bibliographical-sources_00000003";
+    private RequestData requestData;
+    private XmlGetRest_util restService;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -30,7 +30,7 @@ class RestGetXmlImplTest {
         when(requestData.getOutfilepath()).thenReturn(outfilepath);
         when(requestData.getXmlfilepath()).thenReturn(xmlfilepath);
         when(requestData.getUrlpath()).thenReturn(urlpath);
-        restService = new XmlGetFromRest_util(requestData);
+        restService = new XmlGetRest_util(requestData);
     }
 
     @org.junit.jupiter.api.AfterEach
