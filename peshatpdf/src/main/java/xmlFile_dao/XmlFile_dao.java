@@ -1,17 +1,17 @@
-package main.java.xml_dao;
+package main.java.xmlFile_dao;
 
 import main.java.controller.RequestData;
-import main.java.xml_rest_util.RestGetXml;
+import main.java.xmlFile_rest_util.XmlGetFromRest_util;
 
 import java.io.File;
 
-public class XmlDaoRestImpl implements XmlDao {
+public class XmlFile_dao {
 
     private final RequestData requestData;
     private final File xmlFile;
-    private final RestGetXml rest;
+    private final XmlGetFromRest_util rest;
 
-    public XmlDaoRestImpl (RequestData requestData, RestGetXml rest){
+    public XmlFile_dao(RequestData requestData, XmlGetFromRest_util rest){
         this.requestData = requestData;
         String xmlFileName = requestData.getMycoreid() + ".xml";
         xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
@@ -36,7 +36,7 @@ public class XmlDaoRestImpl implements XmlDao {
         return b;
     }
 
-    Boolean fileExists(File xmlFile){
+    private Boolean fileExists(File xmlFile){
         boolean bFile = false;
         try {
             bFile = xmlFile.exists();

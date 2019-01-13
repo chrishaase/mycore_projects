@@ -1,4 +1,4 @@
-package main.java.xml_rest_util;
+package main.java.xmlFile_rest_util;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -19,11 +19,17 @@ import main.java.controller.RequestData;
 
 
 
-public class RestGetXmlImpl extends RestGetXml{
+public class XmlGetFromRest_util {
 
-    public RestGetXmlImpl(RequestData requestData) {
+    private final RequestData requestData;
+    private final File xmlFile;
 
-        super(requestData);
+
+    public XmlGetFromRest_util(RequestData requestData) {
+
+        this.requestData = requestData;
+        String xmlFileName = requestData.getMycoreid() + ".xml";
+        this.xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
 
     }
 
@@ -47,16 +53,7 @@ public class RestGetXmlImpl extends RestGetXml{
         return string;
     }
 
-    public Boolean httpGetAndSave2File() {
-
-        String mcrObjString = httpGet();
-        Boolean b = save(mcrObjString);
-
-        return b;
-
-    }
-
-        public Boolean save (String mcrObjString) {
+    public Boolean save (String mcrObjString) {
 
 
             FileWriter writer = null;
@@ -71,7 +68,17 @@ public class RestGetXmlImpl extends RestGetXml{
 
             return fileExists(xmlFile);
         }
-    Boolean fileExists(File file){
+
+    public Boolean httpGetAndSave2File() {
+
+        String mcrObjString = httpGet();
+        Boolean b = save(mcrObjString);
+
+        return b;
+
+    }
+
+    private Boolean fileExists(File file){
         boolean bFile = false;
         try {
             bFile = file.exists();

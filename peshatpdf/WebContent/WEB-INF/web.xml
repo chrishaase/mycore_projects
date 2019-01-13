@@ -12,6 +12,26 @@
         <param-name>urlpath</param-name>
         <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
     </context-param>
+    <!--OTHER OPTION
+    <context-param>
+        <param-name>xsltfile</param-name>
+        <param-value>xml2tex_bib_pdflatex.xsl</param-value>
+    </context-param>
+    -->
+    <context-param>
+        <param-name>xsltfile</param-name>
+        <param-value>xml2tex_bib_xelatex.xsl</param-value>
+    </context-param>
+    <!-- OTHER OPTION
+    <context-param>
+        <param-name>texcommand</param-name>
+        <param-value>pdflatex</param-value>
+    </context-param>
+    -->
+    <context-param>
+        <param-name>texcommand</param-name>
+        <param-value>xelatex</param-value>
+    </context-param>
     <servlet>
         <servlet-name>CreatePDF</servlet-name>
         <servlet-class>main.java.controller.ServletFrontController</servlet-class>

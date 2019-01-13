@@ -7,11 +7,9 @@
 package main.java.controller;
 
 import main.java.xml2pdf_service.Xml2Pdf;
-import main.java.xml2pdf_service.Xml2PdfMikTexImpl;
-import main.java.xml2pdf_service.Xml2PdfXelatexImpl;
-import main.java.xml_dao.XmlDao;
-import main.java.xml_dao.XmlDaoRestImpl;
-import main.java.xml_rest_util.RestGetXmlImpl;
+import main.java.xml2pdf_service.Xml2Pdf_Tex;
+import main.java.xmlFile_dao.XmlFile_dao;
+import main.java.xmlFile_rest_util.XmlGetFromRest_util;
 
 
 /**
@@ -21,14 +19,14 @@ import main.java.xml_rest_util.RestGetXmlImpl;
 public class Controller {
     
     private final Xml2Pdf xml2PDF;
-    private final XmlDao xmlDao;
+    private final XmlFile_dao xmlDao;
 
         
     public Controller (RequestData requestData) {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
-        this.xml2PDF = new Xml2PdfXelatexImpl(requestData);
-        this.xmlDao = new XmlDaoRestImpl(requestData, new RestGetXmlImpl(requestData));
+        this.xml2PDF = new Xml2Pdf_Tex(requestData);
+        this.xmlDao = new XmlFile_dao(requestData, new XmlGetFromRest_util(requestData));
     }
     
     Boolean createPDF(){

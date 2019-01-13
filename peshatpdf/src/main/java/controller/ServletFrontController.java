@@ -27,7 +27,9 @@ public class ServletFrontController extends HttpServlet {
         String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
         String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
         String urlpath = getServletContext().getInitParameter("urlpath");
-        RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
+        String xsltfile = getServletContext().getInitParameter("xsltfile");
+        String texcommand = getServletContext().getInitParameter("texcommand");
+        RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, xsltfile, texcommand);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
         Controller controller = new Controller (requestData);

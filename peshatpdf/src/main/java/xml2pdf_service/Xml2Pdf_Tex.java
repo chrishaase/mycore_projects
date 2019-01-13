@@ -9,28 +9,17 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 
+public class Xml2Pdf_Tex extends Xml2Pdf {
 
-public class Xml2PdfXelatexImpl implements Xml2Pdf {
+    protected final File texFile;
+    protected final String xsl_standard;
+    protected final String texCommand;
 
-    private final RequestData requestData;
-    private final File pdfFile;
-    private final File texFile;
-    private final File xmlFile;
-    private final String texFileName;
-    private final String xsl_standard = "xml2tex_bib_xelatex.xsl";
-
-
-
-    public Xml2PdfXelatexImpl(RequestData requestData){
-
-        this.requestData = requestData;
-        String pdfFileName = requestData.getMycoreid() + ".pdf";
-        texFileName = requestData.getMycoreid() + ".tex";
-        String xmlFileName = requestData.getMycoreid() + ".xml";
-        pdfFile = new File(requestData.getOutfilepath(), pdfFileName);
+    public Xml2Pdf_Tex(RequestData requestData){
+        super(requestData);
         texFile = new File(requestData.getOutfilepath(), texFileName);
-        xmlFile = new File(requestData.getXmlfilepath(), xmlFileName);
-
+        xsl_standard = requestData.getPdfTexXslFile();
+        texCommand = requestData.getPdfTexCommand();
 
     }
 
@@ -38,8 +27,8 @@ public class Xml2PdfXelatexImpl implements Xml2Pdf {
 
         Boolean b = false;
 
-         //. create Tex using Standard-Bib-xsl and check if file is present
-        transformXml2Tex(xsl_standard);
+        //. create Tex using Standard-Bib-xsl and check if file is present
+        transformXml2Tex();
         // check if file exists
         b = fileExists(texFile);
 
@@ -49,13 +38,13 @@ public class Xml2PdfXelatexImpl implements Xml2Pdf {
             b = fileExists(pdfFile);
         }
 
-       return b;
+        return b;
     }
 
-    public void transformXml2Tex(String xml2TexResource)  {
+    public void transformXml2Tex()  {
 
 
-        InputStream stylesheet = Xml2PdfXelatexImpl.class.getResourceAsStream(xml2TexResource);
+        InputStream stylesheet = Xml2Pdf_Tex.class.getResourceAsStream(xsl_standard);
 
 
         // 1. create the .tex file
@@ -76,13 +65,13 @@ public class Xml2PdfXelatexImpl implements Xml2Pdf {
 
     public void transformTex2PDF(){
 
-        ProcessBuilder pb = new ProcessBuilder("xelatex", "-interaction=nonstopmode",
+        ProcessBuilder pb = new ProcessBuilder(texCommand, "-interaction=nonstopmode",
                 texFileName);
         pb.directory(new File(requestData.getOutfilepath()));
         try {
             Process p = pb.start();
-            StreamPrinter sPrint = new StreamPrinter(p.getInputStream(), false);
-            StreamPrinter sError = new StreamPrinter(p.getErrorStream(), false);
+            Xml2Pdf_Tex.StreamPrinter sPrint = new Xml2Pdf_Tex.StreamPrinter(p.getInputStream(), false);
+            Xml2Pdf_Tex.StreamPrinter sError = new Xml2Pdf_Tex.StreamPrinter(p.getErrorStream(), false);
             new Thread(sPrint).start();
             new Thread(sError).start();
             p.waitFor();
@@ -135,5 +124,6 @@ public class Xml2PdfXelatexImpl implements Xml2Pdf {
 
         }
     }
+
 
 }

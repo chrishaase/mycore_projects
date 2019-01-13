@@ -1,7 +1,7 @@
 package test.xml_rest_util;
 
 import main.java.controller.RequestData;
-import main.java.xml_rest_util.RestGetXmlImpl;
+import main.java.xmlFile_rest_util.XmlGetFromRest_util;
 import org.xml.sax.InputSource;
 import java.io.StringReader;
 
@@ -19,7 +19,7 @@ class RestGetXmlImplTest {
     String mycoreid = "peshat_bibliographical-sources_00000002";
     String mycoreidwrong = "peshat_bibliographical-sources_00000003";
     RequestData requestData;
-    RestGetXmlImpl restService;
+    XmlGetFromRest_util restService;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -30,7 +30,7 @@ class RestGetXmlImplTest {
         when(requestData.getOutfilepath()).thenReturn(outfilepath);
         when(requestData.getXmlfilepath()).thenReturn(xmlfilepath);
         when(requestData.getUrlpath()).thenReturn(urlpath);
-        restService = new RestGetXmlImpl(requestData);
+        restService = new XmlGetFromRest_util(requestData);
     }
 
     @org.junit.jupiter.api.AfterEach
