@@ -5,12 +5,12 @@ import java.io.File;
 public class RequestData {
 
    // request information
-    private final String mycoreid;
+    private final String mycoreId;
 
     // Informationen aus web.xml
-    private final String outfilepath;
-    private final String urlpath;
-    private final String xmlfilepath;
+    private final String outFilePath;
+    private final String urlPath;
+    private final String xmlFilePath;
     private final String pdfTexCommand;
     private final String xsltFile;
 
@@ -24,44 +24,44 @@ public class RequestData {
 
 
 
-    RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String xsltFile){
+    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath, String pdfTexCommand, String xsltFile){
 
         // request information
-        this.mycoreid = mycoreid;
+        this.mycoreId = mycoreId;
 
         // Informationen aus web.xml
-        this.outfilepath = outfilepath;
-        this.urlpath = urlpath;
-        this.xmlfilepath = xmlfilepath;
+        this.outFilePath = outFilePath;
+        this.urlPath = urlPath;
+        this.xmlFilePath = xmlFilePath;
         this.pdfTexCommand = pdfTexCommand;
         this.xsltFile = xsltFile;
 
         // generate file ids and files
-        pdfFileName = mycoreid + ".pdf";
-        xmlFileName = mycoreid + ".xml";
-        texFileName = mycoreid + ".tex";
-        xmlFile = new File(xmlfilepath, xmlFileName);
-        texFile = new File(outfilepath, texFileName);
-        pdfFile = new File(outfilepath, pdfFileName);
+        pdfFileName = mycoreId + ".pdf";
+        xmlFileName = mycoreId + ".xml";
+        texFileName = mycoreId + ".tex";
+        xmlFile = new File(xmlFilePath, xmlFileName);
+        texFile = new File(outFilePath, texFileName);
+        pdfFile = new File(outFilePath, pdfFileName);
 
     }
 
     // GETTER
 
-    public String getMycoreid() {
-        return mycoreid;
+    public String getMycoreId() {
+        return mycoreId;
     }
 
-    public String getOutfilepath() {
-        return outfilepath;
+    public String getOutFilePath() {
+        return outFilePath;
     }
 
-    public String getUrlpath() {
-        return urlpath;
+    public String getUrlPath() {
+        return urlPath;
     }
 
-    public String getXmlfilepath() {
-        return xmlfilepath;
+    public String getXmlFilePath() {
+        return xmlFilePath;
     }
 
     public String getPdfTexCommand() {

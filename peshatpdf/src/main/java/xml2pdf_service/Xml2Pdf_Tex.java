@@ -55,7 +55,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
         ProcessBuilder pb = new ProcessBuilder(requestData.getPdfTexCommand(), "-interaction=nonstopmode",
                 requestData.getTexFileName());
-        pb.directory(new File(requestData.getOutfilepath()));
+        pb.directory(new File(requestData.getOutFilePath()));
 
         try {
             Process p = pb.start();

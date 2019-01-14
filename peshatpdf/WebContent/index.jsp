@@ -17,8 +17,8 @@ and open the template in the editor.
         <br>
         <br>
         <form method="post" action="${pageContext.request.contextPath}/create">
-            <label for="mycoreid">MyCore-Peshat-ID :</label>
-            <input type="text" id="mycoreid" name="mycoreid" size="40" value="peshat_bibliographical-sources_00000002">
+            <label for="mycoreId">MyCore-Peshat-ID :</label>
+            <input type="text" id="mycoreId" name="mycoreId" size="40" value="peshat_bibliographical-sources_00000002">
             <br><br>
 
 

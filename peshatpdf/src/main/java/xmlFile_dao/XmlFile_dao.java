@@ -4,8 +4,6 @@ import main.java.util.FileHandler;
 import main.java.controller.RequestData;
 import main.java.util.XmlGetRest;
 
-import java.io.File;
-
 public class XmlFile_dao {
 
     private final XmlGetRest rest;
@@ -25,7 +23,7 @@ public class XmlFile_dao {
 
         // if not present, load from rest service and saveXmlStr2File to filepath
         if (!b){
-          b = rest.httpGetAndSave2File(requestData.getMycoreid(), requestData.getUrlpath(), requestData.getXmlFile());
+          b = rest.httpGetAndSave2File(requestData.getMycoreId(), requestData.getUrlPath(), requestData.getXmlFile());
         }
 
         // final evaluation ob file jetzt in filestore

@@ -33,10 +33,10 @@ class RestGetXmlImplTest {
 
         //requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
         requestData = mock(RequestData.class);
-        when(requestData.getMycoreid()).thenReturn(mycoreid);
-        when(requestData.getOutfilepath()).thenReturn(outfilepath);
-        when(requestData.getXmlfilepath()).thenReturn(xmlfilepath);
-        when(requestData.getUrlpath()).thenReturn(urlpath);
+        when(requestData.getMycoreId()).thenReturn(mycoreid);
+        when(requestData.getOutFilePath()).thenReturn(outfilepath);
+        when(requestData.getXmlFilePath()).thenReturn(xmlfilepath);
+        when(requestData.getUrlPath()).thenReturn(urlpath);
 
         restService = new XmlGetRest(new FileHandler());
     }
@@ -49,7 +49,7 @@ class RestGetXmlImplTest {
     void testHttpGet() {
 
         // testet ob httpget das richtige XML Dok über rest laedt
-        String testmycore = restService.httpGet(requestData.getMycoreid(), requestData.getUrlpath());
+        String testmycore = restService.httpGet(requestData.getMycoreId(), requestData.getUrlPath());
 
 
         XPathFactory xpathFactory = XPathFactory.newInstance();
@@ -64,7 +64,7 @@ class RestGetXmlImplTest {
         }
 
         assertTrue(!testmycore.isEmpty());
-        assertTrue(requestData.getMycoreid().equalsIgnoreCase(httpid));
+        assertTrue(requestData.getMycoreId().equalsIgnoreCase(httpid));
         assertFalse(mycoreidwrong.equalsIgnoreCase(httpid));
 
     }

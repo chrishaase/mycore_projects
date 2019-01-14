@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <context-param>
-        <param-name>outfilepath</param-name>
+        <param-name>outFilePath</param-name>
         <param-value>/mycore</param-value>
     </context-param>
     <context-param>
-        <param-name>xmlfilepath</param-name>
+        <param-name>xmlFilePath</param-name>
         <param-value>/mycore</param-value>
     </context-param>
     <context-param>
-        <param-name>urlpath</param-name>
+        <param-name>urlPath</param-name>
         <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
     </context-param>
     <context-param>
-        <param-name>xsltfile</param-name>
+        <param-name>xsltFile</param-name>
         <param-value>xml2tex_bib_xelatex.xsl</param-value>
     </context-param>
     <!--OTHER OPTION
     <context-param>
-        <param-name>xsltfile</param-name>
+        <param-name>xsltFile</param-name>
         <param-value>xml2tex_bib_pdflatex.xsl</param-value>
     </context-param>
     -->
     <context-param>
-        <param-name>texcommand</param-name>
+        <param-name>texCommand</param-name>
         <param-value>xelatex</param-value>
     </context-param>
     <!-- OTHER OPTION
     <context-param>
-        <param-name>texcommand</param-name>
+        <param-name>texCommand</param-name>
         <param-value>pdflatex</param-value>
     </context-param>
     -->
