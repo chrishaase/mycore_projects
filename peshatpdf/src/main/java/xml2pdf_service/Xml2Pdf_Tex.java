@@ -12,6 +12,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import java.io.*;
+import java.net.URL;
 
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
@@ -36,8 +37,11 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     private void transformXml2Tex(RequestData requestData)  {
 
+        // Standard Impl: Replaced by classloaderutil
+        // ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        // InputStream stylesheet = classLoader.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName());
 
-        InputStream stylesheet = Xml2Pdf_Tex.class.getResourceAsStream(requestData.getXsltFile());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);

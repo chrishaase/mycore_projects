@@ -29,8 +29,9 @@ public class ServletFrontController extends HttpServlet {
         String xmlFilePath = getServletContext().getInitParameter("xmlFilePath");
         String outFilePath = getServletContext().getInitParameter("outFilePath");
         String texCommand = getServletContext().getInitParameter("texCommand");
-        String xsltFile = getServletContext().getInitParameter("xsltFile");
-        RequestData requestData = new RequestData(mycoreId, outFilePath, urlPath, xmlFilePath, texCommand, xsltFile);
+        String xsltFileName = getServletContext().getInitParameter("xsltFileName");
+        String resourcePath = getServletContext().getInitParameter("resourcePath");
+        RequestData requestData = new RequestData(mycoreId, outFilePath, urlPath, xmlFilePath, texCommand, xsltFileName, resourcePath);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
         Controller controller = new Controller ();

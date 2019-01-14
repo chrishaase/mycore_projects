@@ -12,7 +12,8 @@ public class RequestData {
     private final String urlPath;
     private final String xmlFilePath;
     private final String pdfTexCommand;
-    private final String xsltFile;
+    private final String xsltFileName;
+    private final String resourcePath;
 
     // created Informationen
     private final String pdfFileName;
@@ -24,7 +25,7 @@ public class RequestData {
 
 
 
-    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath, String pdfTexCommand, String xsltFile){
+    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath, String pdfTexCommand, String xsltFileName, String resourcePath){
 
         // request information
         this.mycoreId = mycoreId;
@@ -34,7 +35,8 @@ public class RequestData {
         this.urlPath = urlPath;
         this.xmlFilePath = xmlFilePath;
         this.pdfTexCommand = pdfTexCommand;
-        this.xsltFile = xsltFile;
+        this.xsltFileName = xsltFileName;
+        this.resourcePath = resourcePath;
 
         // generate file ids and files
         pdfFileName = mycoreId + ".pdf";
@@ -68,8 +70,8 @@ public class RequestData {
         return pdfTexCommand;
     }
 
-    public String getXsltFile() {
-        return xsltFile;
+    public String getXsltFileName() {
+        return xsltFileName;
     }
 
     public String getPdfFileName() {
@@ -94,5 +96,9 @@ public class RequestData {
 
     public File getTexFile() {
         return texFile;
+    }
+
+    public String getResourcePath() {
+        return resourcePath;
     }
 }

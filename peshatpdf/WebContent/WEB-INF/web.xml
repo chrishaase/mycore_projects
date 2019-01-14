@@ -1,27 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <context-param>
-        <param-name>outFilePath</param-name>
-        <param-value>/mycore</param-value>
-    </context-param>
-    <context-param>
-        <param-name>xmlFilePath</param-name>
-        <param-value>/mycore</param-value>
-    </context-param>
-    <context-param>
-        <param-name>urlPath</param-name>
-        <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
-    </context-param>
-    <context-param>
-        <param-name>xsltFile</param-name>
-        <param-value>xml2tex_bib_xelatex.xsl</param-value>
-    </context-param>
-    <!--OTHER OPTION
-    <context-param>
-        <param-name>xsltFile</param-name>
-        <param-value>xml2tex_bib_pdflatex.xsl</param-value>
-    </context-param>
-    -->
+    <!-- outFilePath: Directory on Servers FileSystem where PDF and Tex Files are generated -->
+   <context-param>
+       <param-name>outFilePath</param-name>
+       <param-value>/mycore</param-value>
+   </context-param>
+    <!-- xmlFilePath: Directory on Servers FileSystem where xml-files are stored -->
+   <context-param>
+       <param-name>xmlFilePath</param-name>
+       <param-value>/mycore</param-value>
+   </context-param>
+    <!-- urlPath: rest-URL-Path for retrieving xml mycore resources - that are not in xml-filepath -->
+   <context-param>
+       <param-name>urlPath</param-name>
+       <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
+   </context-param>
+    <!-- resourcePath: folder inside web-app for resources for java-classes are stored ie xsl transform files -->
+   <context-param>
+       <param-name>resourcePath</param-name>
+       <param-value>main/resources/</param-value>
+   </context-param>
+    <!-- xslt filename: aktueller xslt transform sheet -->
+   <context-param>
+       <param-name>xsltFileName</param-name>
+       <param-value>xml2tex_bib_xelatex.xsl</param-value>
+   </context-param>
+   <!--OTHER OPTION
+   <context-param>
+       <param-name>xsltFileName</param-name>
+       <param-value>xml2tex_bib_pdflatex.xsl</param-value>
+   </context-param>
+   -->
+    <!-- texCommand: Commandline command for executing a tex engine - such as pdflatex or xelatex -->
     <context-param>
         <param-name>texCommand</param-name>
         <param-value>xelatex</param-value>
