@@ -23,34 +23,30 @@ class Controller {
     private final XmlFile_dao xmlDao;
 
         
-    public Controller (RequestData requestData) {
+    public Controller () {
+
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         // noch implementieren: falls Apache-FOP implementiert wird: factory fuer xml2pdf
         FileHandler fileHandler = new FileHandler();
+        xml2PDF = new Xml2Pdf_Tex(fileHandler);
+        XmlGetRest rest = new XmlGetRest(fileHandler);
+        xmlDao = new XmlFile_dao(rest, fileHandler);
 
-        xml2PDF = new Xml2Pdf_Tex(requestData);
-        xml2PDF.setFileHandler(fileHandler);
-
-        XmlGetRest rest = new XmlGetRest();
-        rest.setFileHandler(fileHandler);
-
-        xmlDao = new XmlFile_dao(requestData, rest);
-        xmlDao.setFileHandler(fileHandler);
 
 
     }
     
-    Boolean createPDF(){
+    Boolean createPDF(RequestData requestData){
 
         Boolean erfolg;
 
         //1. ensure xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFileInPath();
+        erfolg = xmlDao.getXmlFileInPath(requestData);
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformXmlFile2PdfFile();
+            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
         }
 
         // 3. return erfolgsmeldung

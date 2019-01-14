@@ -8,18 +8,17 @@ import java.io.File;
 
 public class XmlFile_dao {
 
-    private final RequestData requestData;
     private final XmlGetRest rest;
-    private FileHandler fileHandler;
+    private final FileHandler fileHandler;
 
-    public XmlFile_dao(RequestData requestData, XmlGetRest rest){
+    public XmlFile_dao(XmlGetRest rest, FileHandler fileHandler){
 
-        this.requestData = requestData;
+        this.fileHandler = fileHandler;
         this.rest = rest;
 
     }
 
-    public Boolean getXmlFileInPath(){
+    public Boolean getXmlFileInPath(RequestData requestData){
 
         //. check if xml in xml-filestore
         Boolean b = fileHandler.fileExists(requestData.getXmlFile());
@@ -35,7 +34,5 @@ public class XmlFile_dao {
         return b;
     }
 
-    public void setFileHandler(FileHandler fileHandler) {
-        this.fileHandler = fileHandler;
-    }
+
 }

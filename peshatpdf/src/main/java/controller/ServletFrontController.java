@@ -22,20 +22,20 @@ public class ServletFrontController extends HttpServlet {
             response)
     {
         //1. init: Get init url&filepaths from web.xml and mycore ID from HTTP-request
-        
+
+        String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
         String outfilepath = getServletContext().getInitParameter("outfilepath"); // directory for pdfs
         String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
-        String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
         String urlpath = getServletContext().getInitParameter("urlpath");
         String xsltfile = getServletContext().getInitParameter("xsltfile");
         String texcommand = getServletContext().getInitParameter("texcommand");
         RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, texcommand, xsltfile);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
-        Controller controller = new Controller (requestData);
-        Boolean erfolg = controller.createPDF();
+        Controller controller = new Controller ();
 
-       // 3. checken, dass pdf kreiert wurde und ausgabe
+       // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
+        Boolean erfolg = controller.createPDF(requestData);
        if (erfolg) {
         sendPDFResponse(response, requestData);
        } else {

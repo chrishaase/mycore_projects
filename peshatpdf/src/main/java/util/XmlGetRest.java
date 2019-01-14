@@ -15,8 +15,11 @@ import java.io.File;
 public class XmlGetRest {
 
 
-    private FileHandler fileHandler;
+    private final FileHandler fileHandler;
 
+    public XmlGetRest(FileHandler fileHandler){
+        this.fileHandler = fileHandler;
+    }
 
     public String httpGet (String mycoreid, String urlpath){
        
@@ -51,9 +54,7 @@ public class XmlGetRest {
 
 
     }
-    public void setFileHandler(FileHandler fileHandler) {
-        this.fileHandler = fileHandler;
-    }
+
 
     }
 

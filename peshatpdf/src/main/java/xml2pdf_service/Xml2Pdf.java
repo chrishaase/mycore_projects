@@ -7,19 +7,12 @@ import java.io.File;
 
 public abstract class Xml2Pdf {
 
-   protected final RequestData requestData;
+
    protected FileHandler fileHandler;
 
+   public Xml2Pdf(FileHandler fileHandler) {this.fileHandler = fileHandler;}
 
-   public Xml2Pdf(RequestData requestData){
+   public abstract Boolean transformXmlFile2PdfFile(RequestData requestData);
 
-      this.requestData = requestData;
 
-   }
-
-   public abstract Boolean transformXmlFile2PdfFile();
-
-   public void setFileHandler(FileHandler fileHandler) {
-      this.fileHandler = fileHandler;
-   }
 }
