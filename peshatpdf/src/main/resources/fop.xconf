@@ -77,11 +77,13 @@ the location of this file.
           <font-triplet name="ArialMT" style="normal" weight="bold"/>
         </font>
         -->
-	 <directory>/home/ahzch/fop-2.3/fop/</directory>
 
-	<font kerning="yes" embed-url="/mycore/Cardo104s.ttf" embedding-mode="full">
-               <font-triplet name="Cardo" style="normal" weight="normal"/>
-           </font>
+
+	<directory>/mycore/</directory>
+
+    	<font kerning="yes" embed-url="/mycore/Cardo104s.ttf" embedding-mode="full">
+                   <font-triplet name="Cardo" style="normal" weight="normal"/>
+               </font>
 
         <!-- auto-detect fonts -->
         <auto-detect/>
