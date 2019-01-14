@@ -14,18 +14,24 @@ public class RequestData {
     private final String pdfTexCommand;
     private final String xsltFileName;
     private final String resourcePath;
+    private final String conversionService;
+    private final String fopConfigFileName;
 
     // created Informationen
     private final String pdfFileName;
     private final String texFileName;
     private final String xmlFileName;
+    private final String foFileName;
     private final File xmlFile;
     private final File pdfFile;
     private final File texFile;
+    private final File foFile;
 
 
 
-    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath, String pdfTexCommand, String xsltFileName, String resourcePath){
+    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath,
+                String pdfTexCommand, String xsltFileName, String resourcePath,
+                String conversionService, String fopConfigFileName){
 
         // request information
         this.mycoreId = mycoreId;
@@ -37,14 +43,18 @@ public class RequestData {
         this.pdfTexCommand = pdfTexCommand;
         this.xsltFileName = xsltFileName;
         this.resourcePath = resourcePath;
+        this.conversionService = conversionService;
+        this.fopConfigFileName = fopConfigFileName;
 
         // generate file ids and files
         pdfFileName = mycoreId + ".pdf";
         xmlFileName = mycoreId + ".xml";
         texFileName = mycoreId + ".tex";
+        foFileName = mycoreId + ".fo";
         xmlFile = new File(xmlFilePath, xmlFileName);
         texFile = new File(outFilePath, texFileName);
         pdfFile = new File(outFilePath, pdfFileName);
+        foFile = new File(outFilePath, foFileName);
 
     }
 
@@ -100,5 +110,21 @@ public class RequestData {
 
     public String getResourcePath() {
         return resourcePath;
+    }
+
+    public String getFoFileName() {
+        return foFileName;
+    }
+
+    public File getFoFile() {
+        return foFile;
+    }
+
+    public String getConversionService() {
+        return conversionService;
+    }
+
+    public String getFopConfigFileName() {
+        return fopConfigFileName;
     }
 }

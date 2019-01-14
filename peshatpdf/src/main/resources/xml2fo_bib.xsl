@@ -11,15 +11,11 @@
                 </fo:simple-page-master>
             </fo:layout-master-set>
             <fo:page-sequence master-reference="PageMaster">
-                <fo:flow flow-name="xsl-region-body" >
+                <fo:flow flow-name="xsl-region-body" line-height="1.7" font-family="Arial Unicode MS">
 
         <xsl:for-each select="mycoreobject/metadata/box.author/author">
-            <fo:block>
-                <xsl:text>Language of Author-Name: </xsl:text>
-            <xsl:value-of select = '@xml:lang'/>
-                <xsl:text>&#xa;</xsl:text>
-                <xsl:text>Author-Name:  </xsl:text>
-            <xsl:value-of select = "." />
+            <fo:block text-align="right" xml:lang="he">
+                <xsl:value-of select = "." />
                 <xsl:text>&#xa;</xsl:text>
                 </fo:block>
                 </xsl:for-each>

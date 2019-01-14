@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <!-- outFilePath: Directory on Servers FileSystem where PDF and Tex Files are generated -->
+    <!-- outFilePath: Directory on Servers FileSystem where PDF and Tex and Fo Files are generated -->
    <context-param>
        <param-name>outFilePath</param-name>
        <param-value>/mycore</param-value>
@@ -20,17 +20,35 @@
        <param-name>resourcePath</param-name>
        <param-value>main/resources/</param-value>
    </context-param>
+    <!-- conversion Service: tex oder fop -->
+    <context-param>
+        <param-name>conversionService</param-name>
+        <param-value>fop</param-value>
+    </context-param>
+    <!--OTHER OPTION
+     <context-param>
+        <param-name>conversionServoce</param-name>
+        <param-value>tex</param-value>
+    </context-param>
+    -->
+    <!-- xslt converter file - according to service -->
+    <context-param>
+        <param-name>xsltFileName</param-name>
+        <param-value>xml2fo_bib.xsl</param-value>
+    </context-param>
     <!-- xslt filename: aktueller xslt transform sheet -->
-   <context-param>
-       <param-name>xsltFileName</param-name>
-       <param-value>xml2tex_bib_xelatex.xsl</param-value>
-   </context-param>
-   <!--OTHER OPTION
-   <context-param>
-       <param-name>xsltFileName</param-name>
-       <param-value>xml2tex_bib_pdflatex.xsl</param-value>
-   </context-param>
-   -->
+    <!--OTHER OPTION
+     <context-param>
+        <param-name>xsltFileName</param-name>
+        <param-value>xml2tex_bib_xelatex.xsl</param-value>
+    </context-param>
+    -->
+    <!--OTHER OPTION
+    <context-param>
+        <param-name>xsltFileName</param-name>
+        <param-value>xml2tex_bib_pdflatex.xsl</param-value>
+    </context-param>
+    -->
     <!-- texCommand: Commandline command for executing a tex engine - such as pdflatex or xelatex -->
     <context-param>
         <param-name>texCommand</param-name>
@@ -42,6 +60,12 @@
         <param-value>pdflatex</param-value>
     </context-param>
     -->
+    <!-- fopConfig File: in Reources Directory -->
+    <context-param>
+        <param-name>fopConfigFileName</param-name>
+        <param-value>fop.xconf</param-value>
+    </context-param>
+
     <servlet>
         <servlet-name>CreatePDF</servlet-name>
         <servlet-class>main.java.controller.ServletFrontController</servlet-class>
