@@ -25,11 +25,11 @@ public class ServletFrontController extends HttpServlet {
         // Variablen-Abarbeitung in Methode and passing on is Threadsafe
 
         String mycoreid = request.getParameter("mycoreid");
-        String outfilepath = getServletContext().getInitParameter("outfilepath");
-        String xmlfilepath = getServletContext().getInitParameter("xmlfilepath");
         String urlpath = getServletContext().getInitParameter("urlpath");
-        String xsltfile = getServletContext().getInitParameter("xsltfile");
+        String xmlfilepath = getServletContext().getInitParameter("xmlfilepath");
+        String outfilepath = getServletContext().getInitParameter("outfilepath");
         String texcommand = getServletContext().getInitParameter("texcommand");
+        String xsltfile = getServletContext().getInitParameter("xsltfile");
         RequestData requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath, texcommand, xsltfile);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
