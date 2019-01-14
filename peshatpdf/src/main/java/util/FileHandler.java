@@ -29,7 +29,7 @@ public class FileHandler {
         }
     }
 
-    public void resourceFile2serverFile(String resourceFileWithPath, String serverFileWithPath) {
+    public void resourceFile2ServerFile(String resourceFileWithPath, String serverFileWithPath) {
 
         URL url = ClassLoaderUtil.getResource(resourceFileWithPath, this.getClass());
 
