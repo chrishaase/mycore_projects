@@ -37,8 +37,7 @@ class RestGetXmlImplTest {
         when(requestData.getOutfilepath()).thenReturn(outfilepath);
         when(requestData.getXmlfilepath()).thenReturn(xmlfilepath);
         when(requestData.getUrlpath()).thenReturn(urlpath);
-        xmlFileName = mycoreid + ".xml";
-        xmlFile = new File(xmlfilepath, xmlFileName);
+
         restService = new XmlGetRest(new FileHandler());
     }
 
@@ -50,7 +49,7 @@ class RestGetXmlImplTest {
     void testHttpGet() {
 
         // testet ob httpget das richtige XML Dok über rest laedt
-        String testmycore = restService.httpGet(mycoreid, urlpath);
+        String testmycore = restService.httpGet(requestData.getMycoreid(), requestData.getUrlpath());
 
 
         XPathFactory xpathFactory = XPathFactory.newInstance();

@@ -22,10 +22,11 @@ public class ServletFrontController extends HttpServlet {
             response)
     {
         //1. init: Get init url&filepaths from web.xml and mycore ID from HTTP-request
+        // Variablen-Abarbeitung in Methode and passing on is Threadsafe
 
-        String mycoreid = request.getParameter("mycoreid"); // id des auszudruckenden Objektes
-        String outfilepath = getServletContext().getInitParameter("outfilepath"); // directory for pdfs
-        String xmlfilepath = getServletContext().getInitParameter("xmlfilepath"); // directory for xml-files (model)
+        String mycoreid = request.getParameter("mycoreid");
+        String outfilepath = getServletContext().getInitParameter("outfilepath");
+        String xmlfilepath = getServletContext().getInitParameter("xmlfilepath");
         String urlpath = getServletContext().getInitParameter("urlpath");
         String xsltfile = getServletContext().getInitParameter("xsltfile");
         String texcommand = getServletContext().getInitParameter("texcommand");
