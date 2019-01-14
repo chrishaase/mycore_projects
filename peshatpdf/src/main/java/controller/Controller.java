@@ -64,7 +64,7 @@ class Controller {
             case "tex":
                 return new Xml2Pdf_Tex(fileHandler);
             case "fop":
-                return new Xml2Pdf_Fop(fileHandler);
+                return new Xml2Pdf_Fop(requestData, fileHandler);
             default:
                 return new Xml2Pdf_Tex(fileHandler);
         }

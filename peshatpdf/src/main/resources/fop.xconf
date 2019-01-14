@@ -79,8 +79,8 @@ the location of this file.
         -->
 	 <directory>/home/ahzch/fop-2.3/fop/</directory>
 
-	<font kerning="yes" embed-url="/home/ahzch/fop-2.3/fop/unifont.ttf" embedding-mode="full">
-               <font-triplet name="Arial Unicode MS" style="normal" weight="normal"/>
+	<font kerning="yes" embed-url="/mycore/Cardo104s.ttf" embedding-mode="full">
+               <font-triplet name="Cardo" style="normal" weight="normal"/>
            </font>
 
         <!-- auto-detect fonts -->

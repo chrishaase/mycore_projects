@@ -33,9 +33,18 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
 
-    public Xml2Pdf_Fop(FileHandler fileHandler){
+    public Xml2Pdf_Fop(RequestData requestData, FileHandler fileHandler){
 
         super(fileHandler);
+        // export fop.xconf to ServerFileSystem and cardo104s.ttf
+       // String resourceFilewithPath = requestData.getResourcePath()+requestData.getFopConfigFileName();
+        //String serverFilewithPath = requestData.getOutFilePath()+"/"+requestData.getFopConfigFileName();
+        //fileHandler.resourceFile2ServerFile(resourceFilewithPath, serverFilewithPath);
+
+        String fontName = "Cardo104s.ttf";
+        String resourceFilewithPath = requestData.getResourcePath()+fontName;
+        String serverFilewithPath = requestData.getOutFilePath()+"/"+fontName;
+        fileHandler.resourceFile2ServerFile(resourceFilewithPath, serverFilewithPath);
 
     }
 
@@ -75,7 +84,6 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
     private void transformFoFile2PdfFile(RequestData requestData) throws IOException {
 
         OutputStream out = null;
-
 
         try {
 
