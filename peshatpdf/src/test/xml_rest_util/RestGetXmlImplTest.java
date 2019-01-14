@@ -1,6 +1,7 @@
 package test.xml_rest_util;
 
 import main.java.controller.RequestData;
+import main.java.util.FileHandler;
 import main.java.util.XmlGetRest;
 import org.xml.sax.InputSource;
 
@@ -38,7 +39,7 @@ class RestGetXmlImplTest {
         when(requestData.getUrlpath()).thenReturn(urlpath);
         xmlFileName = mycoreid + ".xml";
         xmlFile = new File(xmlfilepath, xmlFileName);
-        restService = new XmlGetRest();
+        restService = new XmlGetRest(new FileHandler());
     }
 
     @org.junit.jupiter.api.AfterEach
