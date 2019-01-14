@@ -26,7 +26,7 @@ import org.apache.fop.apps.MimeConstants;
 import org.apache.fop.apps.PageSequenceResults;
 
 import java.io.*;
-
+import java.net.URL;
 
 
 public class Xml2Pdf_Fop extends Xml2Pdf {
@@ -78,6 +78,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
         try {
+
             FopFactory fopFactory = FopFactory.newInstance(new File("/mycore/fop.xconf"));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
               	            // configure foUserAgent as desired

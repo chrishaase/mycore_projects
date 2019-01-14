@@ -13,10 +13,11 @@ import main.java.xml2pdf_service.Xml2Pdf_Fop;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
 import main.java.xmlFile_dao.XmlFile_dao;
 import main.java.util.XmlGetRest;
+import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.*;
+import java.net.URL;
+import java.nio.file.StandardCopyOption;
 
 
 /**
@@ -38,13 +39,7 @@ class Controller {
         XmlGetRest rest = new XmlGetRest(fileHandler);
         xmlDao = new XmlFile_dao(rest, fileHandler);
 
-        // save file from resource path to output directory for fop-factory
-        try {
-            InputStream fopConfig = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getFopConfigFileName(), this.getClass());
-            FileOutputStream out = new FileOutputStream(new File(requestData.getOutFilePath() + "/" + requestData.getFopConfigFileName()));
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
     
     Boolean createPDF(RequestData requestData){
