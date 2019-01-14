@@ -37,13 +37,13 @@ public class FileHandler {
 
             String string = url.toURI().toString();
             String substring = string.substring(5); // cut-off first five characters = "file:"
-            FileReader file = new FileReader(substring);
+            FileReader filein = new FileReader(substring);
             FileWriter output = new FileWriter(serverFileWithPath);
             int c;
-            while ((c = file.read()) != -1) {
+            while ((c = filein.read()) != -1) {
                 output.write(c);
             }
-            file.close();
+            filein.close();
             output.close();
 
         } catch (Exception e) {

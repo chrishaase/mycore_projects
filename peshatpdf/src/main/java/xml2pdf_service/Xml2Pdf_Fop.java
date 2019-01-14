@@ -56,7 +56,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
     public Boolean transformXmlFile2PdfFile(RequestData requestData) {
 
         transformXml2FoFile(requestData);
-        Boolean b = fileHandler.fileExists(requestData.getTexFile());
+        Boolean b = fileHandler.fileExists(requestData.getFoFile());
 
         if (b) {
             try {
@@ -86,16 +86,15 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
         }
     }
 
-    private void transformFoFile2PdfFile(RequestData requestData) throws IOException {
+    private void transformFoFile2PdfFile(RequestData requestData)  {
 
-        OutputStream out = null;
 
         try {
 
             FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getOutFilePath() + "/" + requestData.getFopConfigFileName()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
-            out = new FileOutputStream(requestData.getPdfFile());
+            OutputStream out = new FileOutputStream(requestData.getPdfFile());
             out = new BufferedOutputStream(out);
 
            // Construct fop with desired output format
@@ -115,23 +114,12 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
               transformer.transform(src, res);
 
             // Result processing
-            FormattingResults foResults = fop.getResults();
-            java.util.List pageSequences = foResults.getPageSequences();
-            for (Object pageSequence : pageSequences) {
-                 	                PageSequenceResults pageSequenceResults = (PageSequenceResults) pageSequence;
-                                   System.out.println("PageSequence "
-                                                + (String.valueOf(pageSequenceResults.getID()).length() > 0	                        ? pageSequenceResults.getID() : "<no id>")
-                  	                        + " generated " + pageSequenceResults.getPageCount() + " pages.");
-                               }
-                	            System.out.println("Generated " + foResults.getPageCount() + " pages in total.");
+            out.close();
 
              } catch (Exception e) {
                	            e.printStackTrace(System.err);
                 	            System.exit(-1);
-             } finally {
-                          out.close();
-                        }
-
+             }
 
 
     }

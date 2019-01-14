@@ -15,8 +15,7 @@
 
         <xsl:for-each select="mycoreobject/metadata/box.author/author">
             <fo:block text-align="right" xml:lang="he">
-                english
-                <xsl:value-of select = "." />
+               <xsl:value-of select = "." />
                 <xsl:text>&#xa;</xsl:text>
                 </fo:block>
                 </xsl:for-each>
