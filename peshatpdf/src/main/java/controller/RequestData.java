@@ -4,12 +4,17 @@ import java.io.File;
 
 public class RequestData {
 
+   // request information
     private final String mycoreid;
+
+    // Informationen aus web.xml
     private final String outfilepath;
     private final String urlpath;
     private final String xmlfilepath;
     private final String pdfTexCommand;
     private final String xsltFile;
+
+    // created Informationen
     private final String pdfFileName;
     private final String texFileName;
     private final String xmlFileName;
@@ -21,12 +26,17 @@ public class RequestData {
 
     RequestData(String mycoreid, String outfilepath, String urlpath,  String xmlfilepath, String pdfTexCommand, String xsltFile){
 
+        // request information
         this.mycoreid = mycoreid;
+
+        // Informationen aus web.xml
         this.outfilepath = outfilepath;
         this.urlpath = urlpath;
         this.xmlfilepath = xmlfilepath;
         this.pdfTexCommand = pdfTexCommand;
         this.xsltFile = xsltFile;
+
+        // generate file ids and files
         pdfFileName = mycoreid + ".pdf";
         xmlFileName = mycoreid + ".xml";
         texFileName = mycoreid + ".tex";
@@ -35,6 +45,8 @@ public class RequestData {
         pdfFile = new File(outfilepath, pdfFileName);
 
     }
+
+    // GETTER
 
     public String getMycoreid() {
         return mycoreid;
