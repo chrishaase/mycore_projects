@@ -25,15 +25,12 @@ class Controller {
         
     public Controller () {
 
-
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         // noch implementieren: falls Apache-FOP implementiert wird: factory fuer xml2pdf
         FileHandler fileHandler = new FileHandler();
         xml2PDF = new Xml2Pdf_Tex(fileHandler);
         XmlGetRest rest = new XmlGetRest(fileHandler);
         xmlDao = new XmlFile_dao(rest, fileHandler);
-
-
 
     }
     
