@@ -15,7 +15,7 @@
        <param-name>urlPath</param-name>
        <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
    </context-param>
-    <!-- resourcePath: folder inside web-app for resources for java-classes are stored ie xsl transform files -->
+    <!-- DO NOT CHANGE resourcePath: folder inside web-app for resources for java-classes are stored ie xsl transform files -->
    <context-param>
        <param-name>resourcePath</param-name>
        <param-value>main/resources/</param-value>
