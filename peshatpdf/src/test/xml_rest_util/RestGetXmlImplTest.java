@@ -3,6 +3,8 @@ package test.xml_rest_util;
 import main.java.controller.RequestData;
 import main.java.util.XmlGetRest;
 import org.xml.sax.InputSource;
+
+import java.io.File;
 import java.io.StringReader;
 
 import javax.xml.xpath.*;
@@ -18,6 +20,10 @@ class RestGetXmlImplTest {
     private final String outfilepath = "/mycore";
     private final String mycoreid = "peshat_bibliographical-sources_00000002";
     private final String mycoreidwrong = "peshat_bibliographical-sources_00000003";
+
+    private String xmlFileName;
+    private File xmlFile;
+
     private RequestData requestData;
     private XmlGetRest restService;
 
@@ -30,7 +36,9 @@ class RestGetXmlImplTest {
         when(requestData.getOutfilepath()).thenReturn(outfilepath);
         when(requestData.getXmlfilepath()).thenReturn(xmlfilepath);
         when(requestData.getUrlpath()).thenReturn(urlpath);
-        restService = new XmlGetRest(requestData);
+        xmlFileName = mycoreid + ".xml";
+        xmlFile = new File(xmlfilepath, xmlFileName);
+        restService = new XmlGetRest();
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -41,7 +49,7 @@ class RestGetXmlImplTest {
     void testHttpGet() {
 
         // testet ob httpget das richtige XML Dok über rest laedt
-        String testmycore = restService.httpGet();
+        String testmycore = restService.httpGet(mycoreid, urlpath);
 
 
         XPathFactory xpathFactory = XPathFactory.newInstance();

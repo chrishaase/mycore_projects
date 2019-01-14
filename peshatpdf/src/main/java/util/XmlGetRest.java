@@ -6,8 +6,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.io.File;
 
-import main.java.util.FileHandler;
-import main.java.controller.RequestData;
 /**
  *
  * @author chase
@@ -16,22 +14,15 @@ import main.java.controller.RequestData;
 
 public class XmlGetRest {
 
-    private final RequestData requestData;
+
     private FileHandler fileHandler;
 
 
-    public XmlGetRest(RequestData requestData) {
-
-        this.requestData = requestData;
-
-
-    }
-
-    public String httpGet (){
+    public String httpGet (String mycoreid, String urlpath){
        
 
         String string = "";
-        String urlstr = requestData.getUrlpath() + requestData.getMycoreid();
+        String urlstr = urlpath + mycoreid;
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)
@@ -47,16 +38,16 @@ public class XmlGetRest {
         return string;
     }
 
-    public Boolean save (String mcrObjString) {
+    public Boolean saveXmlStr2File(String mcrObjString, File xmlFile) {
 
-            fileHandler.writeString2File(requestData.getXmlFile(), mcrObjString);
-            return fileHandler.fileExists(requestData.getXmlFile());
+            fileHandler.writeString2File(xmlFile, mcrObjString);
+            return fileHandler.fileExists(xmlFile);
         }
 
-    public Boolean httpGetAndSave2File() {
+    public Boolean httpGetAndSave2File(String mycoreid, String urlpath, File xmlFile) {
 
-        String mcrObjString = httpGet();
-        return save(mcrObjString);
+        String mcrObjString = httpGet(mycoreid, urlpath);
+        return saveXmlStr2File(mcrObjString, xmlFile);
 
 
     }

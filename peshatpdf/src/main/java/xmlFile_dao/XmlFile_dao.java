@@ -24,9 +24,9 @@ public class XmlFile_dao {
         //. check if xml in xml-filestore
         Boolean b = fileHandler.fileExists(requestData.getXmlFile());
 
-        // if not present, load from rest service and save to filepath
+        // if not present, load from rest service and saveXmlStr2File to filepath
         if (!b){
-          b = rest.httpGetAndSave2File();
+          b = rest.httpGetAndSave2File(requestData.getMycoreid(), requestData.getUrlpath(), requestData.getXmlFile());
         }
 
         // final evaluation ob file jetzt in filestore

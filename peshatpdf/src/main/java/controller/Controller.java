@@ -26,13 +26,13 @@ class Controller {
     public Controller (RequestData requestData) {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
-        // noch implementieren: falls Apache-FO implementiert wird: factory fuer xml2pdf
+        // noch implementieren: falls Apache-FOP implementiert wird: factory fuer xml2pdf
         FileHandler fileHandler = new FileHandler();
 
         xml2PDF = new Xml2Pdf_Tex(requestData);
         xml2PDF.setFileHandler(fileHandler);
 
-        XmlGetRest rest = new XmlGetRest(requestData);
+        XmlGetRest rest = new XmlGetRest();
         rest.setFileHandler(fileHandler);
 
         xmlDao = new XmlFile_dao(requestData, rest);
