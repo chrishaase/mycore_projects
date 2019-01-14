@@ -25,9 +25,13 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     public Boolean transformXmlFile2PdfFile(RequestData requestData) {
 
-        transformXml2Tex(requestData);
-        Boolean b = fileHandler.fileExists(requestData.getTexFile());
-
+        Boolean b = false;
+        try {
+            transformXml2Tex(requestData);
+            b = fileHandler.fileExists(requestData.getTexFile());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
         if (b) {
             transformTex2PDF(requestData);
             b = fileHandler.fileExists(requestData.getPdfFile());}
@@ -42,37 +46,8 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         // InputStream stylesheet = classLoader.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName());
 
         InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName(), this.getClass());
-        URL url = ClassLoaderUtil.getResource(requestData.getResourcePath() + requestData.getXsltFileName(), this.getClass());
-        String urlString = url.toString();
-        FileReader in = null;
-        FileWriter out = null;
-
-        try {
-            in = new FileReader(urlString);
-            out = new FileWriter("/mycore/test.xsl");
-
-            int c;
-            while ((c = in.read()) != -1) {
-                out.write(c);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-            if (out != null) {
-                out.close();
-            }
-        }
 
         try{
-            // try saving the imput stream to filesystem
-            FileReader in = new FileReader (urlString);
-            FileWriter out = new FileWriter("/mycore/test.xsl");
-
 
             Source xslt        = new StreamSource(stylesheet);
             Source             text        = new StreamSource(requestData.getXmlFile());
