@@ -92,24 +92,20 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
         try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File("/mycore/fop.xconf"));
+            FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getOutFilePath() + "/" + requestData.getFopConfigFileName()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
-              	            // configure foUserAgent as desired
 
-            // Setup output stream.  Note: Using BufferedOutputStream
-                           // for performance reasons (helpful with FileOutputStreams).
             out = new FileOutputStream(requestData.getPdfFile());
             out = new BufferedOutputStream(out);
 
            // Construct fop with desired output format
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
 
-                	            // Setup JAXP using identity transformer
+            // Setup JAXP using identity transformer
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer(); // identity transformer
 
             // Setup input stream
-
             Source src = new StreamSource(requestData.getFoFile());
 
              // Resulting SAX events (the generated FO) must be piped through to FOP
