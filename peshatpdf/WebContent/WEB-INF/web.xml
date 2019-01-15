@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <!-- outFilePath: Directory on Servers FileSystem where PDF and Tex and Fo Files are generated -->
-   <context-param>
-       <param-name>outFilePath</param-name>
-       <param-value>/mycore</param-value>
-   </context-param>
-    <!-- xmlFilePath: Directory on Servers FileSystem where xml-files are stored -->
+   <!-- xmlFilePath: Directory on Servers FileSystem where xml-files are stored -->
    <context-param>
        <param-name>xmlFilePath</param-name>
        <param-value>/mycore</param-value>
@@ -15,6 +10,11 @@
        <param-name>urlPath</param-name>
        <param-value>https://peshat.gwiss.uni-hamburg.de/api/v1/objects/</param-value>
    </context-param>
+    <!-- outFilePath: Directory on Servers FileSystem where PDF and Tex and Fo Files are generated -->
+    <context-param>
+        <param-name>outFilePath</param-name>
+        <param-value>/mycore</param-value>
+    </context-param>
     <!-- DO NOT CHANGE resourcePath: folder inside web-app for resources for java-classes are stored ie xsl transform files -->
    <context-param>
        <param-name>resourcePath</param-name>
@@ -25,12 +25,6 @@
         <param-name>conversionService</param-name>
         <param-value>fop</param-value>
     </context-param>
-    <!--OTHER OPTION
-     <context-param>
-        <param-name>conversionServoce</param-name>
-        <param-value>tex</param-value>
-    </context-param>
-    -->
     <!-- xslt converter file - according to service -->
     <context-param>
         <param-name>xsltFileName</param-name>
@@ -46,6 +40,12 @@
         <param-value>xml2tex_bib_pdflatex.xsl</param-value>
     </context-param>
     -->
+    <!-- EXTRAINFORMATION FOR TEX AND FOP -->
+    <!-- fopConfig File: in Reources Directory -->
+    <context-param>
+        <param-name>fopConfigFileName</param-name>
+        <param-value>fop.xconf</param-value>
+    </context-param>
     <!-- texCommand: Commandline command for executing a tex engine - such as pdflatex or xelatex -->
     <context-param>
         <param-name>texCommand</param-name>
@@ -57,11 +57,7 @@
         <param-value>pdflatex</param-value>
     </context-param>
     -->
-    <!-- fopConfig File: in Reources Directory -->
-    <context-param>
-        <param-name>fopConfigFileName</param-name>
-        <param-value>fop.xconf</param-value>
-    </context-param>
+
 
     <servlet>
         <servlet-name>CreatePDF</servlet-name>
