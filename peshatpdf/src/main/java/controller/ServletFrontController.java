@@ -40,7 +40,7 @@ public class ServletFrontController extends HttpServlet {
         Controller controller = new Controller (requestData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
-        Boolean erfolg = controller.createPDF(requestData);
+        Boolean erfolg = controller.createPDF();
        if (erfolg) {
         sendPDFResponse(response, requestData);
        } else {

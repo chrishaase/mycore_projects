@@ -12,34 +12,34 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import java.io.*;
-import java.net.URL;
+
 
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
 
-    public Xml2Pdf_Tex(FileHandler fileHandler){
+    public Xml2Pdf_Tex(FileHandler fileHandler, RequestData requestData){
 
-        super(fileHandler);
+        super(fileHandler, requestData);
 
     }
 
-    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
+    public Boolean transformXmlFile2PdfFile() {
 
         Boolean b = false;
         try {
-            transformXml2Tex(requestData);
+            this.transformXml2Tex();
             b = fileHandler.fileExists(requestData.getTexFile());
         } catch(Exception e){
             e.printStackTrace();
         }
         if (b) {
-            transformTex2PDF(requestData);
+            this.transformTex2PDF();
             b = fileHandler.fileExists(requestData.getPdfFile());}
 
         return b;
     }
 
-    private void transformXml2Tex(RequestData requestData) throws IOException {
+    private void transformXml2Tex() throws IOException {
 
         // Standard Impl: Replaced by classloaderutil
         // ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -61,7 +61,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
     }
 
 
-    private void transformTex2PDF(RequestData requestData){
+    private void transformTex2PDF(){
 
         ProcessBuilder pb = new ProcessBuilder(requestData.getPdfTexCommand(), "-interaction=nonstopmode",
                 requestData.getTexFileName());

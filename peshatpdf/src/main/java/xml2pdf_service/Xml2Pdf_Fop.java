@@ -32,10 +32,9 @@ import java.net.URL;
 public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
+    public Xml2Pdf_Fop(FileHandler fileHandler, RequestData requestData){
 
-    public Xml2Pdf_Fop(RequestData requestData, FileHandler fileHandler){
-
-        super(fileHandler);
+        super(fileHandler, requestData);
 
         // export fop.xconf to ServerFileSystem
        String resourceFilewithPath = requestData.getResourcePath()+requestData.getFopConfigFileName();
@@ -44,14 +43,14 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
-    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
+    public Boolean transformXmlFile2PdfFile() {
 
-        transformXml2FoFile(requestData);
+        transformXml2FoFile();
         Boolean b = fileHandler.fileExists(requestData.getFoFile());
 
         if (b) {
             try {
-                transformFoFile2PdfFile(requestData);
+                this.transformFoFile2PdfFile();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -61,7 +60,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
-    private void transformXml2FoFile(RequestData requestData){
+    private void transformXml2FoFile(){
 
         InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileNameFop(), this.getClass());
 
@@ -77,7 +76,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
         }
     }
 
-    private void transformFoFile2PdfFile(RequestData requestData)  {
+    private void transformFoFile2PdfFile()  {
 
 
         try {

@@ -28,10 +28,11 @@ class Controller {
     
     private final Xml2Pdf xml2PDF;
     private final XmlFile_dao xmlDao;
+    private final RequestData requestData;
 
         
     public Controller (RequestData requestData) {
-
+        this.requestData = requestData;
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         // Factory fuer Conversion-Service (fop oder tex)
         FileHandler fileHandler = new FileHandler();
@@ -42,7 +43,7 @@ class Controller {
 
     }
     
-    Boolean createPDF(RequestData requestData){
+    Boolean createPDF(){
 
         Boolean erfolg;
 
@@ -51,7 +52,7 @@ class Controller {
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
+            erfolg= xml2PDF.transformXmlFile2PdfFile();
         }
 
         // 3. return erfolgsmeldung
@@ -62,11 +63,11 @@ class Controller {
     private Xml2Pdf getXml2PDF(RequestData requestData, FileHandler fileHandler){
         switch(requestData.getPdfEngine()){
             case "tex":
-                return new Xml2Pdf_Tex(fileHandler);
+                return new Xml2Pdf_Tex(fileHandler, requestData);
             case "fop":
-                return new Xml2Pdf_Fop(requestData, fileHandler);
+                return new Xml2Pdf_Fop(fileHandler, requestData);
             default:
-                return new Xml2Pdf_Tex(fileHandler);
+                return new Xml2Pdf_Tex(fileHandler, requestData);
         }
 
     }

@@ -9,10 +9,14 @@ public abstract class Xml2Pdf {
 
 
    protected FileHandler fileHandler;
+   protected RequestData requestData;
 
-   public Xml2Pdf(FileHandler fileHandler) {this.fileHandler = fileHandler;}
+   public Xml2Pdf(FileHandler fileHandler, RequestData requestData) {
+      this.fileHandler = fileHandler;
+      this.requestData =  requestData;
+   }
 
-   public abstract Boolean transformXmlFile2PdfFile(RequestData requestData);
+   public abstract Boolean transformXmlFile2PdfFile();
 
 
 }
