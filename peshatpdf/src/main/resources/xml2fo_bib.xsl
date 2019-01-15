@@ -12,7 +12,7 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="PageMaster">
                 <fo:flow flow-name="xsl-region-body" line-height="1.7" font-family="Frank Ruehl CLM">
-                    <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                    <fo:block text-align="right" xml:lang="en" font-size="14pt">
                         <xsl:text>Author - Year - Title - Place - Publisher</xsl:text>
                         <xsl:text>&#xa;</xsl:text>
                     </fo:block>
@@ -24,7 +24,7 @@
                         </fo:block>
                     </xsl:if>
                     <xsl:if test="@xml:lang='en'">
-                        <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                        <fo:block text-align="right" xml:lang="en" font-size="14pt">
                             <xsl:value-of select = "." />
                             <xsl:text>&#xa;</xsl:text>
                         </fo:block>
@@ -38,7 +38,7 @@
                             </fo:block>
                         </xsl:if>
                         <xsl:if test="@xml:lang='en'">
-                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                            <fo:block text-align="right" xml:lang="en" font-size="14pt">
                                 <xsl:value-of select = "." />
                                 <xsl:text>&#xa;</xsl:text>
                             </fo:block>
@@ -52,7 +52,7 @@
                             </fo:block>
                         </xsl:if>
                         <xsl:if test="@xml:lang='en'">
-                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                            <fo:block text-align="right" xml:lang="en" font-size="14pt">
                                 <xsl:value-of select = "." />
                                 <xsl:text>&#xa;</xsl:text>
                             </fo:block>
@@ -66,7 +66,7 @@
                             </fo:block>
                         </xsl:if>
                         <xsl:if test="@xml:lang='en'">
-                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                            <fo:block text-align="right" xml:lang="en" font-size="14pt">
                                 <xsl:value-of select = "." />
                                 <xsl:text>&#xa;</xsl:text>
                             </fo:block>
@@ -80,7 +80,7 @@
                             </fo:block>
                         </xsl:if>
                         <xsl:if test="@xml:lang='en'">
-                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                            <fo:block text-align="right" xml:lang="en" font-size="14pt">
                                 <xsl:value-of select = "." />
                                 <xsl:text>&#xa;</xsl:text>
                             </fo:block>
