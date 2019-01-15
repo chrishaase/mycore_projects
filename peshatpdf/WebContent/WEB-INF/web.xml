@@ -25,24 +25,20 @@
         <param-name>conversionService</param-name>
         <param-value>tex</param-value>
     </context-param>
-    <!--OTHER OPTION
-     <context-param>
-        <param-name>conversionServoce</param-name>
-        <param-value>tex</param-value>
-    </context-param>
-    -->
     <!-- xslt converter file - according to service -->
-    <!--OTHER OPTION
+    <!--
     <context-param>
         <param-name>xsltFileName</param-name>
         <param-value>xml2fo_bib.xsl</param-value>
     </context-param>
     -->
-    <!-- xslt filename: aktueller xslt transform sheet -->
+   <!-- xslt filename: aktueller xslt transform sheet -->
+
      <context-param>
         <param-name>xsltFileName</param-name>
         <param-value>xml2tex_bib_xelatex.xsl</param-value>
     </context-param>
+
     <!--OTHER OPTION
     <context-param>
         <param-name>xsltFileName</param-name>

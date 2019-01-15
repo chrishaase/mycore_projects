@@ -12,13 +12,82 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="PageMaster">
                 <fo:flow flow-name="xsl-region-body" line-height="1.7" font-family="Frank Ruehl CLM">
-        <xsl:for-each select="mycoreobject/metadata/box.author/author">
-            <fo:block text-align="right" xml:lang="he">
-               <xsl:value-of select = "." />
-                <xsl:text>English</xsl:text>
-                <xsl:text>&#xa;</xsl:text>
-                </fo:block>
+                    <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                        <xsl:text>Author - Year - Title - Place - Publisher</xsl:text>
+                        <xsl:text>&#xa;</xsl:text>
+                    </fo:block>
+                <xsl:for-each select="mycoreobject/metadata/box.author/author">
+                    <xsl:if test="@xml:lang='he'">
+                        <fo:block text-align="right" xml:lang="he" font-size="14pt">
+                            <xsl:value-of select = "." />
+                            <xsl:text>&#xa;</xsl:text>
+                        </fo:block>
+                    </xsl:if>
+                    <xsl:if test="@xml:lang='en'">
+                        <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                            <xsl:value-of select = "." />
+                            <xsl:text>&#xa;</xsl:text>
+                        </fo:block>
+                    </xsl:if>
                 </xsl:for-each>
+                    <xsl:for-each select="mycoreobject/metadata/box.year/year">
+                        <xsl:if test="@xml:lang='he'">
+                            <fo:block text-align="right" xml:lang="he" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                        <xsl:if test="@xml:lang='en'">
+                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                    </xsl:for-each>
+                    <xsl:for-each select="mycoreobject/metadata/box.title/title">
+                        <xsl:if test="@xml:lang='he'">
+                            <fo:block text-align="right" xml:lang="he" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                        <xsl:if test="@xml:lang='en'">
+                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                    </xsl:for-each>
+                    <xsl:for-each select="mycoreobject/metadata/box.place/place">
+                        <xsl:if test="@xml:lang='he'">
+                            <fo:block text-align="right" xml:lang="he" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                        <xsl:if test="@xml:lang='en'">
+                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                    </xsl:for-each>
+                    <xsl:for-each select="mycoreobject/metadata/box.publisher/publisher">
+                        <xsl:if test="@xml:lang='he'">
+                            <fo:block text-align="right" xml:lang="he" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                        <xsl:if test="@xml:lang='en'">
+                            <fo:block text-align="left" xml:lang="en" font-size="14pt">
+                                <xsl:value-of select = "." />
+                                <xsl:text>&#xa;</xsl:text>
+                            </fo:block>
+                        </xsl:if>
+                    </xsl:for-each>
+
+
                 </fo:flow>
             </fo:page-sequence>
         </fo:root>
