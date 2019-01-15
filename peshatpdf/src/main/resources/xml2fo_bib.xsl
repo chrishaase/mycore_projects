@@ -86,8 +86,6 @@
                             </fo:block>
                         </xsl:if>
                     </xsl:for-each>
-
-
                 </fo:flow>
             </fo:page-sequence>
         </fo:root>
