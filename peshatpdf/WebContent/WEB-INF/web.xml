@@ -20,25 +20,15 @@
        <param-name>resourcePath</param-name>
        <param-value>main/resources/</param-value>
    </context-param>
-    <!-- conversion Service: tex oder fop -->
-    <context-param>
-        <param-name>conversionService</param-name>
-        <param-value>tex</param-value>
-    </context-param>
     <!-- xslt converter file - according to service -->
-    <!--
-    <context-param>
-        <param-name>xsltFileName</param-name>
+     <context-param>
+        <param-name>xsltFileNameFop</param-name>
         <param-value>xml2fo_bib.xsl</param-value>
     </context-param>
-    -->
-   <!-- xslt filename: aktueller xslt transform sheet -->
-
-     <context-param>
-        <param-name>xsltFileName</param-name>
+    <context-param>
+        <param-name>xsltFileNameTex</param-name>
         <param-value>xml2tex_bib_xelatex.xsl</param-value>
     </context-param>
-
     <!--OTHER OPTION
     <context-param>
         <param-name>xsltFileName</param-name>

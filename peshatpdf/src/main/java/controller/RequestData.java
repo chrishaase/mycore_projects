@@ -6,15 +6,18 @@ public class RequestData {
 
    // request information
     private final String mycoreId;
+    private final String pdfEngine;
 
     // Informationen aus web.xml
+    // pathes
     private final String outFilePath;
     private final String urlPath;
     private final String xmlFilePath;
-    private final String pdfTexCommand;
-    private final String xsltFileName;
     private final String resourcePath;
-    private final String conversionService;
+    // tex and fop config
+    private final String pdfTexCommand;
+    private final String xsltFileNameTex;
+    private final String xsltFileNameFop;
     private final String fopConfigFileName;
 
     // created Informationen
@@ -29,9 +32,8 @@ public class RequestData {
 
 
 
-    RequestData(String mycoreId, String outFilePath, String urlPath, String xmlFilePath,
-                String pdfTexCommand, String xsltFileName, String resourcePath,
-                String conversionService, String fopConfigFileName){
+    RequestData(String mycoreId, String pdfEngine, String urlPath, String xmlFilePath, String outFilePath, String resourcePath,
+                String xsltFileNameTex, String texCommand, String xsltFileNameFop, String fopConfigFileName){
 
         // request information
         this.mycoreId = mycoreId;
@@ -40,10 +42,11 @@ public class RequestData {
         this.outFilePath = outFilePath;
         this.urlPath = urlPath;
         this.xmlFilePath = xmlFilePath;
-        this.pdfTexCommand = pdfTexCommand;
-        this.xsltFileName = xsltFileName;
+        this.pdfTexCommand = texCommand;
+        this.xsltFileNameTex = xsltFileNameTex;
+        this.xsltFileNameFop = xsltFileNameFop;
         this.resourcePath = resourcePath;
-        this.conversionService = conversionService;
+        this.pdfEngine = pdfEngine;
         this.fopConfigFileName = fopConfigFileName;
 
         // generate file ids and files
@@ -78,10 +81,6 @@ public class RequestData {
 
     public String getPdfTexCommand() {
         return pdfTexCommand;
-    }
-
-    public String getXsltFileName() {
-        return xsltFileName;
     }
 
     public String getPdfFileName() {
@@ -120,11 +119,19 @@ public class RequestData {
         return foFile;
     }
 
-    public String getConversionService() {
-        return conversionService;
-    }
-
     public String getFopConfigFileName() {
         return fopConfigFileName;
+    }
+
+    public String getPdfEngine() {
+        return pdfEngine;
+    }
+
+    public String getXsltFileNameTex() {
+        return xsltFileNameTex;
+    }
+
+    public String getXsltFileNameFop() {
+        return xsltFileNameFop;
     }
 }

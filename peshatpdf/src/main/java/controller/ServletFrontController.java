@@ -25,15 +25,16 @@ public class ServletFrontController extends HttpServlet {
         // Variablen-Abarbeitung in Methode and passing on is Threadsafe
 
         String mycoreId = request.getParameter("mycoreId");
+        String pdfEngine = request.getParameter("pdfEngine");
         String urlPath = getServletContext().getInitParameter("urlPath");
         String xmlFilePath = getServletContext().getInitParameter("xmlFilePath");
         String outFilePath = getServletContext().getInitParameter("outFilePath");
-        String texCommand = getServletContext().getInitParameter("texCommand");
-        String xsltFileName = getServletContext().getInitParameter("xsltFileName");
         String resourcePath = getServletContext().getInitParameter("resourcePath");
-        String conversionService = getServletContext().getInitParameter("conversionService");
+        String xsltFileNameTex = getServletContext().getInitParameter("xsltFileNameTex");
+        String texCommand = getServletContext().getInitParameter("texCommand");
+        String xsltFileNameFop = getServletContext().getInitParameter("xsltFileNameFop");
         String fopConfigFileName = getServletContext().getInitParameter("fopConfigFileName");
-        RequestData requestData = new RequestData(mycoreId, outFilePath, urlPath, xmlFilePath, texCommand, xsltFileName, resourcePath, conversionService, fopConfigFileName);
+        RequestData requestData = new RequestData(mycoreId, pdfEngine, urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (kein DI-Framework)
         Controller controller = new Controller (requestData);

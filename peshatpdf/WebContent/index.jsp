@@ -19,8 +19,15 @@ and open the template in the editor.
         <form method="post" action="${pageContext.request.contextPath}/create">
             <label for="mycoreId">MyCore-Peshat-ID :</label>
             <input type="text" id="mycoreId" name="mycoreId" size="40" value="peshat_bibliographical-sources_00000002">
-            <br><br>
-
+            <br>
+            <br>
+            <label for="pdfEngine">PDF-Engine       :</label>
+            <select name="pdfEngine" id="pdfEngine">
+                <option value="tex">tex</option>
+                <option value="fop">fop</option>
+            </select>
+            <br>
+            <br>
 
 
         <input type="submit" value="Submit and CreatePDF">

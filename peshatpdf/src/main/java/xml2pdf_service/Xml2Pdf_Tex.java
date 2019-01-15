@@ -45,7 +45,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         // ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         // InputStream stylesheet = classLoader.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName());
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileNameTex(), this.getClass());
 
         try{
 

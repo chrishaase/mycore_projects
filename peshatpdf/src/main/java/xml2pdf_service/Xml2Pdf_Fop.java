@@ -63,7 +63,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     private void transformXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileNameFop(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);

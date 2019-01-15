@@ -60,7 +60,7 @@ class Controller {
 
 
     private Xml2Pdf getXml2PDF(RequestData requestData, FileHandler fileHandler){
-        switch(requestData.getConversionService()){
+        switch(requestData.getPdfEngine()){
             case "tex":
                 return new Xml2Pdf_Tex(fileHandler);
             case "fop":
