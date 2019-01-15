@@ -13,7 +13,7 @@
             <fo:page-sequence master-reference="PageMaster">
                 <fo:flow flow-name="xsl-region-body" line-height="1.7" font-family="Frank Ruehl CLM">
         <xsl:for-each select="mycoreobject/metadata/box.author/author">
-            <fo:block text-align="right">
+            <fo:block text-align="right" xml:lang="he">
                <xsl:value-of select = "." />
                 <xsl:text>English</xsl:text>
                 <xsl:text>&#xa;</xsl:text>
