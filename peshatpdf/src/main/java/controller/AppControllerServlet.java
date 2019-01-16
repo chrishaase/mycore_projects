@@ -21,7 +21,7 @@ public class AppControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse 
             response)
     {
-        // 0. Get App-Parameter (-> move to app ini in final app)
+        // 0. Get App-Parameter
         String urlPath = getServletContext().getInitParameter("urlPath");
         String xmlFilePath = getServletContext().getInitParameter("xmlFilePath");
         String outFilePath = getServletContext().getInitParameter("outFilePath");
@@ -37,7 +37,7 @@ public class AppControllerServlet extends HttpServlet {
         String pdfEngine = request.getParameter("pdfEngine");
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appData);
 
-        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (-> move to CDI-Framework )
+        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung
         RequestController requestController = new RequestController(requestData, appData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
