@@ -21,7 +21,7 @@ public class AppControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse 
             response)
     {
-        // App-Parameter (-> move to ApplicationScoped Bean - if App is further developed as WebApp / and not as Mycore plugin)
+        // 0. Get App-Parameter (-> move to app ini in final app)
         String urlPath = getServletContext().getInitParameter("urlPath");
         String xmlFilePath = getServletContext().getInitParameter("xmlFilePath");
         String outFilePath = getServletContext().getInitParameter("outFilePath");
@@ -32,12 +32,12 @@ public class AppControllerServlet extends HttpServlet {
         String fopConfigFileName = getServletContext().getInitParameter("fopConfigFileName");
         AppData appData = new AppData (urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName);
 
-        // Request-Paramer (->move to RequestScoped Bean - if App is further developed as WebApp / and not as Mycore plugin)
+        // 1. Get Request-Paramer
         String mycoreId = request.getParameter("mycoreId");
         String pdfEngine = request.getParameter("pdfEngine");
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appData);
 
-        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (-> move to CDI-Framework if App is further developed as WebApp / and not as Mycore plugin)
+        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung (-> move to CDI-Framework )
         RequestController requestController = new RequestController(requestData, appData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
