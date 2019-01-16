@@ -3,6 +3,9 @@ package main.java.util;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import main.java.controller.AppData;
+import main.java.controller.RequestData;
+import sun.misc.Request;
 
 import java.io.File;
 
@@ -16,16 +19,19 @@ public class XmlGetRest {
 
 
     private final FileHandler fileHandler;
+    private final AppData appData;
 
-    public XmlGetRest(FileHandler fileHandler){
+    public XmlGetRest(FileHandler fileHandler, AppData appData){
+
         this.fileHandler = fileHandler;
+        this.appData = appData;
     }
 
-    public String httpGet (String mycoreid, String urlpath){
+    public String httpGet (RequestData requestData){
        
 
         String string = "";
-        String urlstr = urlpath + mycoreid;
+        String urlstr = appData.getUrlPath() + requestData.getMycoreId();
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)
@@ -41,16 +47,16 @@ public class XmlGetRest {
         return string;
     }
 
-    public Boolean saveXmlStr2File(String mcrObjString, File xmlFile) {
+    public Boolean saveXmlStr2File(String mcrObjString, RequestData requestData) {
 
-            fileHandler.writeString2File(xmlFile, mcrObjString);
-            return fileHandler.fileExists(xmlFile);
+            fileHandler.writeString2File(requestData.getXmlFile(), mcrObjString);
+            return fileHandler.fileExists(requestData.getXmlFile());
         }
 
-    public Boolean httpGetAndSave2File(String mycoreid, String urlpath, File xmlFile) {
+    public Boolean httpGetAndSave2File(RequestData requestData) {
 
-        String mcrObjString = httpGet(mycoreid, urlpath);
-        return saveXmlStr2File(mcrObjString, xmlFile);
+        String mcrObjString = httpGet(requestData);
+        return saveXmlStr2File(mcrObjString, requestData);
 
 
     }

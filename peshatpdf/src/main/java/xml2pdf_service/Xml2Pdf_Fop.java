@@ -1,5 +1,6 @@
 package main.java.xml2pdf_service;
 
+import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.ClassLoaderUtil;
 import main.java.util.FileHandler;
@@ -32,25 +33,25 @@ import java.net.URL;
 public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
-    public Xml2Pdf_Fop(FileHandler fileHandler, RequestData requestData){
+    public Xml2Pdf_Fop(FileHandler fileHandler, AppData appData){
 
-        super(fileHandler, requestData);
+        super(fileHandler, appData);
 
         // export fop.xconf to ServerFileSystem
-       String resourceFilewithPath = requestData.getResourcePath()+requestData.getFopConfigFileName();
-       String serverFilewithPath = requestData.getOutFilePath()+"/"+requestData.getFopConfigFileName();
+       String resourceFilewithPath = appData.getResourcePath()+appData.getFopConfigFileName();
+       String serverFilewithPath = appData.getOutFilePath()+"/"+appData.getFopConfigFileName();
        fileHandler.resourceFile2ServerFile(resourceFilewithPath, serverFilewithPath);
 
     }
 
-    public Boolean transformXmlFile2PdfFile() {
+    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
 
-        transformXml2FoFile();
+        transformXml2FoFile(requestData);
         Boolean b = fileHandler.fileExists(requestData.getFoFile());
 
         if (b) {
             try {
-                this.transformFoFile2PdfFile();
+                this.transformFoFile2PdfFile(requestData);
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -60,9 +61,9 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
-    private void transformXml2FoFile(){
+    private void transformXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileNameFop(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameFop(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -76,12 +77,12 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
         }
     }
 
-    private void transformFoFile2PdfFile()  {
+    private void transformFoFile2PdfFile(RequestData requestData)  {
 
 
         try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getOutFilePath() + "/" + requestData.getFopConfigFileName()));
+            FopFactory fopFactory = FopFactory.newInstance(new File(appData.getOutFilePath() + "/" + appData.getFopConfigFileName()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
             OutputStream out = new FileOutputStream(requestData.getPdfFile());

@@ -23,7 +23,7 @@ public class XmlFile_dao {
 
         // if not present, load from rest service and saveXmlStr2File to filepath
         if (!b){
-          b = rest.httpGetAndSave2File(requestData.getMycoreId(), requestData.getUrlPath(), requestData.getXmlFile());
+          b = rest.httpGetAndSave2File(requestData);
         }
 
         // final evaluation ob file jetzt in filestore

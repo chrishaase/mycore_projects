@@ -1,5 +1,6 @@
 package main.java.xml2pdf_service;
 
+import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
 
@@ -9,14 +10,14 @@ public abstract class Xml2Pdf {
 
 
    protected FileHandler fileHandler;
-   protected RequestData requestData;
+   protected AppData appData;
 
-   public Xml2Pdf(FileHandler fileHandler, RequestData requestData) {
+   public Xml2Pdf(FileHandler fileHandler, AppData appData) {
       this.fileHandler = fileHandler;
-      this.requestData =  requestData;
+      this.appData =  appData;
    }
 
-   public abstract Boolean transformXmlFile2PdfFile();
+   public abstract Boolean transformXmlFile2PdfFile(RequestData requestData);
 
 
 }

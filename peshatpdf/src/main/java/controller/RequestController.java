@@ -24,20 +24,22 @@ import java.nio.file.StandardCopyOption;
  *
  * @author chase
  */
-class Controller {
+class RequestController {
     
     private final Xml2Pdf xml2PDF;
     private final XmlFile_dao xmlDao;
     private final RequestData requestData;
+    private final AppData appData;
 
         
-    public Controller (RequestData requestData) {
+    public RequestController(RequestData requestData, AppData appData) {
         this.requestData = requestData;
+        this.appData = appData;
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
         // Factory fuer Conversion-Service (fop oder tex)
         FileHandler fileHandler = new FileHandler();
-        xml2PDF = getXml2PDF(requestData, fileHandler);
-        XmlGetRest rest = new XmlGetRest(fileHandler);
+        xml2PDF = getXml2PDF(requestData, appData, fileHandler);
+        XmlGetRest rest = new XmlGetRest(fileHandler, appData);
         xmlDao = new XmlFile_dao(rest, fileHandler);
 
 
@@ -52,7 +54,7 @@ class Controller {
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformXmlFile2PdfFile();
+            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
         }
 
         // 3. return erfolgsmeldung
@@ -60,14 +62,14 @@ class Controller {
     }
 
 
-    private Xml2Pdf getXml2PDF(RequestData requestData, FileHandler fileHandler){
+    private Xml2Pdf getXml2PDF(RequestData requestData, AppData appData, FileHandler fileHandler){
         switch(requestData.getPdfEngine()){
             case "tex":
-                return new Xml2Pdf_Tex(fileHandler, requestData);
+                return new Xml2Pdf_Tex(fileHandler, appData);
             case "fop":
-                return new Xml2Pdf_Fop(fileHandler, requestData);
+                return new Xml2Pdf_Fop(fileHandler, appData);
             default:
-                return new Xml2Pdf_Tex(fileHandler, requestData);
+                return new Xml2Pdf_Tex(fileHandler, appData);
         }
 
     }

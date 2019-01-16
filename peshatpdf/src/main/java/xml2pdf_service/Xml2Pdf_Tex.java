@@ -1,5 +1,6 @@
 package main.java.xml2pdf_service;
 
+import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
 import main.java.util.StreamPrinter;
@@ -17,35 +18,35 @@ import java.io.*;
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
 
-    public Xml2Pdf_Tex(FileHandler fileHandler, RequestData requestData){
+    public Xml2Pdf_Tex(FileHandler fileHandler, AppData appData){
 
-        super(fileHandler, requestData);
+        super(fileHandler, appData);
 
     }
 
-    public Boolean transformXmlFile2PdfFile() {
+    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
 
         Boolean b = false;
         try {
-            this.transformXml2Tex();
+            this.transformXml2Tex(requestData);
             b = fileHandler.fileExists(requestData.getTexFile());
         } catch(Exception e){
             e.printStackTrace();
         }
         if (b) {
-            this.transformTex2PDF();
+            this.transformTex2PDF(requestData);
             b = fileHandler.fileExists(requestData.getPdfFile());}
 
         return b;
     }
 
-    private void transformXml2Tex() throws IOException {
+    private void transformXml2Tex(RequestData requestData) throws IOException {
 
         // Standard Impl: Replaced by classloaderutil
         // ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        // InputStream stylesheet = classLoader.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileName());
+        // InputStream stylesheet = classLoader.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameTex());
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getResourcePath() + requestData.getXsltFileNameTex(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameTex(), this.getClass());
 
         try{
 
@@ -61,11 +62,11 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
     }
 
 
-    private void transformTex2PDF(){
+    private void transformTex2PDF(RequestData requestData){
 
-        ProcessBuilder pb = new ProcessBuilder(requestData.getPdfTexCommand(), "-interaction=nonstopmode",
+        ProcessBuilder pb = new ProcessBuilder(appData.getPdfTexCommand(), "-interaction=nonstopmode",
                 requestData.getTexFileName());
-        pb.directory(new File(requestData.getOutFilePath()));
+        pb.directory(new File(appData.getOutFilePath()));
 
         try {
             Process p = pb.start();
