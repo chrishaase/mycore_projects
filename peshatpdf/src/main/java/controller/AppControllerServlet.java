@@ -32,7 +32,7 @@ public class AppControllerServlet extends HttpServlet {
         String fopConfigFileName = getServletContext().getInitParameter("fopConfigFileName");
         AppData appData = new AppData (urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName);
 
-        // 1. Get Request-Paramer
+        // 1. Get Request-Parameter
         String mycoreId = request.getParameter("mycoreId");
         String pdfEngine = request.getParameter("pdfEngine");
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appData);
