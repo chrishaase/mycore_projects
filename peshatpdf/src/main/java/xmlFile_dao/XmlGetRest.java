@@ -41,7 +41,7 @@ public class XmlGetRest {
                     .asString();
             string = response.getBody();
         } catch (UnirestException e) {
-            
+
             e.printStackTrace();
         }
         
