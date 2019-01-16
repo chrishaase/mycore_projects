@@ -1,5 +1,6 @@
 package test.xml_rest_util;
 
+import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
 import main.java.util.XmlGetRest;
@@ -27,18 +28,20 @@ class RestGetXmlImplTest {
 
     private RequestData requestData;
     private XmlGetRest restService;
+    private AppData appData;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
 
         //requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
         requestData = mock(RequestData.class);
+        appData = mock(AppData.class);
         when(requestData.getMycoreId()).thenReturn(mycoreid);
-        when(requestData.getOutFilePath()).thenReturn(outfilepath);
-        when(requestData.getXmlFilePath()).thenReturn(xmlfilepath);
-        when(requestData.getUrlPath()).thenReturn(urlpath);
+        when(appData.getOutFilePath()).thenReturn(outfilepath);
+        when(appData.getXmlFilePath()).thenReturn(xmlfilepath);
+        when(appData.getUrlPath()).thenReturn(urlpath);
 
-        restService = new XmlGetRest(new FileHandler());
+        restService = new XmlGetRest(new FileHandler(), appData);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -49,7 +52,7 @@ class RestGetXmlImplTest {
     void testHttpGet() {
 
         // testet ob httpget das richtige XML Dok über rest laedt
-        String testmycore = restService.httpGet(requestData.getMycoreId(), requestData.getUrlPath());
+        String testmycore = restService.httpGet(requestData);
 
 
         XPathFactory xpathFactory = XPathFactory.newInstance();
