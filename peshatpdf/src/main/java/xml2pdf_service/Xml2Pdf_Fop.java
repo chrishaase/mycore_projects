@@ -33,14 +33,13 @@ import java.net.URL;
 public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
+
     public Xml2Pdf_Fop(FileHandler fileHandler, AppData appData){
 
         super(fileHandler, appData);
 
-        // export fop.xconf to ServerFileSystem
-       String resourceFilewithPath = appData.getResourcePath()+appData.getFopConfigFileName();
-       String serverFilewithPath = appData.getOutFilePath()+"/"+appData.getFopConfigFileName();
-       fileHandler.resourceFile2ServerFile(resourceFilewithPath, serverFilewithPath);
+
+
 
     }
 
@@ -82,7 +81,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
         try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File(appData.getOutFilePath() + "/" + appData.getFopConfigFileName()));
+            FopFactory fopFactory = FopFactory.newInstance(new File(appData.getFopConfigResource()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
             OutputStream out = new FileOutputStream(requestData.getPdfFile());

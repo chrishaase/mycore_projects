@@ -1,5 +1,9 @@
 package main.java.controller;
 
+import main.java.util.ClassLoaderUtil;
+
+import java.net.URL;
+
 public class AppData {
 
 
@@ -12,6 +16,9 @@ public class AppData {
     private final String xsltFileNameTex;
     private final String xsltFileNameFop;
     private final String fopConfigFileName;
+
+    // APP constructed - actual path to fopConfigFile
+    private final String fopConfigResource;
 
     AppData (String urlPath, String xmlFilePath, String outFilePath, String resourcePath,
              String xsltFileNameTex, String texCommand, String xsltFileNameFop, String fopConfigFileName){
@@ -26,6 +33,19 @@ public class AppData {
         this.xsltFileNameFop = xsltFileNameFop;
         this.resourcePath = resourcePath;
         this.fopConfigFileName = fopConfigFileName;
+
+        // get real path for fop-config
+        //actual path to fop-config file
+        String resourceFilewithPath = resourcePath+fopConfigFileName;
+        String string = "";
+        try {
+            URL url = ClassLoaderUtil.getResource(resourceFilewithPath, this.getClass());
+            string = url.toURI().toString();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        fopConfigResource = string.substring(5); // cut-off first five characters = "file:"
     }
 
     public String getOutFilePath() {
@@ -58,5 +78,9 @@ public class AppData {
 
     public String getFopConfigFileName() {
         return fopConfigFileName;
+    }
+
+    public String getFopConfigResource() {
+        return fopConfigResource;
     }
 }
