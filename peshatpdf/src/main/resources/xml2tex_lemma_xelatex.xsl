@@ -15,7 +15,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
     \begin{document}
     \raggedleft
 </xsl:text>
-    <xsl:text>Lemma: Vocalized Spelling:
+    <xsl:text>Vocalized Spelling:
         \\
     \bigskip</xsl:text>
     <xsl:text>&#xa;</xsl:text>

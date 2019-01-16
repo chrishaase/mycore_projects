@@ -27,7 +27,7 @@
     </context-param>
     <context-param>
         <param-name>xsltFileNameTex</param-name>
-        <param-value>xml2tex_bib_xelatex.xsl</param-value>
+        <param-value>xml2tex_lemma_xelatex.xsl</param-value>
     </context-param>
     <!--OTHER OPTION
     <context-param>
