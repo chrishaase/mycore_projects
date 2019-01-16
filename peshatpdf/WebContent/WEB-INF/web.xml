@@ -54,7 +54,7 @@
 
     <servlet>
         <servlet-name>CreatePDF</servlet-name>
-        <servlet-class>main.java.requestController.AppControllerServlet</servlet-class>
+        <servlet-class>main.java.controller.AppControllerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreatePDF</servlet-name>
