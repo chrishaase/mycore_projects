@@ -6,18 +6,12 @@
  */     
 package main.java.controller;
 
-import main.java.util.ClassLoaderUtil;
 import main.java.util.FileHandler;
 import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2Pdf_Fop;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
 import main.java.xmlFile_dao.XmlFile_dao;
-import main.java.util.XmlGetRest;
-import org.apache.commons.io.IOUtils;
-
-import java.io.*;
-import java.net.URL;
-import java.nio.file.StandardCopyOption;
+import main.java.xmlFile_dao.XmlGetRest;
 
 
 /**
@@ -29,14 +23,15 @@ class RequestController {
     private final Xml2Pdf xml2PDF;
     private final XmlFile_dao xmlDao;
     private final RequestData requestData;
-    private final AppData appData;
+
 
         
     public RequestController(RequestData requestData, AppData appData) {
+
         this.requestData = requestData;
-        this.appData = appData;
+
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
-        // Factory fuer Conversion-Service (fop oder tex)
+
         FileHandler fileHandler = new FileHandler();
         xml2PDF = getXml2PDF(requestData, appData, fileHandler);
         XmlGetRest rest = new XmlGetRest(fileHandler, appData);

@@ -3,7 +3,7 @@ package test.xml_rest_util;
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
-import main.java.util.XmlGetRest;
+import main.java.xmlFile_dao.XmlGetRest;
 import org.xml.sax.InputSource;
 
 import java.io.File;
