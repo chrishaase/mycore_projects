@@ -23,9 +23,11 @@ import java.io.InputStreamReader;
 
         @Override
         public void run() {
-            BufferedReader br = getBufferedReader(inputStream);
+
             String line = "";
-            try {
+
+            try (BufferedReader br = getBufferedReader(inputStream)){
+
                 while ((line = br.readLine()) != null) {
                     if (print) {
                         System.out.println(line);
