@@ -22,7 +22,8 @@ public class RequestData {
 
 
 
-    RequestData(String mycoreId, String pdfEngine, AppData appData){
+
+    public RequestData(String mycoreId, String pdfEngine, AppData appData){
 
         // request information
         this.mycoreId = mycoreId;
@@ -35,10 +36,11 @@ public class RequestData {
         texFileName = mycoreId + ".tex";
         foFileName = mycoreId + ".fo";
         xmlFile = new File(appData.getXmlFilePath(), xmlFileName);
-        xmlLinksFile = new File (appData.getOutFilePath(), xmlFileLinksName);
+        xmlLinksFile = new File (appData.getXmlFilePath(), xmlFileLinksName);
         texFile = new File(appData.getOutFilePath(), texFileName);
         pdfFile = new File(appData.getOutFilePath(), pdfFileName);
         foFile = new File(appData.getOutFilePath(), foFileName);
+
 
     }
 

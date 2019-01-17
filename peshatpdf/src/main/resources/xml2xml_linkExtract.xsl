@@ -4,14 +4,17 @@
                 xmlns:xlink="http://www.w3.org/1999/xlink">
     <xsl:output method="xml" version="1.0" indent="yes"/>
     <xsl:template match="/">
-        <root>
+        <xmlFileLinks>
 
             <xsl:for-each select="/mycoreobject/metadata/box.definition_id/definition_id/@xlink:href">
-                <link>
+                <xmlFileLink>
+                    <type>definition_id</type>
+                    <link>
                 <xsl:value-of select="."/>
-                </link>
+                    </link>
+                </xmlFileLink>
             </xsl:for-each>
 
-        </root>
+        </xmlFileLinks>
     </xsl:template>
 </xsl:stylesheet >

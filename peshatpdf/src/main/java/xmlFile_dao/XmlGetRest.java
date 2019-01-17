@@ -28,11 +28,11 @@ public class XmlGetRest {
         this.appData = appData;
     }
 
-    public String httpGet (RequestData requestData){
+    public String httpGet (String mycoreid){
        
 
         String string = "";
-        String urlstr = appData.getUrlPath() + requestData.getMycoreId();
+        String urlstr = appData.getUrlPath() + mycoreid;
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)
@@ -48,16 +48,16 @@ public class XmlGetRest {
         return string;
     }
 
-    public Boolean saveXmlStr2File(String mcrObjString, RequestData requestData) {
+    public Boolean saveXmlStr2File(String mcrObjString, File xmlFile) {
 
-            fileHandler.writeString2File(requestData.getXmlFile(), mcrObjString);
-            return fileHandler.fileExists(requestData.getXmlFile());
+            fileHandler.writeString2File(xmlFile, mcrObjString);
+            return fileHandler.fileExists(xmlFile);
         }
 
-    public Boolean httpGetAndSave2File(RequestData requestData) {
+    public Boolean httpGetAndSave2File(String mycoreid, File xmlFile) {
 
-        String mcrObjString = httpGet(requestData);
-        return saveXmlStr2File(mcrObjString, requestData);
+        String mcrObjString = httpGet(mycoreid);
+        return saveXmlStr2File(mcrObjString, xmlFile);
 
 
     }

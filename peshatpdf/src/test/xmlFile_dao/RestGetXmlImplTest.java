@@ -52,7 +52,7 @@ class RestGetXmlImplTest {
     void testHttpGet() {
 
         // testet ob httpget das richtige XML Dok über rest laedt
-        String testmycore = restService.httpGet(requestData);
+        String testmycore = restService.httpGet(requestData.getMycoreId());
 
 
         XPathFactory xpathFactory = XPathFactory.newInstance();

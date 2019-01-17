@@ -45,7 +45,7 @@ class RequestController {
         Boolean erfolg;
 
         //1. ensure xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFileInPath(requestData);
+        erfolg = xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getXmlFile());
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
