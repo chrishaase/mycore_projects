@@ -12,44 +12,166 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="PageMaster">
                 <fo:flow flow-name="xsl-region-body" line-height="1.7" font-family="Frank Ruehl CLM">
-                    <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                          <fo:block text-align="center" xml:lang="en" font-size="12pt" font-style="italic">
                         <xsl:text>Philosophic and Scientific Hebrew Terminology in Context (PESHAT)–
 A Thesaurus of Medieval Hebrew Philosophical Terminology</xsl:text>
+                         <xsl:text>&#x2028;</xsl:text>
+                              <xsl:text>&#x2028;</xsl:text>
+
+                    </fo:block>
+                    <fo:block text-align="center" xml:lang="en" font-size="12pt">
+                        <xsl:text>LEMMA</xsl:text>
                         <xsl:text>&#xa;</xsl:text>
                         <xsl:text>&#x2028;</xsl:text>
+                        <xsl:text>&#x2028;</xsl:text>
                     </fo:block>
-                    <fo:table>
-                        <fo:table-column column-width="20pt"/>
-                        <fo:table-column column-width="20pt"/>
-                    <fo:table-body>
-                    <fo:table-row>
-                    <fo:table-cell>
-                        <fo:block>
-                            <xsl:text>Test1</xsl:text>
-                        </fo:block>
-                    </fo:table-cell>
-                        <fo:table-cell>
-                            <fo:block>
-                                <xsl:text>Test2</xsl:text>
+                    <fo:table >
+                        <fo:table-column column-width="40mm"/>
+                        <fo:table-column column-width="120mm"/>
+                        <fo:table-body>
+
+
+                            <fo:table-row>
+                                <fo:table-cell border-bottom="solid 1pt">
+                                     <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                           <xsl:text>Vocalized Spelling</xsl:text>
+                                    </fo:block>
+                                 </fo:table-cell>
+                                <fo:table-cell border-bottom="solid 1pt">
+                                    <xsl:for-each select="mycoreobject/metadata/box.vocalized_spelling/vocalized_spelling">
+                                         <xsl:if test="@xml:lang='he'">
+                                            <fo:block text-align="right" xml:lang="he" font-size="12pt">
+                                              <xsl:value-of select = "." />
+                                            </fo:block>
+                                           </xsl:if>
+                                        <xsl:if test="@xml:lang='en'">
+                                             <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                 <xsl:value-of select = "." />
+                                             </fo:block>
+                                         </xsl:if>
+                                    </xsl:for-each>
+                                </fo:table-cell>
+                            </fo:table-row>
+                            <fo:table-row>
+                                <fo:table-cell>
+                                <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                    <xsl:text>Grammatical information</xsl:text>
+                                </fo:block>
+                                </fo:table-cell>
+
+                            </fo:table-row>
+                            <xsl:if test="//box.root">
+
+                                <fo:table-row>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                            <xsl:text>Root</xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <xsl:for-each select="mycoreobject/metadata/box.root/root">
+                                            <xsl:if test="@xml:lang='he'">
+                                                <fo:block text-align="right" xml:lang="he" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                            <xsl:if test="@xml:lang='en'">
+                                                <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                        </xsl:for-each>
+                                    </fo:table-cell>
+                                </fo:table-row>
+
+                            </xsl:if>
+
+                            <xsl:if test="//box.word_class_id">
+
+                            <fo:table-row>
+                                <fo:table-cell border-bottom="solid 1pt">
+                                    <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                        <xsl:text>Word class</xsl:text>
+                                    </fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell border-bottom="solid 1pt">
+                                    <xsl:for-each select="mycoreobject/metadata/box.word_class_id/word_class_id/@categid">
+                                        <xsl:if test="@xml:lang='he'">
+                                            <fo:block text-align="right" xml:lang="he" font-size="12pt">
+                                                <xsl:value-of select = "." />
+                                            </fo:block>
+                                        </xsl:if>
+                                        <xsl:if test="@xml:lang='en'">
+                                            <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                <xsl:value-of select = "." />
+                                            </fo:block>
+                                        </xsl:if>
+                                    </xsl:for-each>
+                                </fo:table-cell>
+                            </fo:table-row>
+
+                            </xsl:if>
+
+                            <xsl:if test="//box.root">
+
+                                <fo:table-row>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                            <xsl:text>Root</xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <xsl:for-each select="mycoreobject/metadata/box.root/root">
+                                            <xsl:if test="@xml:lang='he'">
+                                                <fo:block text-align="right" xml:lang="he" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                            <xsl:if test="@xml:lang='en'">
+                                                <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                        </xsl:for-each>
+                                    </fo:table-cell>
+                                </fo:table-row>
+
+                            </xsl:if>
+
+                            <xsl:if test="//box.root">
+
+                                <fo:table-row>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                            <xsl:text>Root</xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell border-bottom="solid 1pt">
+                                        <xsl:for-each select="mycoreobject/metadata/box.root/root">
+                                            <xsl:if test="@xml:lang='he'">
+                                                <fo:block text-align="right" xml:lang="he" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                            <xsl:if test="@xml:lang='en'">
+                                                <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                    <xsl:value-of select = "." />
+                                                </fo:block>
+                                            </xsl:if>
+                                        </xsl:for-each>
+                                    </fo:table-cell>
+                                </fo:table-row>
+
+                            </xsl:if>
+
+                            <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                <xsl:text>Index of definitions</xsl:text>
                             </fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-                    </fo:table-body>
+
+                        </fo:table-body>
                     </fo:table>
-                <xsl:for-each select="mycoreobject/metadata/box.vocalized_spelling/author">
-                    <xsl:if test="@xml:lang='he'">
-                        <fo:block text-align="right" xml:lang="he" font-size="12pt">
-                            <xsl:value-of select = "." />
-                            <xsl:text>&#xa;</xsl:text>
-                        </fo:block>
-                    </xsl:if>
-                    <xsl:if test="@xml:lang='en'">
-                        <fo:block text-align="right" xml:lang="en" font-size="12pt">
-                            <xsl:value-of select = "." />
-                            <xsl:text>&#xa;</xsl:text>
-                        </fo:block>
-                    </xsl:if>
-                </xsl:for-each>
+
+
                     <xsl:for-each select="mycoreobject/metadata/box.year/year">
                         <xsl:if test="@xml:lang='he'">
                             <fo:block text-align="right" xml:lang="he" font-size="12pt">
@@ -107,15 +229,6 @@ A Thesaurus of Medieval Hebrew Philosophical Terminology</xsl:text>
                             </fo:block>
                         </xsl:if>
                     </xsl:for-each>
-                    <fo:block text-align="right" xml:lang="en" font-size="12pt">
-                    <xsl:text>ModifyDate: </xsl:text>
-                    <xsl:value-of select = "//servdate[@type='modifydate']" />
-                    </fo:block>
-                    <fo:block text-align="right" xml:lang="en" font-size="12pt">
-                        <xsl:text>CreateDate: </xsl:text>
-                    <xsl:value-of select = "//servdate[@type='createdate']" />
-                     </fo:block>
-
 
                 </fo:flow>
             </fo:page-sequence>
