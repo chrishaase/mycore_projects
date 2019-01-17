@@ -19,15 +19,22 @@ A Thesaurus of Medieval Hebrew Philosophical Terminology</xsl:text>
                         <xsl:text>&#x2028;</xsl:text>
                     </fo:block>
                     <fo:table>
-                    <fo:table-header background-color="#F38222" border-width="1pt" border-style="solid">
+                        <fo:table-column column-width="20pt"/>
+                        <fo:table-column column-width="20pt"/>
+                    <fo:table-body>
                     <fo:table-row>
-                    <fo:table-cell number-rows-spanned="2">
+                    <fo:table-cell>
                         <fo:block>
-                            <xsl:text>Test</xsl:text>
+                            <xsl:text>Test1</xsl:text>
                         </fo:block>
                     </fo:table-cell>
+                        <fo:table-cell>
+                            <fo:block>
+                                <xsl:text>Test2</xsl:text>
+                            </fo:block>
+                        </fo:table-cell>
                     </fo:table-row>
-                    </fo:table-header>
+                    </fo:table-body>
                     </fo:table>
                 <xsl:for-each select="mycoreobject/metadata/box.vocalized_spelling/author">
                     <xsl:if test="@xml:lang='he'">
