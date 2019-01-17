@@ -87,6 +87,13 @@ the location of this file.
         <font kerning="yes" embed-url="/home/ahzch/fonts/unifont.ttf" embedding-mode="full">
                            <font-triplet name="Unifont" style="normal" weight="normal"/>
                        </font>
+        <font kerning="yes" embed-url="/home/ahzch/fonts/cardo.ttf" embedding-mode="full">
+                           <font-triplet name="Cardo" style="normal" weight="normal"/>
+                       </font>
+
+        <font kerning="yes" embed-url="/home/ahzch/fonts/arialuni.ttf" embedding-mode="full">
+                                   <font-triplet name="Arial Unicode MS" style="normal" weight="normal"/>
+                               </font>
 
         <!-- auto-detect fonts -->
         <auto-detect/>
