@@ -23,7 +23,7 @@
     <!-- xslt converter file - according to service -->
      <context-param>
         <param-name>xsltFileNameFop</param-name>
-        <param-value>xml2fo_bib.xsl</param-value>
+        <param-value>xml2fo_lemma.xsl</param-value>
     </context-param>
     <context-param>
         <param-name>xsltFileNameTex</param-name>

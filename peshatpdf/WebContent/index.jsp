@@ -23,8 +23,8 @@ and open the template in the editor.
             <br>
             <label for="pdfEngine">PDF-Engine       :</label>
             <select name="pdfEngine" id="pdfEngine">
-                <option value="tex">tex</option>
                 <option value="fop">fop</option>
+                <option value="tex">tex</option>
             </select>
             <br>
             <br>
