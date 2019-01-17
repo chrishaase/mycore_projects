@@ -35,7 +35,7 @@ class RequestController {
         FileHandler fileHandler = new FileHandler();
         xml2PDF = getXml2PDF(requestData, appData, fileHandler);
         XmlGetRest rest = new XmlGetRest(fileHandler, appData);
-        xmlDao = new XmlFile_dao(rest, fileHandler);
+        xmlDao = new XmlFile_dao(rest, fileHandler, appData);
 
 
     }

@@ -12,8 +12,10 @@ public class RequestData {
     private final String pdfFileName;
     private final String texFileName;
     private final String xmlFileName;
+    private final String xmlFileLinksName;
     private final String foFileName;
     private final File xmlFile;
+    private final File xmlLinksFile;
     private final File pdfFile;
     private final File texFile;
     private final File foFile;
@@ -29,9 +31,11 @@ public class RequestData {
         // generate file ids and files
         pdfFileName = mycoreId + ".pdf";
         xmlFileName = mycoreId + ".xml";
+        xmlFileLinksName = mycoreId + "_links" + ".xml";
         texFileName = mycoreId + ".tex";
         foFileName = mycoreId + ".fo";
         xmlFile = new File(appData.getXmlFilePath(), xmlFileName);
+        xmlLinksFile = new File (appData.getOutFilePath(), xmlFileLinksName);
         texFile = new File(appData.getOutFilePath(), texFileName);
         pdfFile = new File(appData.getOutFilePath(), pdfFileName);
         foFile = new File(appData.getOutFilePath(), foFileName);
@@ -80,8 +84,11 @@ public class RequestData {
         return foFile;
     }
 
+    public String getXmlFileLinksName() {
+        return xmlFileLinksName;
+    }
 
-
-
-
+    public File getXmlLinksFile() {
+        return xmlLinksFile;
+    }
 }

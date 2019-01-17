@@ -129,7 +129,6 @@
                                     <fo:table-cell border-bottom="solid 1pt">
                                         <xsl:for-each select="mycoreobject/metadata/box.word_class_id/word_class_id/@categid">
                                                 <fo:block text-align="right" xml:lang="en" font-size="12pt">
-                                                    <!-- TODO INSERT LOOKUP-LOGIC  -->
                                                     <xsl:variable name="categid" select="."/>
                                                      <xsl:value-of select = "$lookupWordClassId/mycoreclass/categories/category[@ID=$categid]/label[@xml:lang='en']/@text" />
                                                 </fo:block>
@@ -188,7 +187,7 @@
                             <fo:table-row>
                                 <fo:table-cell >
                                     <fo:block text-align="left" xml:lang="en" font-size="12pt" font-style="italic">
-                                        <xsl:text>Index of Definitions</xsl:text>
+                                        <xsl:text>Definitions</xsl:text>
                                     </fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell >
@@ -197,6 +196,10 @@
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
+
+
+
+
 
 
 
