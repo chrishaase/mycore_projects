@@ -16,6 +16,7 @@ public class BibliographicalSource {
     private String year;
     private String place;
     private String publisher;
+    private String translator;
 
     public String getAuthor() {
         return author;
@@ -63,5 +64,13 @@ public class BibliographicalSource {
 
     public void setMycoreid(String mycoreid) {
         this.mycoreid = mycoreid;
+    }
+
+    public String getTranslator() {
+        return translator;
+    }
+
+    public void setTranslator(String translator) {
+        this.translator = translator;
     }
 }

@@ -13,6 +13,7 @@ public class CreateMockObject {
         bibliographicalSource0149.setTitle("Das Buch Kuzari");
         bibliographicalSource0149.setPlace("Leipzig");
         bibliographicalSource0149.setPublisher("Verlag von Fr. Voigt's Buchhandlung");
+        bibliographicalSource0149.setTranslator("Translator2");
 
         BibliographicalSource bibliographicalSource0012 = new BibliographicalSource();
         bibliographicalSource0012.setMycoreid("peshat_bibliographical-sources_00000012");
@@ -21,17 +22,20 @@ public class CreateMockObject {
         bibliographicalSource0012.setTitle("ספר האמונה הרמה");
         bibliographicalSource0012.setPlace("Frankfurt am Main");
         bibliographicalSource0012.setPublisher("Typographische Anstalt");
+        bibliographicalSource0012.setTranslator("Translator1");
 
 
         Quotation quotation0028 = new Quotation();
         quotation0028.setMycoreid("peshat_quotations_00000028");
         quotation0028.setQuotationText_he("אבות המעלות והחסרונות שלש");
+        quotation0028.setPages("Passage 2-3");
         quotation0028.setBibliographicalSources(new ArrayList<BibliographicalSource>());
         quotation0028.getBibliographicalSources().add(bibliographicalSource0012);
 
         Quotation quotation5734 = new Quotation();
         quotation5734.setMycoreid("peshat_quotations_00005734");
         quotation5734.setQuotationText_he(" סברתך ומחשבתך כאשר תרחיק המחשבה והסברא העדר הרקות וההקשות השכליות מחייבות זה וכאשר תרחיק הסברא שיכול להתחלק הגוף אין תכלית וההקשה השכלית מחייבת זה וכאשר תרחיק המחשבה שהארץ כדורית ושהיא חלק אחד ממאה וששים ושש פעמים מעגול השמש וכל מה שיש במופתי התכונה ממה שתרחיקהו המחשבה");
+        quotation5734.setPages("Seite 2");
         quotation5734.setBibliographicalSources(new ArrayList<BibliographicalSource>());
         quotation5734.getBibliographicalSources().add(bibliographicalSource0149);
 
@@ -65,6 +69,7 @@ public class CreateMockObject {
         lemma1.getListDefinitions().add(definition0013);
         lemma1.setListBibliographicalSources(new ArrayList<BibliographicalSource>());
         lemma1.getListBibliographicalSources().add(bibliographicalSource0149);
+        lemma1.getListBibliographicalSources().add(bibliographicalSource0012);
 
         return lemma1;
     }

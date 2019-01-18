@@ -41,8 +41,8 @@
                     </fo:block>
 
                     <fo:table >
-                        <fo:table-column column-width="60mm"/>
-                        <fo:table-column column-width="100mm"/>
+                        <fo:table-column column-width="50mm"/>
+                        <fo:table-column column-width="110mm"/>
                         <fo:table-body>
 
                             <fo:table-row>
@@ -163,10 +163,115 @@
                                 </fo:table-cell>
                             </fo:table-row>
 
+
+                            <!-- definitionS -->
+                            <xsl:if test="lemma/definition">
+
+                                <fo:table-row>
+                                    <fo:table-cell >
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt" font-style="italic">
+                                            <xsl:text>Definitions:</xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell >
+                                        <fo:block  text-align="left" xml:lang="en" font-size="12pt">
+                                            <xsl:text></xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+
+
+                                <xsl:for-each select="lemma/definition">
+
+                                    <!-- definition-->
+
+                                <fo:table-row>
+                                    <fo:table-cell border-top="solid 1pt">
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt" >
+                                            <xsl:text>Definition</xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell border-top="solid 1pt">
+                                              <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                <xsl:value-of select = "definition_en"/>
+                                            </fo:block>
+                                        </fo:table-cell>
+                                </fo:table-row>
+
+                                    <!-- QuotationS -->
+
+                                    <xsl:if test="quotation">
+
+                                        <xsl:for-each select="quotation">
+
+                                    <!-- Quotation -->
+
+                                            <fo:table-row>
+                                                <fo:table-cell >
+                                                    <fo:block text-align="left" xml:lang="en" font-size="12pt" font-style="italic" white-space-collapse="false" white-space-treatment="preserve">
+                                                        <xsl:text>Quote</xsl:text>
+                                                    </fo:block>
+                                                </fo:table-cell>
+
+                                                   <fo:table-cell >
+                                                    <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                        <xsl:value-of select = "quotationText_he"/>
+                                                    </fo:block>
+                                                </fo:table-cell>
+                                         </fo:table-row>
+
+                                            <!-- BibliographicalSource -->
+
+                                            <fo:table-row>
+                                                <fo:table-cell border-bottom="solid 1pt"  >
+                                                <fo:block white-space-collapse="false" white-space-treatment="preserve">
+                                                    <xsl:text>Source</xsl:text>
+                                                </fo:block>
+                                                </fo:table-cell>
+
+                                                <fo:table-cell border-bottom="solid 1pt">
+                                                    <fo:block text-align="right" xml:lang="en" font-size="12pt">
+                                                        <xsl:value-of select = "bibliographicalSource/author"/>
+                                                        <xsl:text> : </xsl:text>
+                                                        <xsl:value-of select = "bibliographicalSource/title"/>
+                                                        <xsl:text> ( </xsl:text>
+                                                        <xsl:value-of select = "bibliographicalSource/translator"/>
+                                                        <xsl:text>) </xsl:text>
+                                                    </fo:block>
+                                                </fo:table-cell>
+                                            </fo:table-row>
+
+
+                                    <!--end quotationS -->
+                                        </xsl:for-each>
+                                    </xsl:if>
+
+                                    <!-- footer definitionS -->
+                                </xsl:for-each>
+                            </xsl:if>
+
+
+                            <fo:table-row>
+                                <fo:table-cell >
+                                    <fo:block>&#160;</fo:block>
+                                </fo:table-cell>
+                                <fo:table-cell >
+                                    <fo:block>&#160;</fo:block>
+                                </fo:table-cell>
+                            </fo:table-row>
+
+                        <!-- Bibliography -->
+
+
+
+
+                            <!-- sourceS-->
+                            <xsl:if test="lemma/bibliographicalSource">
+
                             <fo:table-row>
                                 <fo:table-cell >
                                     <fo:block text-align="left" xml:lang="en" font-size="12pt" font-style="italic">
-                                        <xsl:text>Definitions</xsl:text>
+                                        <xsl:text>Sources:</xsl:text>
                                     </fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell >
@@ -176,11 +281,31 @@
                                 </fo:table-cell>
                             </fo:table-row>
 
+                            <xsl:for-each select="lemma/bibliographicalSource">
+
+                                <!-- source-->
+                                <fo:table-row>
+
+                                    <fo:table-cell number-columns-spanned="2">
+                                        <fo:block text-align="left" xml:lang="en" font-size="12pt">
+                                            <xsl:value-of select = "author"/>
+                                            <xsl:text> (</xsl:text>
+                                            <xsl:value-of select = "year"/>
+                                            <xsl:text>) : </xsl:text>
+                                            <xsl:value-of select = "title"/>
+                                            <xsl:text> ( </xsl:text>
+                                            <xsl:value-of select = "place"/>
+                                            <xsl:text>: </xsl:text>
+                                            <xsl:value-of select = "publisher"/>
+                                            <xsl:text>) </xsl:text>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
 
 
-
-
-
+                            <!-- end sourceS -->
+                            </xsl:for-each>
+                            </xsl:if>
 
                         </fo:table-body>
                     </fo:table>
