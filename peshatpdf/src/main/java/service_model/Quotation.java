@@ -17,7 +17,7 @@ public class Quotation {
     private String pages;
 
     @XmlElement(name="source")
-    private List<Source> sources;
+    private List<Source> sources = null;
 
     public String getQuotation() {
         return quotation;

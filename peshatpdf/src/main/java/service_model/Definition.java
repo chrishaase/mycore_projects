@@ -14,7 +14,7 @@ public class Definition {
     private String mycoreid;
 
     @XmlElement(name="quotation")
-    private List<Quotation> quotations;
+    private List<Quotation> quotations = null;
 
     public List<Quotation> getQuotations() {
         return quotations;

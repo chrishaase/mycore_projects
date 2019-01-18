@@ -18,10 +18,10 @@ public class Lemma {
     private String verbStem;
 
     @XmlElement(name="definition")
-    private List<Definition> listDefinitions;
+    private List<Definition> listDefinitions = null;
 
     @XmlElement(name="source")
-    private List<Source> listSources;
+    private List<Source> listSources = null;
 
 
     public String getVocalizedSpelling() {
