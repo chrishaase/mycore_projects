@@ -1,4 +1,6 @@
-package main.java.data2Druckvorlage_service;
+package main.java.xml2pdf_service;
+
+import main.java.requestdata_model.Lemma;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;

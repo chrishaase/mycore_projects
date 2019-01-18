@@ -1,4 +1,4 @@
-package main.java.data2Druckvorlage_service;
+package main.java.xmlMyCoRe_dao;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

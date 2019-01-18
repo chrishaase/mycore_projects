@@ -1,5 +1,7 @@
 package main.java.controller;
 
+import main.java.controller.AppData;
+
 import java.io.File;
 
 public class RequestData {

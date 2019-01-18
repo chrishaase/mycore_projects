@@ -1,4 +1,4 @@
-package main.java.data2Druckvorlage_service;
+package main.java.requestdata_model;
 
 
 import javax.xml.bind.annotation.XmlAccessType;
