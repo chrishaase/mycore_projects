@@ -24,6 +24,12 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     }
 
+    public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
+        Boolean b = null;
+
+        return b;
+    }
+
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
 
         Boolean b = false;
@@ -51,7 +57,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         try{
 
             Source xslt        = new StreamSource(stylesheet);
-            Source             text        = new StreamSource(requestData.getXmlFile());
+            Source             text        = new StreamSource(requestData.getMcrXmlFile());
             TransformerFactory factory     = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer(xslt);
             transformer.transform(text, new StreamResult(requestData.getTexFile()));

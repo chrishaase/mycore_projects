@@ -28,6 +28,7 @@ class RequestController {
     private final Xml2Pdf xml2PDF;
     private final XmlFile_dao xmlDao;
     private final RequestData requestData;
+    private final FileHandler fileHandler;
 
 
         
@@ -37,7 +38,7 @@ class RequestController {
 
         // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
 
-        FileHandler fileHandler = new FileHandler();
+        fileHandler = new FileHandler();
         xml2PDF = getXml2PDF(requestData, appData, fileHandler);
         XmlGetRest rest = new XmlGetRest(fileHandler, appData);
         xmlDao = new XmlFile_dao(rest, fileHandler, appData);
@@ -52,15 +53,17 @@ class RequestController {
         //0.get Helper Object
         Lemma lemma1 = CreateMockObject.createMockLemma();
 
-        //1. transform Helper-Object to xml-Vorlage
+        //1. transform Helper-Object to xml-DruckVorlage
 
-        File xmlOutputFile = new File("/mycore/druckvorlage.xml");
-
+        File xmlOutputFile = requestData.getDruckvorlageXmlFile();
         Data2XmlDruckvorlage.marshall(lemma1, xmlOutputFile);
+
+        // check that file exists
+        erfolg = fileHandler.fileExists(xmlOutputFile);
 
         //2. transform Vorlage 2 pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformMcrXmlFile2PdfFile(requestData);
+            erfolg= xml2PDF.transformDruckvorlageXmlFile2PdfFile(requestData);
         }
 
         // 3. return erfolgsmeldung
@@ -75,7 +78,7 @@ class RequestController {
         Boolean erfolg = null;
 
         //1. ensure main xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getXmlFile());
+        erfolg = xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getMcrXmlFile());
 
         // TODO ensure linked files are looaded to xmlfilepath
        

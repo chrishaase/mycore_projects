@@ -28,8 +28,9 @@ public class AppControllerServlet extends HttpServlet {
         String xsltFileNameTex = getServletContext().getInitParameter("xsltFileNameTex");
         String texCommand = getServletContext().getInitParameter("texCommand");
         String xsltFileNameFop = getServletContext().getInitParameter("xsltFileNameFop");
+        String xsltDruckvorlageXML2Fo = getServletContext().getInitParameter("xsltDruckvorlageXml2Fo");
         String fopConfigFileName = getServletContext().getInitParameter("fopConfigFileName");
-        AppData appData = new AppData (urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName);
+        AppData appData = new AppData (urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName, xsltDruckvorlageXML2Fo);
 
         // 1. Get Request-Parameter
         String mycoreId = request.getParameter("mycoreId");
@@ -40,7 +41,8 @@ public class AppControllerServlet extends HttpServlet {
         RequestController requestController = new RequestController(requestData, appData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
-        Boolean erfolg = requestController.createPDFFromSingleLemmaID();
+        //Boolean erfolg = requestController.createPDFFromSingleLemmaID();
+        Boolean erfolg = requestController.createPDFFromHelperObject();
        if (erfolg) {
         sendPDFResponse(response, requestData);
        } else {

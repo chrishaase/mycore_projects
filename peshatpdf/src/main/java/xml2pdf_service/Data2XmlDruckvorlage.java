@@ -10,6 +10,7 @@ import java.io.File;
 public class Data2XmlDruckvorlage {
 
     /*
+    Marshalls vorlage-modell to xml-Druckvorlage
     For example of creating Objekt-Geflecht - see Tests
      */
 

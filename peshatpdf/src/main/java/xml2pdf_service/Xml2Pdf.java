@@ -17,5 +17,7 @@ public abstract class Xml2Pdf {
 
    public abstract Boolean transformMcrXmlFile2PdfFile(RequestData requestData);
 
+   public abstract Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData);
+
 
 }

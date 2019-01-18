@@ -33,7 +33,7 @@ public class CreateMockObject {
         quotation5734.setMycoreid("peshat_quotations_00005734");
         quotation5734.setQuotationText_he(" סברתך ומחשבתך כאשר תרחיק המחשבה והסברא העדר הרקות וההקשות השכליות מחייבות זה וכאשר תרחיק הסברא שיכול להתחלק הגוף אין תכלית וההקשה השכלית מחייבת זה וכאשר תרחיק המחשבה שהארץ כדורית ושהיא חלק אחד ממאה וששים ושש פעמים מעגול השמש וכל מה שיש במופתי התכונה ממה שתרחיקהו המחשבה");
         quotation5734.setBibliographicalSources(new ArrayList<BibliographicalSource>());
-        quotation5734.getBibliographicalSources().add(bibliographicalSource0012);
+        quotation5734.getBibliographicalSources().add(bibliographicalSource0149);
 
         Definition definition4668 = new Definition();
         definition4668.setMycoreid("peshat_definitions_00004668");

@@ -55,14 +55,14 @@ public class XmlFile_daoTest {
     @Test
     void getLinkedFilesinPlacTest(){
 
-        xmlFile_dao.getLinkedFilesinPath(requestData.getXmlLinksFile(), requestData.getXmlFile());
+        xmlFile_dao.getLinkedFilesinPath(requestData.getMcrXmlLinksFile(), requestData.getMcrXmlFile());
 
 
     }
 
     void unmarshallLinkedfiled(){
 
-        xmlFile_dao.unmarshalXmlFileLinkFiles(requestData.getXmlLinksFile());
+        xmlFile_dao.unmarshalXmlFileLinkFiles(requestData.getMcrXmlLinksFile());
     }
 
 }

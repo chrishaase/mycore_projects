@@ -33,10 +33,23 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
     public Xml2Pdf_Fop(FileHandler fileHandler, AppData appData){
 
         super(fileHandler, appData);
+    }
 
+    public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
+        Boolean b = null;
 
+        transformDruckvorlageXml2FoFile(requestData);
+        b = fileHandler.fileExists(requestData.getFoFile());
 
+        if (b) {
+            try {
+                this.transformFoFile2PdfFile(requestData);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+            b = fileHandler.fileExists(requestData.getPdfFile());}
 
+        return b;
     }
 
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
@@ -56,13 +69,29 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
+    private void transformDruckvorlageXml2FoFile(RequestData requestData){
+
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltDruckvorlageXml2Fo(), this.getClass());
+
+        try{
+            Source xslt        = new StreamSource(stylesheet);
+            Source             text        = new StreamSource(requestData.getDruckvorlageXmlFile());
+            TransformerFactory factory     = TransformerFactory.newInstance();
+            Transformer transformer = factory.newTransformer(xslt);
+            transformer.transform(text, new StreamResult(requestData.getFoFile()));
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void transformMcrXml2FoFile(RequestData requestData){
 
         InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameFop(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
-            Source             text        = new StreamSource(requestData.getXmlFile());
+            Source             text        = new StreamSource(requestData.getMcrXmlFile());
             TransformerFactory factory     = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer(xslt);
             transformer.transform(text, new StreamResult(requestData.getFoFile()));

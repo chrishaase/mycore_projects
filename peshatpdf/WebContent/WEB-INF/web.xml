@@ -20,15 +20,23 @@
        <param-name>resourcePath</param-name>
        <param-value>main/resources/</param-value>
    </context-param>
-    <!-- xslt converter file - according to service -->
-     <context-param>
+    <!-- xslt converter files im resource path - according to service method -->
+    <!-- needed for creation of pdf from druckvorlage via apache-fop -->
+    <context-param>
+        <param-name>xsltDruckvorlageXml2Fo</param-name>
+        <param-value>druckvorlageXml2Fo.xsl</param-value>
+    </context-param>
+    <!-- needed for creation of pdf from xml-mcr ID via apache-fop -->
+    <context-param>
         <param-name>xsltFileNameFop</param-name>
         <param-value>mcrXml2Fo_lemma.xsl</param-value>
     </context-param>
+    <!-- needed for creation of pdf from xml-mcr ID via xelatex -->
     <context-param>
         <param-name>xsltFileNameTex</param-name>
         <param-value>mcrXml2Tex_lemma_xelatex.xsl</param-value>
     </context-param>
+    <!-- needed for creation of pdf from xml-mcr ID via pdflatex -->
     <!--OTHER OPTION
     <context-param>
         <param-name>xsltFileName</param-name>

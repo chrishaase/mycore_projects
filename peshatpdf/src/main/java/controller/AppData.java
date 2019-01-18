@@ -15,13 +15,14 @@ public class AppData {
     private final String pdfTexCommand;
     private final String xsltFileNameTex;
     private final String xsltFileNameFop;
+    private final String xsltDruckvorlageXml2Fo;
     private final String fopConfigFileName;
 
     // APP constructed - actual path to fopConfigFile
     private final String fopConfigResource;
 
     AppData (String urlPath, String xmlFilePath, String outFilePath, String resourcePath,
-             String xsltFileNameTex, String texCommand, String xsltFileNameFop, String fopConfigFileName){
+             String xsltFileNameTex, String texCommand, String xsltFileNameFop, String fopConfigFileName, String xsltDruckvorlageXml2Fo){
 
 
         // Informationen aus web.xml
@@ -33,6 +34,7 @@ public class AppData {
         this.xsltFileNameFop = xsltFileNameFop;
         this.resourcePath = resourcePath;
         this.fopConfigFileName = fopConfigFileName;
+        this.xsltDruckvorlageXml2Fo = xsltDruckvorlageXml2Fo;
 
         // get real path for fop-config
         //actual path to fop-config file
@@ -82,5 +84,9 @@ public class AppData {
 
     public String getFopConfigResource() {
         return fopConfigResource;
+    }
+
+    public String getXsltDruckvorlageXml2Fo() {
+        return xsltDruckvorlageXml2Fo;
     }
 }
