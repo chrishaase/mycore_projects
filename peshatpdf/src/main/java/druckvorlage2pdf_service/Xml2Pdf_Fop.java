@@ -1,4 +1,4 @@
-package main.java.xmlDruckauftrag2pdf_service;
+package main.java.druckvorlage2pdf_service;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;

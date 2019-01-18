@@ -3,10 +3,10 @@ package test.xmlFile_dao;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
-import main.java.xml2XmlDruckauftrag_service.Definition;
-import main.java.xml2XmlDruckauftrag_service.Lemma;
-import main.java.xml2XmlDruckauftrag_service.Quotation;
-import main.java.xml2XmlDruckauftrag_service.Source;
+import main.java.data2Druckvorlage_service.Definition;
+import main.java.data2Druckvorlage_service.Lemma;
+import main.java.data2Druckvorlage_service.Quotation;
+import main.java.data2Druckvorlage_service.Source;
 import main.java.util.FileHandler;
 import main.java.xmlMyCoRe_dao.XmlGetRest;
 

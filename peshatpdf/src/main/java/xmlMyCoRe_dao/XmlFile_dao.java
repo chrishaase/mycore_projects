@@ -1,10 +1,10 @@
 package main.java.xmlMyCoRe_dao;
 
 import main.java.controller.AppData;
-import main.java.xml2XmlDruckauftrag_service.XmlFileLinks;
+import main.java.data2Druckvorlage_service.XmlFileLinks;
 import main.java.util.ClassLoaderUtil;
 import main.java.util.FileHandler;
-import main.java.xml2XmlDruckauftrag_service.XmlFileLink;
+import main.java.data2Druckvorlage_service.XmlFileLink;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

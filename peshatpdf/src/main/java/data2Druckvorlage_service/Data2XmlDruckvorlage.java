@@ -1,12 +1,11 @@
-package main.java.xml2XmlDruckauftrag_service;
+package main.java.data2Druckvorlage_service;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.File;
-import main.java.xml2XmlDruckauftrag_service.Lemma;
 
 
-public class MarshallObjects2XML {
+public class Data2XmlDruckvorlage {
 
     /*
     For example of creating Objekt-Geflecht - see Tests
