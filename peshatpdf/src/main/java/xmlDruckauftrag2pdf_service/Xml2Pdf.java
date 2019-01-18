@@ -1,10 +1,8 @@
-package main.java.xml2pdf_service;
+package main.java.xmlDruckauftrag2pdf_service;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
-
-import java.io.File;
 
 public abstract class Xml2Pdf {
 

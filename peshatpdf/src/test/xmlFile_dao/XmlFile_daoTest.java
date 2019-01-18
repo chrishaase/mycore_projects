@@ -3,8 +3,8 @@ package test.xmlFile_dao;
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
-import main.java.xmlFile_dao.XmlFile_dao;
-import main.java.xmlFile_dao.XmlGetRest;
+import main.java.xmlMyCoRe_dao.XmlFile_dao;
+import main.java.xmlMyCoRe_dao.XmlGetRest;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

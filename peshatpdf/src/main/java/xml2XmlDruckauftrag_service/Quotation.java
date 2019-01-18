@@ -1,4 +1,4 @@
-package main.java.service_model;
+package main.java.xml2XmlDruckauftrag_service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

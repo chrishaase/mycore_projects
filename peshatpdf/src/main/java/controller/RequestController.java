@@ -7,11 +7,11 @@
 package main.java.controller;
 
 import main.java.util.FileHandler;
-import main.java.xml2pdf_service.Xml2Pdf;
-import main.java.xml2pdf_service.Xml2Pdf_Fop;
-import main.java.xml2pdf_service.Xml2Pdf_Tex;
-import main.java.xmlFile_dao.XmlFile_dao;
-import main.java.xmlFile_dao.XmlGetRest;
+import main.java.xmlDruckauftrag2pdf_service.Xml2Pdf;
+import main.java.xmlDruckauftrag2pdf_service.Xml2Pdf_Fop;
+import main.java.xmlDruckauftrag2pdf_service.Xml2Pdf_Tex;
+import main.java.xmlMyCoRe_dao.XmlFile_dao;
+import main.java.xmlMyCoRe_dao.XmlGetRest;
 
 
 /**

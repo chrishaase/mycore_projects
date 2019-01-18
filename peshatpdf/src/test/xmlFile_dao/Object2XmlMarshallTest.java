@@ -3,23 +3,19 @@ package test.xmlFile_dao;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
-import main.java.service_model.Definition;
-import main.java.service_model.Lemma;
-import main.java.service_model.Quotation;
-import main.java.service_model.Source;
+import main.java.xml2XmlDruckauftrag_service.Definition;
+import main.java.xml2XmlDruckauftrag_service.Lemma;
+import main.java.xml2XmlDruckauftrag_service.Quotation;
+import main.java.xml2XmlDruckauftrag_service.Source;
 import main.java.util.FileHandler;
-import main.java.xmlFile_dao.XmlGetRest;
-import org.xml.sax.InputSource;
+import main.java.xmlMyCoRe_dao.XmlGetRest;
 
 import java.io.File;
-import java.io.StringReader;
 import java.util.ArrayList;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
-import javax.xml.xpath.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

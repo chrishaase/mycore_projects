@@ -1,4 +1,4 @@
-package main.java.xml2pdf_service;
+package main.java.xmlDruckauftrag2pdf_service;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
@@ -8,7 +8,6 @@ import main.java.util.FileHandler;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.xml.transform.Result;
@@ -22,12 +21,9 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.fop.apps.FOUserAgent;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
-import org.apache.fop.apps.FormattingResults;
 import org.apache.fop.apps.MimeConstants;
-import org.apache.fop.apps.PageSequenceResults;
 
 import java.io.*;
-import java.net.URL;
 
 
 public class Xml2Pdf_Fop extends Xml2Pdf {

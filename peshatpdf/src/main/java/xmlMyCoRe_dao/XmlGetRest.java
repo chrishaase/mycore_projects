@@ -1,12 +1,10 @@
-package main.java.xmlFile_dao;
+package main.java.xmlMyCoRe_dao;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import main.java.controller.AppData;
-import main.java.controller.RequestData;
 import main.java.util.FileHandler;
-import sun.misc.Request;
 
 import java.io.File;
 
