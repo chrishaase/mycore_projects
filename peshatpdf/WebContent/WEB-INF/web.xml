@@ -23,16 +23,16 @@
     <!-- xslt converter file - according to service -->
      <context-param>
         <param-name>xsltFileNameFop</param-name>
-        <param-value>xml2fo_lemma.xsl</param-value>
+        <param-value>mcrXml2Fo_lemma.xsl</param-value>
     </context-param>
     <context-param>
         <param-name>xsltFileNameTex</param-name>
-        <param-value>xml2tex_lemma_xelatex.xsl</param-value>
+        <param-value>mcrXml2Tex_lemma_xelatex.xsl</param-value>
     </context-param>
     <!--OTHER OPTION
     <context-param>
         <param-name>xsltFileName</param-name>
-        <param-value>xml2tex_bib_pdflatex.xsl</param-value>
+        <param-value>mcrXml2Tex_bib_pdflatex.xsl</param-value>
     </context-param>
     -->
     <!-- texCommand: Commandline command for executing a tex engine - such as pdflatex or xelatex -->
