@@ -13,6 +13,8 @@ public class Definition {
 
     private String mycoreid;
 
+    private String definition_en;
+
     @XmlElement(name="quotation")
     private List<Quotation> quotations = null;
 
@@ -30,5 +32,13 @@ public class Definition {
 
     public void setMycoreid(String mycoreid) {
         this.mycoreid = mycoreid;
+    }
+
+    public String getDefinition_en() {
+        return definition_en;
+    }
+
+    public void setDefinition_en(String definition_en) {
+        this.definition_en = definition_en;
     }
 }

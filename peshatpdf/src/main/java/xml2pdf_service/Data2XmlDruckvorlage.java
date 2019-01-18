@@ -13,7 +13,7 @@ public class Data2XmlDruckvorlage {
     For example of creating Objekt-Geflecht - see Tests
      */
 
-    public void marshall(Lemma lemma1, File xmlOutput) {
+    public static void marshall(Lemma lemma1, File xmlOutput) {
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Lemma.class);

@@ -39,9 +39,9 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
-    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
+    public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
 
-        transformXml2FoFile(requestData);
+        transformMcrXml2FoFile(requestData);
         Boolean b = fileHandler.fileExists(requestData.getFoFile());
 
         if (b) {
@@ -56,7 +56,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     }
 
-    private void transformXml2FoFile(RequestData requestData){
+    private void transformMcrXml2FoFile(RequestData requestData){
 
         InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameFop(), this.getClass());
 

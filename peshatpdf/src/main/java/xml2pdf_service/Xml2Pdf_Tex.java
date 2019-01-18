@@ -24,7 +24,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     }
 
-    public Boolean transformXmlFile2PdfFile(RequestData requestData) {
+    public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
 
         Boolean b = false;
         try {

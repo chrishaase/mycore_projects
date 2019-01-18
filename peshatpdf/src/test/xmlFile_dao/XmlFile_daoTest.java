@@ -42,7 +42,7 @@ public class XmlFile_daoTest {
         when(appData.getResourcePath()).thenReturn(resourcePath);
         when(appData.getFopConfigResource()).thenReturn("fop.xconf");
         when(appData.getPdfTexCommand()).thenReturn("xelatex");
-        when(appData.getXsltFileNameFop()).thenReturn("xml2fo_lemma.xsl");
+        when(appData.getXsltFileNameFop()).thenReturn("mcrXml2Fo_lemma.xsl");
         when(appData.getXsltFileNameTex()).thenReturn("xml2tex_lemma_xelatex");
 
 

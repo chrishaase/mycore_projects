@@ -75,11 +75,11 @@ public class XmlFile_dao {
     private void transformXml2XmlLinkFile(File xmlLinksFile, File xmlFile){
 
         /* Die Methode extrahiert die DefinitionsLinks aus dem xml-document des requests
-        mithilfe  des XSL-Stylesheets xml2xml_linkExtract.xsl (der in resources zu finden ist)
+        mithilfe  des XSL-Stylesheets mcrXml2Xml_linkExtract.xsl (der in resources zu finden ist)
         und speichert sie in dem file xmlLinksFile.xml im outpath (spezifiziert in Web.xml)
         */
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream("main/resources/xml2xml_linkExtract.xsl", this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream("main/resources/mcrXml2Xml_linkExtract.xsl", this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);

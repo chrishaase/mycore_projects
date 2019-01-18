@@ -15,7 +15,7 @@ public abstract class Xml2Pdf {
       this.appData =  appData;
    }
 
-   public abstract Boolean transformXmlFile2PdfFile(RequestData requestData);
+   public abstract Boolean transformMcrXmlFile2PdfFile(RequestData requestData);
 
 
 }

@@ -6,25 +6,25 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-@XmlRootElement(name="quotation")
+@XmlRootElement(name="quotationText_he")
 @XmlAccessorType(XmlAccessType.FIELD)
 
 public class Quotation {
 
     private String mycoreid;
 
-    private String quotation;
+    private String quotationText_he;
     private String pages;
 
-    @XmlElement(name="source")
-    private List<Source> sources = null;
+    @XmlElement(name="bibliographicalSource")
+    private List<BibliographicalSource> bibliographicalSources = null;
 
-    public String getQuotation() {
-        return quotation;
+    public String getQuotationText_he() {
+        return quotationText_he;
     }
 
-    public void setQuotation(String quotation) {
-        this.quotation = quotation;
+    public void setQuotationText_he(String quotationText_he) {
+        this.quotationText_he = quotationText_he;
     }
 
     public String getPages() {
@@ -35,12 +35,12 @@ public class Quotation {
         this.pages = pages;
     }
 
-    public List<Source> getSources() {
-        return sources;
+    public List<BibliographicalSource> getBibliographicalSources() {
+        return bibliographicalSources;
     }
 
-    public void setSources(List<Source> sources) {
-        this.sources = sources;
+    public void setBibliographicalSources(List<BibliographicalSource> bibliographicalSources) {
+        this.bibliographicalSources = bibliographicalSources;
     }
 
     public String getMycoreid() {

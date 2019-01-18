@@ -20,8 +20,8 @@ public class Lemma {
     @XmlElement(name="definition")
     private List<Definition> listDefinitions = null;
 
-    @XmlElement(name="source")
-    private List<Source> listSources = null;
+    @XmlElement(name="bibliographicalSource")
+    private List<BibliographicalSource> listBibliographicalSources = null;
 
 
     public String getVocalizedSpelling() {
@@ -72,12 +72,12 @@ public class Lemma {
         this.listDefinitions = listDefinitions;
     }
 
-    public List<Source> getListSources() {
-        return listSources;
+    public List<BibliographicalSource> getListBibliographicalSources() {
+        return listBibliographicalSources;
     }
 
-    public void setListSources(List<Source> listSources) {
-        this.listSources = listSources;
+    public void setListBibliographicalSources(List<BibliographicalSource> listBibliographicalSources) {
+        this.listBibliographicalSources = listBibliographicalSources;
     }
 
     public String getMycoreid() {

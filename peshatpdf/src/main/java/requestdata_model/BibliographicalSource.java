@@ -5,9 +5,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="source")
+@XmlRootElement(name="bibliographicalSource")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Source {
+public class BibliographicalSource {
 
     private String mycoreid;
 

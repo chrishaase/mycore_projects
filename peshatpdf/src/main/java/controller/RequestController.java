@@ -6,12 +6,17 @@
  */     
 package main.java.controller;
 
+import main.java.requestdata_model.CreateMockObject;
+import main.java.requestdata_model.Lemma;
 import main.java.util.FileHandler;
+import main.java.xml2pdf_service.Data2XmlDruckvorlage;
 import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2Pdf_Fop;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
 import main.java.xmlMyCoRe_dao.XmlFile_dao;
 import main.java.xmlMyCoRe_dao.XmlGetRest;
+
+import java.io.File;
 
 
 /**
@@ -39,17 +44,44 @@ class RequestController {
 
 
     }
+
+    Boolean createPDFFromHelperObject(){
+
+        Boolean erfolg = null;
+
+        //0.get Helper Object
+        Lemma lemma1 = CreateMockObject.createMockLemma();
+
+        //1. transform Helper-Object to xml-Vorlage
+
+        File xmlOutputFile = new File("/mycore/druckvorlage.xml");
+
+        Data2XmlDruckvorlage.marshall(lemma1, xmlOutputFile);
+
+        //2. transform Vorlage 2 pdf and ensure pdf is created in outfilepath
+        if (erfolg) {
+            erfolg= xml2PDF.transformMcrXmlFile2PdfFile(requestData);
+        }
+
+        // 3. return erfolgsmeldung
+        return erfolg;
+
+    }
+
+
     
-    Boolean createPDF(){
+    Boolean createPDFFromSingleLemmaID(){
 
-        Boolean erfolg;
+        Boolean erfolg = null;
 
-        //1. ensure xml.file is loaded to xmlfilepath
+        //1. ensure main xml.file is loaded to xmlfilepath
         erfolg = xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getXmlFile());
+
+        // TODO ensure linked files are looaded to xmlfilepath
        
         //2. transform to pdf and ensure pdf is created in outfilepath
         if (erfolg) {
-            erfolg= xml2PDF.transformXmlFile2PdfFile(requestData);
+            erfolg= xml2PDF.transformMcrXmlFile2PdfFile(requestData);
         }
 
         // 3. return erfolgsmeldung

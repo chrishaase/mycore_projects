@@ -40,7 +40,7 @@ public class AppControllerServlet extends HttpServlet {
         RequestController requestController = new RequestController(requestData, appData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
-        Boolean erfolg = requestController.createPDF();
+        Boolean erfolg = requestController.createPDFFromSingleLemmaID();
        if (erfolg) {
         sendPDFResponse(response, requestData);
        } else {
