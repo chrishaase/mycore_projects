@@ -16,16 +16,14 @@ public class Data2XmlDruckvorlage {
     public static void marshall(Lemma lemma, File xmlOutput) {
 
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(MCRAbstractObject.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(Lemma.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            //Marshal the employees list in console
-            jaxbMarshaller.marshal(lemma, System.out);
-
             //Marshal the employees list in file
             jaxbMarshaller.marshal(lemma, xmlOutput);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

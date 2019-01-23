@@ -1,4 +1,4 @@
-package test.xmlFile_dao;
+package test.mcrData2Druckvorlage;
 
 
 import main.java.controller.AppData;
@@ -14,10 +14,11 @@ import java.util.HashSet;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class Object2XmlMarshallTest {
+public class McrData2xmlDruckvorlageTest {
 
     private final String urlpath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
     private final String xmlfilepath = "/mycore";
@@ -31,6 +32,7 @@ public class Object2XmlMarshallTest {
     private RequestData requestData;
     private XmlGetRest restService;
     private AppData appData;
+    private FileHandler fileHandler;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -44,6 +46,7 @@ public class Object2XmlMarshallTest {
         when(appData.getUrlPath()).thenReturn(urlpath);
 
         restService = new XmlGetRest(new FileHandler(), appData);
+        fileHandler = new FileHandler();
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -54,27 +57,21 @@ public class Object2XmlMarshallTest {
     void testObjekts2Xml() {
 
 
-
+        // create mock-object and set outputfile name
         Lemma lemma1 = CreateMockObject.createMockLemma();
+        File xmlOutPut = new File("/mycore/druckvorlage.xml");
 
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Lemma.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        // ensure last out file is deleted
+        Boolean b = fileHandler.fileDelete(xmlOutPut);
 
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        //create new out file
+        Data2XmlDruckvorlage.marshall(lemma1, xmlOutPut);
 
-            //Marshal  in console
-            jaxbMarshaller.marshal(lemma1, System.out);
+        // validate that it exists
+        assertTrue(fileHandler.fileExists(xmlOutPut));
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
     }
-
-
-
-
 
 }

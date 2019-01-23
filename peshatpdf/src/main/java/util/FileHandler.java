@@ -27,6 +27,18 @@ public class FileHandler {
         return bFile;
     }
 
+    public Boolean fileDelete(File file){
+        boolean bFile = false;
+        try {
+            bFile = file.delete();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return bFile;
+
+    }
+
+
     public void writeString2File(File file, String mcrObjString){
 
         try (FileWriter writer = new FileWriter(file, false)){
