@@ -1,4 +1,4 @@
-package main.java.requestdata_model;
+package main.java.requestdata_entity;
 
 import java.util.ArrayList;
 

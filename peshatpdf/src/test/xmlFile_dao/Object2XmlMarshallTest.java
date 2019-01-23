@@ -3,10 +3,10 @@ package test.xmlFile_dao;
 
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
-import main.java.requestdata_model.Definition;
-import main.java.requestdata_model.Lemma;
-import main.java.requestdata_model.Quotation;
-import main.java.requestdata_model.BibliographicalSource;
+import main.java.requestdata_entity.Definition;
+import main.java.requestdata_entity.Lemma;
+import main.java.requestdata_entity.Quotation;
+import main.java.requestdata_entity.BibliographicalSource;
 import main.java.util.FileHandler;
 import main.java.xmlMyCoRe_dao.XmlGetRest;
 

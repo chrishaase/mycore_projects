@@ -6,8 +6,8 @@
  */     
 package main.java.controller;
 
-import main.java.requestdata_model.CreateMockObject;
-import main.java.requestdata_model.Lemma;
+import main.java.requestdata_entity.CreateMockObject;
+import main.java.requestdata_entity.Lemma;
 import main.java.util.FileHandler;
 import main.java.xml2pdf_service.Data2XmlDruckvorlage;
 import main.java.xml2pdf_service.Xml2Pdf;
