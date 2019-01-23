@@ -9,9 +9,9 @@ import java.util.List;
 @XmlRootElement(name="quotationText_he")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Quotation {
+public class Quotation extends MCRAbstractObject{
 
-    private String mycoreid;
+
 
     private String quotationText_he;
     private String pages;
@@ -43,11 +43,5 @@ public class Quotation {
         this.bibliographicalSources = bibliographicalSources;
     }
 
-    public String getMycoreid() {
-        return mycoreid;
-    }
 
-    public void setMycoreid(String mycoreid) {
-        this.mycoreid = mycoreid;
-    }
 }

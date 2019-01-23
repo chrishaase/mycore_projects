@@ -8,14 +8,15 @@ import java.util.List;
 
 @XmlRootElement(name="lemma")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Lemma {
+public class Lemma extends MCRAbstractObject{
 
-    private String mycoreid;
+
     private String vocalizedSpelling;
     private String root;
     private String wordClass;
     private String gender;
     private String verbStem;
+
 
     @XmlElement(name="definition")
     private List<Definition> listDefinitions = null;
@@ -80,11 +81,5 @@ public class Lemma {
         this.listBibliographicalSources = listBibliographicalSources;
     }
 
-    public String getMycoreid() {
-        return mycoreid;
-    }
 
-    public void setMycoreid(String mycoreid) {
-        this.mycoreid = mycoreid;
-    }
 }

@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="bibliographicalSource")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BibliographicalSource {
+public class BibliographicalSource extends MCRAbstractObject {
 
-    private String mycoreid;
+
 
     private String author;
     private String title;
@@ -58,13 +58,6 @@ public class BibliographicalSource {
         this.publisher = publisher;
     }
 
-    public String getMycoreid() {
-        return mycoreid;
-    }
-
-    public void setMycoreid(String mycoreid) {
-        this.mycoreid = mycoreid;
-    }
 
     public String getTranslator() {
         return translator;

@@ -9,14 +9,15 @@ import java.util.List;
 @XmlRootElement(name="definition")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Definition {
+public class Definition extends MCRAbstractObject{
 
-    private String mycoreid;
 
     private String definition_en;
 
     @XmlElement(name="quotation")
     private List<Quotation> quotations = null;
+
+
 
     public List<Quotation> getQuotations() {
         return quotations;
@@ -26,13 +27,7 @@ public class Definition {
         this.quotations = quotations;
     }
 
-    public String getMycoreid() {
-        return mycoreid;
-    }
 
-    public void setMycoreid(String mycoreid) {
-        this.mycoreid = mycoreid;
-    }
 
     public String getDefinition_en() {
         return definition_en;
