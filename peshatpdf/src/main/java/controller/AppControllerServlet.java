@@ -20,25 +20,14 @@ public class AppControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse 
             response)
     {
-        // 0. Get App-Parameter
-        String urlPath = getServletContext().getInitParameter("urlPath");
-        String xmlFilePath = getServletContext().getInitParameter("xmlFilePath");
-        String outFilePath = getServletContext().getInitParameter("outFilePath");
-        String resourcePath = getServletContext().getInitParameter("resourcePath");
-        String xsltFileNameTex = getServletContext().getInitParameter("xsltFileNameTex");
-        String texCommand = getServletContext().getInitParameter("texCommand");
-        String xsltFileNameFop = getServletContext().getInitParameter("xsltFileNameFop");
-        String xsltDruckvorlageXML2Fo = getServletContext().getInitParameter("xsltDruckvorlageXml2Fo");
-        String fopConfigFileName = getServletContext().getInitParameter("fopConfigFileName");
-        AppData appData = new AppData (urlPath, xmlFilePath, outFilePath, resourcePath, xsltFileNameTex, texCommand, xsltFileNameFop, fopConfigFileName, xsltDruckvorlageXML2Fo);
-
-        // 1. Get Request-Parameter
+        // 1. ConfigApplication
+        AppConfigData appConfigData = new AppConfigData();
         String mycoreId = request.getParameter("mycoreId");
         String pdfEngine = request.getParameter("pdfEngine");
-        RequestData requestData = new RequestData(mycoreId, pdfEngine, appData);
+        RequestData requestData = new RequestData(mycoreId, pdfEngine, appConfigData);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung
-        RequestController requestController = new RequestController(requestData, appData);
+        RequestController requestController = new RequestController(requestData);
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
         //Boolean erfolg = requestController.createPDFFromSingleLemmaID();

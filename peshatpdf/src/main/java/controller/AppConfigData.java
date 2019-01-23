@@ -4,37 +4,26 @@ import main.java.util.ClassLoaderUtil;
 
 import java.net.URL;
 
-public class AppData {
+public class AppConfigData {
 
 
     // APP DATA
-    private final String outFilePath;
-    private final String urlPath;
-    private final String xmlFilePath;
-    private final String resourcePath;
-    private final String pdfTexCommand;
-    private final String xsltFileNameTex;
-    private final String xsltFileNameFop;
-    private final String xsltDruckvorlageXml2Fo;
-    private final String fopConfigFileName;
+    private final String outFilePath = "/mycore";
+    private final String urlPath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
+    private final String resourcePath ="main/resources";
+    private final String xsltDruckvorlageXml2Fo = "druckvorlageXml2Fo.xsl";
+    private final String fopConfigFileName ="fop.xconf";
+
+    // DELETE WHEN DELETING TEX_OPTION
+    private final String pdfTexCommand = "xelatex";
+    private final String xsltFileNameTex = "mcrXml2Tex_lemma_xelatex.xsl";
+    private final String xsltFileNameFop = "mcrXml2Fo_lemma.xsl";
 
     // APP constructed - actual path to fopConfigFile
     private final String fopConfigResource;
 
-    AppData (String urlPath, String xmlFilePath, String outFilePath, String resourcePath,
-             String xsltFileNameTex, String texCommand, String xsltFileNameFop, String fopConfigFileName, String xsltDruckvorlageXml2Fo){
+    AppConfigData(){
 
-
-        // Informationen aus web.xml
-        this.outFilePath = outFilePath;
-        this.urlPath = urlPath;
-        this.xmlFilePath = xmlFilePath;
-        this.pdfTexCommand = texCommand;
-        this.xsltFileNameTex = xsltFileNameTex;
-        this.xsltFileNameFop = xsltFileNameFop;
-        this.resourcePath = resourcePath;
-        this.fopConfigFileName = fopConfigFileName;
-        this.xsltDruckvorlageXml2Fo = xsltDruckvorlageXml2Fo;
 
         // get real path for fop-config
         //actual path to fop-config file
@@ -58,11 +47,7 @@ public class AppData {
         return urlPath;
     }
 
-    public String getXmlFilePath() {
-        return xmlFilePath;
-    }
-
-    public String getResourcePath() {
+   public String getResourcePath() {
         return resourcePath;
     }
 

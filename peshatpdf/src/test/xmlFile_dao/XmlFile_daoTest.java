@@ -1,6 +1,6 @@
 package test.xmlFile_dao;
 
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
 import main.java.xmlMicroservice_Mcr_dao.XmlFile_dao;
@@ -25,7 +25,7 @@ public class XmlFile_daoTest {
 
 
     private XmlGetRest restService;
-    private AppData appData;
+    private AppConfigData appConfigData;
     private XmlFile_dao xmlFile_dao;
     private FileHandler fileHandler;
     private RequestData requestData;
@@ -35,21 +35,21 @@ public class XmlFile_daoTest {
 
         //requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
 
-        appData = mock(AppData.class);
-        when(appData.getOutFilePath()).thenReturn(outfilepath);
-        when(appData.getXmlFilePath()).thenReturn(xmlfilepath);
-        when(appData.getUrlPath()).thenReturn(urlpath);
-        when(appData.getResourcePath()).thenReturn(resourcePath);
-        when(appData.getFopConfigResource()).thenReturn("fop.xconf");
-        when(appData.getPdfTexCommand()).thenReturn("xelatex");
-        when(appData.getXsltFileNameFop()).thenReturn("mcrXml2Fo_lemma.xsl");
-        when(appData.getXsltFileNameTex()).thenReturn("xml2tex_lemma_xelatex");
+        appConfigData = mock(AppConfigData.class);
+        when(appConfigData.getOutFilePath()).thenReturn(outfilepath);
+
+        when(appConfigData.getUrlPath()).thenReturn(urlpath);
+        when(appConfigData.getResourcePath()).thenReturn(resourcePath);
+        when(appConfigData.getFopConfigResource()).thenReturn("fop.xconf");
+        when(appConfigData.getPdfTexCommand()).thenReturn("xelatex");
+        when(appConfigData.getXsltFileNameFop()).thenReturn("mcrXml2Fo_lemma.xsl");
+        when(appConfigData.getXsltFileNameTex()).thenReturn("xml2tex_lemma_xelatex");
 
 
-        requestData = new RequestData(mycoreid, "fop", appData);
+        requestData = new RequestData(mycoreid, "fop", appConfigData);
         fileHandler = new FileHandler();
-        restService = new XmlGetRest(new FileHandler(), appData);
-        xmlFile_dao = new XmlFile_dao(restService, fileHandler, appData);
+        restService = new XmlGetRest(new FileHandler(), appConfigData);
+        xmlFile_dao = new XmlFile_dao(restService, fileHandler, appConfigData);
 
     }
     @Test

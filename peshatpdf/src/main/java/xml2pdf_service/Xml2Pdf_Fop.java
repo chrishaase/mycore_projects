@@ -1,6 +1,6 @@
 package main.java.xml2pdf_service;
 
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.controller.RequestData;
 import main.java.util.ClassLoaderUtil;
 import main.java.util.FileHandler;
@@ -36,7 +36,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
 
-    public Xml2Pdf_Fop(FileHandler fileHandler, AppData appData){
+    public Xml2Pdf_Fop(FileHandler fileHandler, AppConfigData appConfigData){
 
         /**
          * Vorausbedingung: Data2XmlDruckvorlage war erfolgreich und Druckvorlage existiert (noch einbauen)
@@ -44,7 +44,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
          * Nachbedingung: FO-File existiert, PDF-File existiert (wird beides abgefragt
          */
 
-        super(fileHandler, appData);
+        super(fileHandler, appConfigData);
     }
 
     public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
@@ -87,7 +87,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     private void transformDruckvorlageXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltDruckvorlageXml2Fo(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath() + appConfigData.getXsltDruckvorlageXml2Fo(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -103,7 +103,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     private void transformMcrXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameFop(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath() + appConfigData.getXsltFileNameFop(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -122,7 +122,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
         try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File(appData.getFopConfigResource()));
+            FopFactory fopFactory = FopFactory.newInstance(new File(appConfigData.getFopConfigResource()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
             OutputStream out = new FileOutputStream(requestData.getPdfFile());

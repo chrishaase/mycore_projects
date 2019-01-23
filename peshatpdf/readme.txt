@@ -24,7 +24,7 @@ The app needs the following:
 3. Current version: Beta 0.1
 Basic starting point. The app is in demonstration mode for bibliographical data
 Further action needed:
-- Implementation of different further xstl-transform sheets for lemmas, quotations etc.
+- Implementation of different further xstl-transform sheets for lemmas, MCRQuotations etc.
 - Implementation of different format-types
 - Implementation of error-checking, tests etc. throughout
 - Development and integration of app into MyCoRe- Peshat (either as jar-Plugin with classes or as seperate webapp with beans)

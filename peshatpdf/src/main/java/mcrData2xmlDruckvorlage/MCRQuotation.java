@@ -4,13 +4,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 import java.util.Set;
 
 @XmlRootElement(name="quotationText_he")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Quotation extends MCRAbstractObject{
+public class MCRQuotation extends MCRAbstractObject{
 
 
 
@@ -18,7 +17,7 @@ public class Quotation extends MCRAbstractObject{
     private String pages;
 
     @XmlElement(name="bibliographicalSource")
-    private Set<BibliographicalSource> bibliographicalSources = null;
+    private Set<MCRBibliographicalSource> MCRBibliographicalSources = null;
 
     public String getQuotationText_he() {
         return quotationText_he;
@@ -36,12 +35,12 @@ public class Quotation extends MCRAbstractObject{
         this.pages = pages;
     }
 
-    public Set<BibliographicalSource> getBibliographicalSources() {
-        return bibliographicalSources;
+    public Set<MCRBibliographicalSource> getMCRBibliographicalSources() {
+        return MCRBibliographicalSources;
     }
 
-    public void setBibliographicalSources(Set<BibliographicalSource> bibliographicalSources) {
-        this.bibliographicalSources = bibliographicalSources;
+    public void setMCRBibliographicalSources(Set<MCRBibliographicalSource> MCRBibliographicalSources) {
+        this.MCRBibliographicalSources = MCRBibliographicalSources;
     }
 
 

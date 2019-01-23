@@ -4,6 +4,9 @@ import java.io.File;
 
 public class RequestData {
 
+   // APP-DATA
+    private final AppConfigData appConfigData;
+
     // REQUEST DATA
     private final String mycoreId;
     private final String pdfEngine;
@@ -25,8 +28,10 @@ public class RequestData {
 
 
 
-    public RequestData(String mycoreId, String pdfEngine, AppData appData){
+    public RequestData(String mycoreId, String pdfEngine, AppConfigData appConfigData){
 
+        // app-Data
+        this.appConfigData = appConfigData;
         // request information
         this.mycoreId = mycoreId;
         this.pdfEngine = pdfEngine;
@@ -40,12 +45,12 @@ public class RequestData {
         druckvorlageXmlFileName = mycoreId + "_druckvorlage.xml";
 
         // Files
-        mcrXmlFile = new File(appData.getXmlFilePath(), mcrXmlFileName); // mycore xml-input FILE
-        mcrXmlLinksFile = new File (appData.getXmlFilePath(), mcrXmlFileLinksName); // file mit links des mycore xml-input File
-        texFile = new File(appData.getOutFilePath(), texFileName); // tex-master-vorlage output file
-        pdfFile = new File(appData.getOutFilePath(), pdfFileName); // pdf-final
-        foFile = new File(appData.getOutFilePath(), foFileName); // fo-master-vorlage output file
-        druckvorlageXmlFile = new File(appData.getOutFilePath(), druckvorlageXmlFileName); // druckvorlage
+        mcrXmlFile = new File(appConfigData.getOutFilePath(), mcrXmlFileName); // mycore xml-input FILE
+        mcrXmlLinksFile = new File (appConfigData.getOutFilePath(), mcrXmlFileLinksName); // file mit links des mycore xml-input File
+        texFile = new File(appConfigData.getOutFilePath(), texFileName); // tex-master-vorlage output file
+        pdfFile = new File(appConfigData.getOutFilePath(), pdfFileName); // pdf-final
+        foFile = new File(appConfigData.getOutFilePath(), foFileName); // fo-master-vorlage output file
+        druckvorlageXmlFile = new File(appConfigData.getOutFilePath(), druckvorlageXmlFileName); // druckvorlage
 
 
     }
@@ -106,5 +111,9 @@ public class RequestData {
 
     public File getDruckvorlageXmlFile() {
         return druckvorlageXmlFile;
+    }
+
+    public AppConfigData getAppConfigData() {
+        return appConfigData;
     }
 }

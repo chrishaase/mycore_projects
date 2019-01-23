@@ -1,6 +1,6 @@
 package main.java.xmlMicroservice_Mcr_dao;
 
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.util.ClassLoaderUtil;
 import main.java.util.FileHandler;
 
@@ -25,14 +25,14 @@ public class XmlFile_dao {
 
     private final XmlGetRest rest;
     private final FileHandler fileHandler;
-    private final AppData appData;
+    private final AppConfigData appConfigData;
     private XmlFileLinks xmlFileLinks;
 
-    public XmlFile_dao(XmlGetRest rest, FileHandler fileHandler, AppData appData){
+    public XmlFile_dao(XmlGetRest rest, FileHandler fileHandler, AppConfigData appConfigData){
 
         this.fileHandler = fileHandler;
         this.rest = rest;
-        this.appData = appData;
+        this.appConfigData = appConfigData;
 
     }
 
@@ -70,7 +70,7 @@ public class XmlFile_dao {
         for (XmlFileLink fileLink : xmlFileLinks.getFileLinks()) {
 
             String newXmlFileName = fileLink.getLink() + ".xml";
-            File newXmlFile = new File(appData.getXmlFilePath(), newXmlFileName);
+            File newXmlFile = new File(appConfigData.getOutFilePath(), newXmlFileName);
 
             Boolean b = getXmlFileInPath(fileLink.getLink(), newXmlFile );
 

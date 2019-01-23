@@ -4,12 +4,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 import java.util.Set;
 
 @XmlRootElement(name="lemma")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Lemma extends MCRAbstractObject{
+public class MCRLemma extends MCRAbstractObject{
 
 
     private String vocalizedSpelling;
@@ -20,10 +19,10 @@ public class Lemma extends MCRAbstractObject{
 
 
     @XmlElement(name="definition")
-    private Set<Definition> listDefinitions = null;
+    private Set<MCRDefinition> listMCRDefinitions = null;
 
     @XmlElement(name="bibliographicalSource")
-    private Set<BibliographicalSource> listBibliographicalSources = null;
+    private Set<MCRBibliographicalSource> listMCRBibliographicalSources = null;
 
 
     public String getVocalizedSpelling() {
@@ -66,20 +65,20 @@ public class Lemma extends MCRAbstractObject{
         this.verbStem = verbStem;
     }
 
-    public Set<Definition> getListDefinitions() {
-        return listDefinitions;
+    public Set<MCRDefinition> getListMCRDefinitions() {
+        return listMCRDefinitions;
     }
 
-    public void setListDefinitions(Set<Definition> listDefinitions) {
-        this.listDefinitions = listDefinitions;
+    public void setListMCRDefinitions(Set<MCRDefinition> listMCRDefinitions) {
+        this.listMCRDefinitions = listMCRDefinitions;
     }
 
-    public Set<BibliographicalSource> getListBibliographicalSources() {
-        return listBibliographicalSources;
+    public Set<MCRBibliographicalSource> getListMCRBibliographicalSources() {
+        return listMCRBibliographicalSources;
     }
 
-    public void setListBibliographicalSources(Set<BibliographicalSource> listBibliographicalSources) {
-        this.listBibliographicalSources = listBibliographicalSources;
+    public void setListMCRBibliographicalSources(Set<MCRBibliographicalSource> listMCRBibliographicalSources) {
+        this.listMCRBibliographicalSources = listMCRBibliographicalSources;
     }
 
 

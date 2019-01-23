@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="bibliographicalSource")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BibliographicalSource extends MCRAbstractObject {
+public class MCRBibliographicalSource extends MCRAbstractObject {
 
 
 

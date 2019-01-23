@@ -6,8 +6,8 @@
  */     
 package main.java.controller;
 
-import main.java.mcrData2xmlDruckvorlage.CreateMockObject;
-import main.java.mcrData2xmlDruckvorlage.Lemma;
+import main.java.mcrData2xmlDruckvorlage.MCRMockObject;
+import main.java.mcrData2xmlDruckvorlage.MCRLemma;
 import main.java.util.FileHandler;
 import main.java.mcrData2xmlDruckvorlage.Data2XmlDruckvorlage;
 import main.java.xml2pdf_service.Xml2Pdf;
@@ -22,7 +22,7 @@ import java.io.File;
 /**
  * Der RequestController (vergleichbar mit einer Stripes-Action-Bean oder JSF-ManagedBean)
  * steuert die BusinessLogiken zur Erstellung eines PDFs. Er kreiiert und instanziiert (kein DI-Framework - soll Guice benutzt werden?)
- * einen FileHandler, sowie einen xml2PDF und einen XML-dao service. Er benötigt die beiden Klassen (beans) AppData und RequestData.
+ * einen FileHandler, sowie einen xml2PDF und einen XML-dao service. Er benötigt die beiden Klassen (beans) AppConfigData und RequestData.
  *
  * Status: 0.1.: Der Controller ist so angelegt, dass die App sowohl integriet in MCR werden kann (dann wuerden die DAO-Controller vom MCR-Modell verwandt werden
  * oder dass es ein MicroService wird (dann muss der eigene DAO-Service noch ausgebaut werden, alle verlinkten Dokumente von der REST-API zu ziehen)
@@ -38,16 +38,16 @@ class RequestController {
 
 
         
-    public RequestController(RequestData requestData, AppData appData) {
+    public RequestController(RequestData requestData) {
 
         this.requestData = requestData;
 
-        // verdrahtet alle Services mit Implementationen (app laueft ohne DI Framework...)
+        // verdrahtet alle Services mit Implementationen
 
         fileHandler = new FileHandler();
-        xml2PDF = getXml2PDF(requestData, appData, fileHandler);
-        XmlGetRest rest = new XmlGetRest(fileHandler, appData);
-        xmlDao = new XmlFile_dao(rest, fileHandler, appData);
+        xml2PDF = getXml2PDF(requestData, requestData.getAppConfigData(), fileHandler);
+        XmlGetRest rest = new XmlGetRest(fileHandler, requestData.getAppConfigData());
+        xmlDao = new XmlFile_dao(rest, fileHandler, requestData.getAppConfigData());
 
 
     }
@@ -56,24 +56,22 @@ class RequestController {
 
         Boolean erfolg = null;
 
-        //0.get Helper Object
-        Lemma lemma1 = CreateMockObject.createMockLemma();
-
-        //1. transform Helper-Object to xml-DruckVorlage
-
+        //1.Init
         File xmlOutputFile = requestData.getDruckvorlageXmlFile();
-        Data2XmlDruckvorlage.marshall(lemma1, xmlOutputFile);
 
-        // check that file exists
-        erfolg = fileHandler.fileExists(xmlOutputFile);
+        //2. transform Helper-Object to xml-DruckVorlage
+        // TODO replace MOCK with REAL OBJECT
+        MCRLemma MCRLemma1 = MCRMockObject.createMockLemma();
+
+        Data2XmlDruckvorlage.marshall(MCRLemma1, xmlOutputFile);
 
         //2. transform Vorlage 2 pdf and ensure pdf is created in outfilepath
-        if (erfolg) {
-            erfolg= xml2PDF.transformDruckvorlageXmlFile2PdfFile(requestData);
+        if (fileHandler.fileExists(xmlOutputFile)) {
+            return xml2PDF.transformDruckvorlageXmlFile2PdfFile(requestData);
+        } else {
+            return false; // Misserfolg da xmlOutputFile nicht existiert
         }
 
-        // 3. return erfolgsmeldung
-        return erfolg;
 
     }
 
@@ -81,31 +79,27 @@ class RequestController {
     
     Boolean createPDFFromSingleLemmaID(){
 
-        Boolean erfolg = null;
+        //ensure main xml.file is loaded to outfilepath and return rueckmeldung von xml2pdf transformation
 
-        //1. ensure main xml.file is loaded to xmlfilepath
-        erfolg = xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getMcrXmlFile());
+        if(xmlDao.getXmlFileInPath(requestData.getMycoreId(), requestData.getMcrXmlFile())){
 
-        // TODO ensure linked files are looaded to xmlfilepath
-       
-        //2. transform to pdf and ensure pdf is created in outfilepath
-        if (erfolg) {
-            erfolg= xml2PDF.transformMcrXmlFile2PdfFile(requestData);
+            return xml2PDF.transformMcrXmlFile2PdfFile(requestData);
+        } else {
+            return false;
         }
 
-        // 3. return erfolgsmeldung
-        return erfolg;
+
     }
 
 
-    private Xml2Pdf getXml2PDF(RequestData requestData, AppData appData, FileHandler fileHandler){
+    private Xml2Pdf getXml2PDF(RequestData requestData, AppConfigData appConfigData, FileHandler fileHandler){
         switch(requestData.getPdfEngine()){
             case "tex":
-                return new Xml2Pdf_Tex(fileHandler, appData);
+                return new Xml2Pdf_Tex(fileHandler, appConfigData);
             case "fop":
-                return new Xml2Pdf_Fop(fileHandler, appData);
+                return new Xml2Pdf_Fop(fileHandler, appConfigData);
             default:
-                return new Xml2Pdf_Tex(fileHandler, appData);
+                return new Xml2Pdf_Tex(fileHandler, appConfigData);
         }
 
     }

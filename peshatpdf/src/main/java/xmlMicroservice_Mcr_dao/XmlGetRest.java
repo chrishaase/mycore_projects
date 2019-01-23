@@ -3,7 +3,7 @@ package main.java.xmlMicroservice_Mcr_dao;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.util.FileHandler;
 
 import java.io.File;
@@ -18,19 +18,19 @@ public class XmlGetRest {
 
 
     private final FileHandler fileHandler;
-    private final AppData appData;
+    private final AppConfigData appConfigData;
 
-    public XmlGetRest(FileHandler fileHandler, AppData appData){
+    public XmlGetRest(FileHandler fileHandler, AppConfigData appConfigData){
 
         this.fileHandler = fileHandler;
-        this.appData = appData;
+        this.appConfigData = appConfigData;
     }
 
     public String httpGet (String mycoreid){
        
 
         String string = "";
-        String urlstr = appData.getUrlPath() + mycoreid;
+        String urlstr = appConfigData.getUrlPath() + mycoreid;
         try {
             HttpResponse<String> response = Unirest
                     .get(urlstr)

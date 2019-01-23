@@ -4,28 +4,27 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 import java.util.Set;
 
 @XmlRootElement(name="definition")
 @XmlAccessorType(XmlAccessType.FIELD)
 
-public class Definition extends MCRAbstractObject{
+public class MCRDefinition extends MCRAbstractObject{
 
 
     private String definition_en;
 
     @XmlElement(name="quotation")
-    private Set<Quotation> quotations = null;
+    private Set<MCRQuotation> MCRQuotations = null;
 
 
 
-    public Set<Quotation> getQuotations() {
-        return quotations;
+    public Set<MCRQuotation> getMCRQuotations() {
+        return MCRQuotations;
     }
 
-    public void setQuotations(Set<Quotation> quotations) {
-        this.quotations = quotations;
+    public void setMCRQuotations(Set<MCRQuotation> MCRQuotations) {
+        this.MCRQuotations = MCRQuotations;
     }
 
 

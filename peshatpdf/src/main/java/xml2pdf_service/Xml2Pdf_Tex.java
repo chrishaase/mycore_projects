@@ -1,6 +1,6 @@
 package main.java.xml2pdf_service;
 
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
 import main.java.util.StreamPrinter;
@@ -26,9 +26,9 @@ import java.io.*;
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
 
-    public Xml2Pdf_Tex(FileHandler fileHandler, AppData appData){
+    public Xml2Pdf_Tex(FileHandler fileHandler, AppConfigData appConfigData){
 
-        super(fileHandler, appData);
+        super(fileHandler, appConfigData);
 
     }
 
@@ -65,7 +65,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
          * Alte Methode: WANDELT EINZEL XML to TEX
          */
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameTex(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath() + appConfigData.getXsltFileNameTex(), this.getClass());
 
         try{
 
@@ -83,9 +83,9 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
     private void transformTex2PDF(RequestData requestData){
 
-        ProcessBuilder pb = new ProcessBuilder(appData.getPdfTexCommand(), "-interaction=nonstopmode",
+        ProcessBuilder pb = new ProcessBuilder(appConfigData.getPdfTexCommand(), "-interaction=nonstopmode",
                 requestData.getTexFileName());
-        pb.directory(new File(appData.getOutFilePath()));
+        pb.directory(new File(appConfigData.getOutFilePath()));
 
         try {
             Process p = pb.start();

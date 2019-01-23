@@ -1,15 +1,13 @@
 package test.xmlFile_dao;
 
 
-import main.java.controller.AppData;
+import main.java.controller.AppConfigData;
 import main.java.controller.RequestData;
 import main.java.mcrData2xmlDruckvorlage.*;
 import main.java.util.FileHandler;
 import main.java.xmlMicroservice_Mcr_dao.XmlGetRest;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -30,20 +28,19 @@ public class Object2XmlMarshallTest {
 
     private RequestData requestData;
     private XmlGetRest restService;
-    private AppData appData;
+    private AppConfigData appConfigData;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
 
         //requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
         requestData = mock(RequestData.class);
-        appData = mock(AppData.class);
+        appConfigData = mock(AppConfigData.class);
         when(requestData.getMycoreId()).thenReturn(mycoreid);
-        when(appData.getOutFilePath()).thenReturn(outfilepath);
-        when(appData.getXmlFilePath()).thenReturn(xmlfilepath);
-        when(appData.getUrlPath()).thenReturn(urlpath);
+        when(appConfigData.getOutFilePath()).thenReturn(outfilepath);
+       when(appConfigData.getUrlPath()).thenReturn(urlpath);
 
-        restService = new XmlGetRest(new FileHandler(), appData);
+        restService = new XmlGetRest(new FileHandler(), appConfigData);
     }
 
     @org.junit.jupiter.api.AfterEach
@@ -55,16 +52,16 @@ public class Object2XmlMarshallTest {
 
 
 
-        Lemma lemma1 = CreateMockObject.createMockLemma();
+        MCRLemma MCRLemma1 = MCRMockObject.createMockLemma();
 
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Lemma.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(MCRLemma.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             //Marshal  in console
-            jaxbMarshaller.marshal(lemma1, System.out);
+            jaxbMarshaller.marshal(MCRLemma1, System.out);
 
 
         } catch (Exception e) {
