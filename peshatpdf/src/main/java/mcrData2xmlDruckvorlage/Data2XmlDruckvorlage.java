@@ -8,12 +8,12 @@ import java.io.File;
 public class Data2XmlDruckvorlage {
 
     /*
-    Wandelt ein DatenObject der Form MCRAbstractObject mit der entsprechenden Definition
-    in ein XML Dokument um
+    Wandelt ein DatenObject der Form Lemma-Objekt mit der entsprechenden Definition
+    in ein XML Dokument um (hier KEIN abstract object uebergeben -> marshall error)
     Beispiel: siehe TESTS / CreateMockObject
      */
 
-    public static void marshall(MCRAbstractObject mcrAbstractObject, File xmlOutput) {
+    public static void marshall(Lemma lemma, File xmlOutput) {
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(MCRAbstractObject.class);
@@ -22,10 +22,10 @@ public class Data2XmlDruckvorlage {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             //Marshal the employees list in console
-            jaxbMarshaller.marshal(mcrAbstractObject, System.out);
+            jaxbMarshaller.marshal(lemma, System.out);
 
             //Marshal the employees list in file
-            jaxbMarshaller.marshal(mcrAbstractObject, xmlOutput);
+            jaxbMarshaller.marshal(lemma, xmlOutput);
         } catch (Exception e) {
             e.printStackTrace();
         }

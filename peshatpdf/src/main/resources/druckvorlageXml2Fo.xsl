@@ -4,6 +4,7 @@
     <xsl:output method="xml" version="1.0" indent="yes"/>
 
     <xsl:template match="/">
+        <xsl:text>&#xa;</xsl:text>
         <fo:root font-size="12pt" font-family="Cardo" xmlns:fo="http://www.w3.org/1999/XSL/Format">
             <fo:layout-master-set>
                 <!-- oben - rechts - unten - links -->
