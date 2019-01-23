@@ -1,4 +1,4 @@
-package main.java.xmlMyCoRe_dao;
+package main.java.xmlMicroservice_Mcr_dao;
 
 import main.java.controller.AppData;
 import main.java.util.ClassLoaderUtil;

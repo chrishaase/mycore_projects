@@ -1,4 +1,4 @@
-package main.java.xmlMyCoRe_dao;
+package main.java.xmlMicroservice_Mcr_dao;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

@@ -1,4 +1,4 @@
-package main.java.data2xmlDruckvorlage;
+package main.java.mcrData2xmlDruckvorlage;
 
 
 import javax.xml.bind.annotation.XmlAccessType;

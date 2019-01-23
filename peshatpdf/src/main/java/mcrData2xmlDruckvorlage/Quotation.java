@@ -1,10 +1,11 @@
-package main.java.data2xmlDruckvorlage;
+package main.java.mcrData2xmlDruckvorlage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
+import java.util.Set;
 
 @XmlRootElement(name="quotationText_he")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,7 +18,7 @@ public class Quotation extends MCRAbstractObject{
     private String pages;
 
     @XmlElement(name="bibliographicalSource")
-    private List<BibliographicalSource> bibliographicalSources = null;
+    private Set<BibliographicalSource> bibliographicalSources = null;
 
     public String getQuotationText_he() {
         return quotationText_he;
@@ -35,11 +36,11 @@ public class Quotation extends MCRAbstractObject{
         this.pages = pages;
     }
 
-    public List<BibliographicalSource> getBibliographicalSources() {
+    public Set<BibliographicalSource> getBibliographicalSources() {
         return bibliographicalSources;
     }
 
-    public void setBibliographicalSources(List<BibliographicalSource> bibliographicalSources) {
+    public void setBibliographicalSources(Set<BibliographicalSource> bibliographicalSources) {
         this.bibliographicalSources = bibliographicalSources;
     }
 

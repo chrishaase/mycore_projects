@@ -6,15 +6,15 @@
  */     
 package main.java.controller;
 
-import main.java.data2xmlDruckvorlage.CreateMockObject;
-import main.java.data2xmlDruckvorlage.Lemma;
+import main.java.mcrData2xmlDruckvorlage.CreateMockObject;
+import main.java.mcrData2xmlDruckvorlage.Lemma;
 import main.java.util.FileHandler;
-import main.java.data2xmlDruckvorlage.Data2XmlDruckvorlage;
+import main.java.mcrData2xmlDruckvorlage.Data2XmlDruckvorlage;
 import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2Pdf_Fop;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
-import main.java.xmlMyCoRe_dao.XmlFile_dao;
-import main.java.xmlMyCoRe_dao.XmlGetRest;
+import main.java.xmlMicroservice_Mcr_dao.XmlFile_dao;
+import main.java.xmlMicroservice_Mcr_dao.XmlGetRest;
 
 import java.io.File;
 

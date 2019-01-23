@@ -1,10 +1,11 @@
-package main.java.data2xmlDruckvorlage;
+package main.java.mcrData2xmlDruckvorlage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
+import java.util.Set;
 
 @XmlRootElement(name="definition")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -15,15 +16,15 @@ public class Definition extends MCRAbstractObject{
     private String definition_en;
 
     @XmlElement(name="quotation")
-    private List<Quotation> quotations = null;
+    private Set<Quotation> quotations = null;
 
 
 
-    public List<Quotation> getQuotations() {
+    public Set<Quotation> getQuotations() {
         return quotations;
     }
 
-    public void setQuotations(List<Quotation> quotations) {
+    public void setQuotations(Set<Quotation> quotations) {
         this.quotations = quotations;
     }
 

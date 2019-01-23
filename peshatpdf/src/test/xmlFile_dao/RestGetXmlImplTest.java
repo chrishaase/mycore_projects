@@ -3,7 +3,7 @@ package test.xmlFile_dao;
 import main.java.controller.AppData;
 import main.java.controller.RequestData;
 import main.java.util.FileHandler;
-import main.java.xmlMyCoRe_dao.XmlGetRest;
+import main.java.xmlMicroservice_Mcr_dao.XmlGetRest;
 import org.xml.sax.InputSource;
 
 import java.io.File;

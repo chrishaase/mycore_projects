@@ -1,4 +1,4 @@
-package main.java.xmlMyCoRe_dao;
+package main.java.xmlMicroservice_Mcr_dao;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

@@ -1,10 +1,11 @@
-package main.java.data2xmlDruckvorlage;
+package main.java.mcrData2xmlDruckvorlage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
+import java.util.Set;
 
 @XmlRootElement(name="lemma")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -19,10 +20,10 @@ public class Lemma extends MCRAbstractObject{
 
 
     @XmlElement(name="definition")
-    private List<Definition> listDefinitions = null;
+    private Set<Definition> listDefinitions = null;
 
     @XmlElement(name="bibliographicalSource")
-    private List<BibliographicalSource> listBibliographicalSources = null;
+    private Set<BibliographicalSource> listBibliographicalSources = null;
 
 
     public String getVocalizedSpelling() {
@@ -65,19 +66,19 @@ public class Lemma extends MCRAbstractObject{
         this.verbStem = verbStem;
     }
 
-    public List<Definition> getListDefinitions() {
+    public Set<Definition> getListDefinitions() {
         return listDefinitions;
     }
 
-    public void setListDefinitions(List<Definition> listDefinitions) {
+    public void setListDefinitions(Set<Definition> listDefinitions) {
         this.listDefinitions = listDefinitions;
     }
 
-    public List<BibliographicalSource> getListBibliographicalSources() {
+    public Set<BibliographicalSource> getListBibliographicalSources() {
         return listBibliographicalSources;
     }
 
-    public void setListBibliographicalSources(List<BibliographicalSource> listBibliographicalSources) {
+    public void setListBibliographicalSources(Set<BibliographicalSource> listBibliographicalSources) {
         this.listBibliographicalSources = listBibliographicalSources;
     }
 

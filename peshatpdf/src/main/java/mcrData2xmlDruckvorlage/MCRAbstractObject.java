@@ -1,4 +1,4 @@
-package main.java.data2xmlDruckvorlage;
+package main.java.mcrData2xmlDruckvorlage;
 
 /**
  * Vereinfachte Entity für MCR-Objekte die der Erstellung einer xml-Druckvorlage dienen aus einer Abfrage

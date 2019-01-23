@@ -1,6 +1,4 @@
-package main.java.data2xmlDruckvorlage;
-
-import main.java.data2xmlDruckvorlage.Lemma;
+package main.java.mcrData2xmlDruckvorlage;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -12,7 +10,7 @@ public class Data2XmlDruckvorlage {
     /*
     Wandelt ein DatenObject der Form MCRAbstractObject mit der entsprechenden Definition
     in ein XML Dokument um
-    Beispiel: siehe TESTS
+    Beispiel: siehe TESTS / CreateMockObject
      */
 
     public static void marshall(MCRAbstractObject mcrAbstractObject, File xmlOutput) {
