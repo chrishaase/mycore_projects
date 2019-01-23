@@ -8,6 +8,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+/**
+ * Bietet diverse File-Operationen an
+ * vor allem: checken, ob File existiert
+ * und Download von Resource-Path resources ins File-System des Servers (etwa xsl, schriften etc.)
+ */
+
+
 public class FileHandler {
 
     public Boolean fileExists(File file){

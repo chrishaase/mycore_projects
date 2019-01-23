@@ -1,4 +1,9 @@
-package main.java.requestdata_entity;
+package main.java.data2xmlDruckvorlage;
+
+/**
+ * Vereinfachte Entity für MCR-Objekte die der Erstellung einer xml-Druckvorlage dienen aus einer Abfrage
+ */
+
 
 public abstract class MCRAbstractObject {
 

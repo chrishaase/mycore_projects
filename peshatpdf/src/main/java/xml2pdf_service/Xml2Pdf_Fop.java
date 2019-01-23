@@ -25,12 +25,24 @@ import org.apache.fop.apps.MimeConstants;
 
 import java.io.*;
 
-
+/**
+ * Wandelt xml in PDF um via FO-Apache
+ * Bietet zwei Methoden an: die erste Methode wandelt ein einzel MCR-XML-File in FO und dann PDF um
+ * Die zweite Methode wandelt eine vereinfachte xml-Druckvorlage in ein FO-File und ein PDF um
+ * Vorbedingung: valides XML-ist vorhanden im Filepath, valide xsl-Transformer-Stylesheets existieren fuer alle, fo installiert, Schriften vorhanden (siehe readme)
+ * Nachbedingung: Tex und PDF-Files existieren
+ */
 public class Xml2Pdf_Fop extends Xml2Pdf {
 
 
 
     public Xml2Pdf_Fop(FileHandler fileHandler, AppData appData){
+
+        /**
+         * Vorausbedingung: Data2XmlDruckvorlage war erfolgreich und Druckvorlage existiert (noch einbauen)
+         * Neue Methode: erwartet vereinfachte Druckvorlage-XML, die dann in FO gewandelt und dann in PDF
+         * Nachbedingung: FO-File existiert, PDF-File existiert (wird beides abgefragt
+         */
 
         super(fileHandler, appData);
     }
@@ -53,6 +65,10 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
     }
 
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
+
+        /**
+         * Alte Methode: steuert Umwandlung von Original-XML in FO und dann von FO in PDF
+         */
 
         transformMcrXml2FoFile(requestData);
         Boolean b = fileHandler.fileExists(requestData.getFoFile());

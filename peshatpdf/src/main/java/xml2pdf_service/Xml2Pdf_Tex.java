@@ -14,6 +14,14 @@ import javax.xml.transform.stream.StreamSource;
 
 import java.io.*;
 
+/**
+ * Wandelt xml in PDF um via Tex-Command-Line
+ * Bietet zwei Methoden an: die erste Methode wandelt ein einzel MCR-XML-File in ein Tex und dann PDF um
+ * Die zweite Methode wandelt eine vereinfachte xml-Druckvorlage in ein Tex-File und ein PDF um
+ * Vorbedingung: valides XML-ist vorhanden im Filepath, valide xsl-Transformer-Stylesheets existieren fuer alle, tex installiert, Schriften installiert (siehe readme)
+ * Nachbedingung: Tex und PDF-Files existieren
+ */
+
 
 public class Xml2Pdf_Tex extends Xml2Pdf {
 
@@ -25,6 +33,11 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
     }
 
     public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
+
+        /*
+        Neue Methode noch implementieren - Druckvorlage to Tex und dann zu PDF - erfordert anderes XSL in resources, dass noch nicht existiert
+         */
+
         Boolean b = null;
 
         return b;
@@ -34,7 +47,7 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
 
         Boolean b = false;
         try {
-            this.transformXml2Tex(requestData);
+            this.transformMcrXml2Tex(requestData);
             b = fileHandler.fileExists(requestData.getTexFile());
         } catch(Exception e){
             e.printStackTrace();
@@ -46,11 +59,11 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
         return b;
     }
 
-    private void transformXml2Tex(RequestData requestData) throws IOException {
+    private void transformMcrXml2Tex(RequestData requestData) throws IOException {
 
-        // Standard Impl: Replaced by classloaderutil
-        // ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        // InputStream stylesheet = classLoader.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameTex());
+        /**
+         * Alte Methode: WANDELT EINZEL XML to TEX
+         */
 
         InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appData.getResourcePath() + appData.getXsltFileNameTex(), this.getClass());
 

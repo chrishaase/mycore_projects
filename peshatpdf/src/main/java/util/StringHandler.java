@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Bietet einen String-Splitter an
+ */
+
 public class StringHandler {
 
     public static List csvStringSplitter (String csvString){

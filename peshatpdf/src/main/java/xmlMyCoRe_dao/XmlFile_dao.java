@@ -15,6 +15,12 @@ import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.InputStream;
 
+/**
+ * METHODE FUER EXTERNE (MICROSERVICE) IMPLEMENTATION DES PESHAT_PDF_PRINTERS
+ * Bietet Services an, xml-Mycore-Objekte über die Rest-Api in den Filepath zu bekommen
+ *
+ */
+
 public class XmlFile_dao {
 
     private final XmlGetRest rest;

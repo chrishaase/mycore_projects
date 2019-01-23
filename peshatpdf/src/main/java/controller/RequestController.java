@@ -6,10 +6,10 @@
  */     
 package main.java.controller;
 
-import main.java.requestdata_entity.CreateMockObject;
-import main.java.requestdata_entity.Lemma;
+import main.java.data2xmlDruckvorlage.CreateMockObject;
+import main.java.data2xmlDruckvorlage.Lemma;
 import main.java.util.FileHandler;
-import main.java.xml2pdf_service.Data2XmlDruckvorlage;
+import main.java.data2xmlDruckvorlage.Data2XmlDruckvorlage;
 import main.java.xml2pdf_service.Xml2Pdf;
 import main.java.xml2pdf_service.Xml2Pdf_Fop;
 import main.java.xml2pdf_service.Xml2Pdf_Tex;
@@ -20,6 +20,12 @@ import java.io.File;
 
 
 /**
+ * Der RequestController (vergleichbar mit einer Stripes-Action-Bean oder JSF-ManagedBean)
+ * steuert die BusinessLogiken zur Erstellung eines PDFs. Er kreiiert und instanziiert (kein DI-Framework - soll Guice benutzt werden?)
+ * einen FileHandler, sowie einen xml2PDF und einen XML-dao service. Er benötigt die beiden Klassen (beans) AppData und RequestData.
+ *
+ * Status: 0.1.: Der Controller ist so angelegt, dass die App sowohl integriet in MCR werden kann (dann wuerden die DAO-Controller vom MCR-Modell verwandt werden
+ * oder dass es ein MicroService wird (dann muss der eigene DAO-Service noch ausgebaut werden, alle verlinkten Dokumente von der REST-API zu ziehen)
  *
  * @author chase
  */

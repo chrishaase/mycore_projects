@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
+/**
+ * Hilfsmethode einen PDF-Stream vom Tex-File-Printer in ein PDF-File zu speichern
+ */
 
    public class StreamPrinter implements Runnable {
 
