@@ -10,16 +10,19 @@ public class AppConfigData {
     // APP DATA
     private final String outFilePath = "/mycore";
     private final String urlPath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
-    private final String resourcePath ="main/resources";
-    private final String xsltDruckvorlageXml2Fo = "druckvorlageXml2Fo.xsl";
-    private final String fopConfigFileName ="fop.xconf";
+    private final String resourcePath ="main/resources/";
 
-    // DELETE WHEN DELETING TEX_OPTION
+
+    // data to xml Druckvorlage - fo
+    private final String xsltDruckvorlageXml2Fo = "druckvorlageXml2Fo.xsl";
+
+    // mcr single xml - to pdf
     private final String pdfTexCommand = "xelatex";
     private final String xsltFileNameTex = "mcrXml2Tex_lemma_xelatex.xsl";
     private final String xsltFileNameFop = "mcrXml2Fo_lemma.xsl";
 
     // APP constructed - actual path to fopConfigFile
+    private final String fopConfigFileName ="fop.xconf";
     private final String fopConfigResource;
 
     AppConfigData(){
@@ -61,10 +64,6 @@ public class AppConfigData {
 
     public String getXsltFileNameFop() {
         return xsltFileNameFop;
-    }
-
-    public String getFopConfigFileName() {
-        return fopConfigFileName;
     }
 
     public String getFopConfigResource() {

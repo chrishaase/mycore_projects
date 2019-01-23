@@ -53,7 +53,7 @@
                                     </fo:block>
                                 </fo:table-cell>
                                 <fo:table-cell border-bottom="solid 1pt">
-                                    <xsl:for-each select="MCRLemma/vocalizedSpelling">
+                                    <xsl:for-each select="lemma/vocalizedSpelling">
                                          <fo:block text-align="right" xml:lang="he" font-size="12pt">
                                                 <xsl:value-of select = "." />
                                             </fo:block>
@@ -84,7 +84,7 @@
                             </fo:table-row>
 
                             <!-- root min occur:0 max occur 1-->
-                            <xsl:if test="MCRLemma/root">
+                            <xsl:if test="lemma/root">
                                 <fo:table-row>
                                     <fo:table-cell border-bottom="solid 1pt">
                                         <fo:block text-align="left" xml:lang="en" font-size="12pt" >
@@ -92,7 +92,7 @@
                                         </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border-bottom="solid 1pt">
-                                        <xsl:for-each select="MCRLemma/root">
+                                        <xsl:for-each select="lemma/root">
                                                <fo:block text-align="right" xml:lang="he" font-size="12pt">
                                                     <xsl:value-of select = "." />
                                                 </fo:block>
@@ -102,7 +102,7 @@
                             </xsl:if>
 
                             <!-- word_class_id min occur:1 max occur 1-->
-                            <xsl:if test="MCRLemma/wordClass">
+                            <xsl:if test="lemma/wordClass">
                                 <fo:table-row>
                                     <fo:table-cell border-bottom="solid 1pt">
                                         <fo:block text-align="left" xml:lang="en" font-size="12pt" >
@@ -110,7 +110,7 @@
                                         </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border-bottom="solid 1pt">
-                                        <xsl:for-each select="MCRLemma/wordClass">
+                                        <xsl:for-each select="lemma/wordClass">
                                             <fo:block text-align="right" xml:lang="en" font-size="12pt">
                                                 <xsl:value-of select = "."/>
                                             </fo:block>
@@ -120,7 +120,7 @@
                             </xsl:if>
 
                             <!-- gender_id min occur:0 max:0 -->
-                            <xsl:if test="MCRLemma/gender">
+                            <xsl:if test="lemma/gender">
                                 <fo:table-row>
                                     <fo:table-cell border-bottom="solid 1pt">
                                         <fo:block text-align="left" xml:lang="en" font-size="12pt" >
@@ -128,7 +128,7 @@
                                         </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border-bottom="solid 1pt">
-                                        <xsl:for-each select="MCRLemma/gender">
+                                        <xsl:for-each select="lemma/gender">
                                                 <fo:block text-align="right" xml:lang="en" font-size="12pt">
                                                 <xsl:value-of select = "." />
                                             </fo:block>
@@ -138,7 +138,7 @@
                             </xsl:if>
 
                             <!-- verb_stem_id min occur:0 max:0 -->
-                            <xsl:if test="MCRLemma/verbStem">
+                            <xsl:if test="lemma/verbStem">
                                 <fo:table-row>
                                     <fo:table-cell border-bottom="solid 1pt">
                                         <fo:block text-align="left" xml:lang="en" font-size="12pt" >
@@ -146,7 +146,7 @@
                                         </fo:block>
                                     </fo:table-cell>
                                     <fo:table-cell border-bottom="solid 1pt">
-                                        <xsl:for-each select="MCRLemma/verbStem">
+                                        <xsl:for-each select="lemma/verbStem">
                                             <fo:block text-align="right" xml:lang="en" font-size="12pt">
                                                 <xsl:value-of select = "."/>
                                             </fo:block>
@@ -166,7 +166,7 @@
 
 
                             <!-- definitionS -->
-                            <xsl:if test="MCRLemma/definition">
+                            <xsl:if test="lemma/definition">
 
                                 <fo:table-row>
                                     <fo:table-cell >
@@ -182,7 +182,7 @@
                                 </fo:table-row>
 
 
-                                <xsl:for-each select="MCRLemma/definition">
+                                <xsl:for-each select="lemma/definition">
 
                                     <!-- definition-->
 
@@ -205,7 +205,7 @@
 
                                         <xsl:for-each select="quotation">
 
-                                    <!-- MCRQuotation -->
+                                    <!-- Quotation -->
 
                                             <fo:table-row>
                                                 <fo:table-cell >
@@ -221,7 +221,7 @@
                                                 </fo:table-cell>
                                          </fo:table-row>
 
-                                            <!-- MCRBibliographicalSource -->
+                                            <!-- BibliographicalSource -->
 
                                             <fo:table-row>
                                                 <fo:table-cell border-bottom="solid 1pt"  >
@@ -267,7 +267,7 @@
 
 
                             <!-- sourceS-->
-                            <xsl:if test="MCRLemma/bibliographicalSource">
+                            <xsl:if test="lemma/bibliographicalSource">
 
                             <fo:table-row>
                                 <fo:table-cell >
@@ -282,7 +282,7 @@
                                 </fo:table-cell>
                             </fo:table-row>
 
-                            <xsl:for-each select="MCRLemma/bibliographicalSource">
+                            <xsl:for-each select="lemma/bibliographicalSource">
 
                                 <!-- source-->
                                 <fo:table-row>

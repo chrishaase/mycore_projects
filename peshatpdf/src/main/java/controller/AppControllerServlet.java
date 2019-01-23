@@ -21,9 +21,9 @@ public class AppControllerServlet extends HttpServlet {
             response)
     {
         // 1. ConfigApplication
-        AppConfigData appConfigData = new AppConfigData();
         String mycoreId = request.getParameter("mycoreId");
         String pdfEngine = request.getParameter("pdfEngine");
+        AppConfigData appConfigData = new AppConfigData();
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appConfigData);
 
         //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung
@@ -31,6 +31,7 @@ public class AppControllerServlet extends HttpServlet {
 
        // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
         //Boolean erfolg = requestController.createPDFFromSingleLemmaID();
+        // TODO replace Mock Object
         Boolean erfolg = requestController.createPDFFromHelperObject();
        if (erfolg) {
         sendPDFResponse(response, requestData);

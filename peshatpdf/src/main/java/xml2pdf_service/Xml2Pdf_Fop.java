@@ -48,20 +48,24 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
     }
 
     public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
-        Boolean b = null;
+
 
         transformDruckvorlageXml2FoFile(requestData);
-        b = fileHandler.fileExists(requestData.getFoFile());
 
-        if (b) {
+        if (fileHandler.fileExists(requestData.getFoFile())) {
             try {
                 this.transformFoFile2PdfFile(requestData);
-            } catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            b = fileHandler.fileExists(requestData.getPdfFile());}
+        }
 
-        return b;
+        if(fileHandler.fileExists(requestData.getPdfFile())){
+                return true;
+            } else {
+                return false;
+        }
+
     }
 
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
@@ -87,7 +91,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     private void transformDruckvorlageXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath() + appConfigData.getXsltDruckvorlageXml2Fo(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getAppConfigData().getResourcePath() + requestData.getAppConfigData().getXsltDruckvorlageXml2Fo(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -122,7 +126,7 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
         try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File(appConfigData.getFopConfigResource()));
+            FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getAppConfigData().getFopConfigResource()));
             FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
             OutputStream out = new FileOutputStream(requestData.getPdfFile());
