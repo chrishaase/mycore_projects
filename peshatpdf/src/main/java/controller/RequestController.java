@@ -21,9 +21,10 @@ import java.io.File;
 
 /**
  * Der RequestController (vergleichbar mit einer Stripes-Action-Bean oder JSF-ManagedBean)
- * steuert die BusinessLogiken zur Erstellung eines PDFs. Er kreiiert und instanziiert (kein DI-Framework - soll Guice benutzt werden?)
- * einen FileHandler, sowie einen xml2PDF und einen XML-dao service. Er benötigt die beiden Klassen (beans) AppConfigData und RequestData.
- *
+ * steuert die BusinessLogiken zur Erstellung eines PDFs. Er kreiiert und instanziiert
+ * einen FileHandler, sowie
+ * einen xml2PDF und einen XML-dao service.
+ * Er benötigt die beiden Klassen (beans) AppConfigData und RequestData. *
  * Status: 0.1.: Der Controller ist so angelegt, dass die App sowohl integriet in MCR werden kann (dann wuerden die DAO-Controller vom MCR-Modell verwandt werden
  * oder dass es ein MicroService wird (dann muss der eigene DAO-Service noch ausgebaut werden, alle verlinkten Dokumente von der REST-API zu ziehen)
  *

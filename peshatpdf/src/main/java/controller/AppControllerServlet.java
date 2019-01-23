@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Front-Servlet Controller -
+ * beauftragt einen Request-Controller mit der Abarbeitung des Druckauftrages
+ * gibt PDF aus bei Erfolg, ansonsten eine Fehler-HTML
+ * Vorbedingung: App konfiguriert (see Readme), RequestData (mycoreID, pdfEngine) valide
+ * Nachbedingung: PDF ausgegeben oder Fehler-HTML ausgegeben
  * @author chase
  */
 
@@ -20,17 +24,15 @@ public class AppControllerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse 
             response)
     {
-        // 1. ConfigApplication
+        // 1. Create Request-Data and Request-Controller
         String mycoreId = request.getParameter("mycoreId");
         String pdfEngine = request.getParameter("pdfEngine");
         AppConfigData appConfigData = new AppConfigData();
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appConfigData);
 
-        //2. Create Subcontroller fuer AufgabenAbarbeitung und Verdrahtung
         RequestController requestController = new RequestController(requestData);
 
-       // 3. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
-        //Boolean erfolg = requestController.createPDFFromSingleLemmaID();
+       // 2. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
         // TODO replace Mock Object
         Boolean erfolg = requestController.createPDFFromHelperObject();
        if (erfolg) {

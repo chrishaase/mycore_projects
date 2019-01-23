@@ -2,6 +2,12 @@ package main.java.controller;
 
 import java.io.File;
 
+/*
+Request-Data-Class (Bean) enthält die Filenames und die appConfigData zur Abarbeitung des Requests
+Sie erstellt die FileNames udn Files aus der MycoreID und den in APP_CONFIG angegebene filepaths
+author: chase
+ */
+
 public class RequestData {
 
    // APP-DATA

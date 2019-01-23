@@ -35,28 +35,29 @@ public class Xml2Pdf_Tex extends Xml2Pdf {
     public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
 
         /*
+        TODO
         Neue Methode noch implementieren - Druckvorlage to Tex und dann zu PDF - erfordert anderes XSL in resources, dass noch nicht existiert
          */
 
-        Boolean b = null;
-
-        return b;
+        return null;
     }
 
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
 
-        Boolean b = false;
+
         try {
             this.transformMcrXml2Tex(requestData);
-            b = fileHandler.fileExists(requestData.getTexFile());
         } catch(Exception e){
             e.printStackTrace();
         }
-        if (b) {
+        if (fileHandler.fileExists(requestData.getTexFile())) {
             this.transformTex2PDF(requestData);
-            b = fileHandler.fileExists(requestData.getPdfFile());}
-
-        return b;
+        }
+        if (fileHandler.fileExists(requestData.getPdfFile())){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void transformMcrXml2Tex(RequestData requestData) throws IOException {

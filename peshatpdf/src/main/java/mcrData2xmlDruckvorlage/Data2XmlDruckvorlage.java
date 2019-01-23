@@ -8,12 +8,12 @@ import java.io.File;
 public class Data2XmlDruckvorlage {
 
     /*
-    Wandelt ein DatenObject der Form MCRLemma-Objekt mit der entsprechenden MCRDefinition
-    in ein XML Dokument um (hier KEIN abstract object uebergeben -> marshall error)
+    Wandelt ein DatenObject der Form MCRLemma-Objekt, in ein XML Dokument um
+    (hier KEIN abstract objects ODER interfaces uebergeben -> marshall error)
     Beispiel: siehe TESTS / MCRMockObject
      */
 
-    public static void marshall(MCRLemma MCRLemma, File xmlOutput) {
+    public static void marshall(MCRLemma mcrLemma, File xmlOutput) {
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(MCRLemma.class);
@@ -21,8 +21,8 @@ public class Data2XmlDruckvorlage {
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            //Marshal the employees list in file
-            jaxbMarshaller.marshal(MCRLemma, xmlOutput);
+            //Marshal the list in file
+            jaxbMarshaller.marshal(mcrLemma, xmlOutput);
 
         } catch (Exception e) {
             e.printStackTrace();

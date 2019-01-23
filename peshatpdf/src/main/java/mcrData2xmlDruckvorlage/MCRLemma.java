@@ -8,7 +8,7 @@ import java.util.Set;
 
 @XmlRootElement(name="lemma")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MCRLemma extends MCRAbstractObject{
+public class MCRLemma extends MCRAbstractObject {
 
 
     private String vocalizedSpelling;

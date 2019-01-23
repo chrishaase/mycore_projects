@@ -26,11 +26,11 @@ import org.apache.fop.apps.MimeConstants;
 import java.io.*;
 
 /**
- * Wandelt xml in PDF um via FO-Apache
+ * Wandelt xml in PDF
  * Bietet zwei Methoden an: die erste Methode wandelt ein einzel MCR-XML-File in FO und dann PDF um
  * Die zweite Methode wandelt eine vereinfachte xml-Druckvorlage in ein FO-File und ein PDF um
  * Vorbedingung: valides XML-ist vorhanden im Filepath, valide xsl-Transformer-Stylesheets existieren fuer alle, fo installiert, Schriften vorhanden (siehe readme)
- * Nachbedingung: Tex und PDF-Files existieren
+ * Nachbedingung: FO, Tex und PDF-Files existieren
  */
 public class Xml2Pdf_Fop extends Xml2Pdf {
 
@@ -38,60 +38,29 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
 
     public Xml2Pdf_Fop(FileHandler fileHandler, AppConfigData appConfigData){
 
-        /**
-         * Vorausbedingung: Data2XmlDruckvorlage war erfolgreich und Druckvorlage existiert (noch einbauen)
-         * Neue Methode: erwartet vereinfachte Druckvorlage-XML, die dann in FO gewandelt und dann in PDF
-         * Nachbedingung: FO-File existiert, PDF-File existiert (wird beides abgefragt
-         */
-
-        super(fileHandler, appConfigData);
+       super(fileHandler, appConfigData);
     }
 
     public Boolean transformDruckvorlageXmlFile2PdfFile(RequestData requestData){
 
-
         transformDruckvorlageXml2FoFile(requestData);
 
-        if (fileHandler.fileExists(requestData.getFoFile())) {
-            try {
-                this.transformFoFile2PdfFile(requestData);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        if(fileHandler.fileExists(requestData.getPdfFile())){
-                return true;
-            } else {
-                return false;
-        }
+       return this.transformFoFile2PdfFile(requestData);
 
     }
 
     public Boolean transformMcrXmlFile2PdfFile(RequestData requestData) {
 
-        /**
-         * Alte Methode: steuert Umwandlung von Original-XML in FO und dann von FO in PDF
-         */
+       transformMcrXml2FoFile(requestData);
 
-        transformMcrXml2FoFile(requestData);
-        Boolean b = fileHandler.fileExists(requestData.getFoFile());
+        return this.transformFoFile2PdfFile(requestData);
 
-        if (b) {
-            try {
-                this.transformFoFile2PdfFile(requestData);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-            b = fileHandler.fileExists(requestData.getPdfFile());}
-
-        return b;
 
     }
 
     private void transformDruckvorlageXml2FoFile(RequestData requestData){
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(requestData.getAppConfigData().getResourcePath() + requestData.getAppConfigData().getXsltDruckvorlageXml2Fo(), this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath() + appConfigData.getXsltDruckvorlageXml2Fo(), this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
@@ -121,41 +90,50 @@ public class Xml2Pdf_Fop extends Xml2Pdf {
         }
     }
 
-    private void transformFoFile2PdfFile(RequestData requestData)  {
+    private Boolean transformFoFile2PdfFile(RequestData requestData)  {
 
+        if (fileHandler.fileExists(requestData.getFoFile())) {
 
-        try {
+            try {
 
-            FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getAppConfigData().getFopConfigResource()));
-            FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
+                FopFactory fopFactory = FopFactory.newInstance(new File(requestData.getAppConfigData().getFopConfigResource()));
+                FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
-            OutputStream out = new FileOutputStream(requestData.getPdfFile());
-            out = new BufferedOutputStream(out);
+                OutputStream out = new FileOutputStream(requestData.getPdfFile());
+                out = new BufferedOutputStream(out);
 
-           // Construct fop with desired output format
-            Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
+                // Construct fop with desired output format
+                Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
 
-            // Setup JAXP using identity transformer
-            TransformerFactory factory = TransformerFactory.newInstance();
-            Transformer transformer = factory.newTransformer(); // identity transformer
+                // Setup JAXP using identity transformer
+                TransformerFactory factory = TransformerFactory.newInstance();
+                Transformer transformer = factory.newTransformer(); // identity transformer
 
-            // Setup input stream
-            Source src = new StreamSource(requestData.getFoFile());
+                // Setup input stream
+                Source src = new StreamSource(requestData.getFoFile());
 
-             // Resulting SAX events (the generated FO) must be piped through to FOP
-             Result res = new SAXResult(fop.getDefaultHandler());
+                // Resulting SAX events (the generated FO) must be piped through to FOP
+                Result res = new SAXResult(fop.getDefaultHandler());
 
-             // Start XSLT transformation and FOP processing
-              transformer.transform(src, res);
+                // Start XSLT transformation and FOP processing
+                transformer.transform(src, res);
 
-            // Result processing
-            out.close();
+                // Result processing
+                out.close();
 
-             } catch (Exception e) {
-               	            e.printStackTrace(System.err);
-                	            System.exit(-1);
-             }
+            } catch (Exception e) {
+                e.printStackTrace(System.err);
+                System.exit(-1);
+            }
+        } else {
+            return false;
+        }
 
+        if(fileHandler.fileExists(requestData.getPdfFile())){
+            return true;}
+        else {
+            return false;
+        }
 
     }
 
