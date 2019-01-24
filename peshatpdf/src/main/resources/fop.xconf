@@ -79,21 +79,13 @@ the location of this file.
         -->
 
 
-	<directory>/home/ahzch/fonts/</directory>
+	<directory>C:/pdf/fonts/</directory>
 
-    	<font kerning="yes" embed-url="/home/ahzch/fonts/frank.ttf" embedding-mode="full">
-                   <font-triplet name="Frank Ruehl CLM" style="normal" weight="normal"/>
-               </font>
-        <font kerning="yes" embed-url="/home/ahzch/fonts/unifont.ttf" embedding-mode="full">
-                           <font-triplet name="Unifont" style="normal" weight="normal"/>
-                       </font>
-        <font kerning="yes" embed-url="/home/ahzch/fonts/cardo.ttf" embedding-mode="full">
+
+        <font kerning="yes" embed-url="C:/pdf/fonts/Cardo104s.ttf" embedding-mode="full">
                            <font-triplet name="Cardo" style="normal" weight="normal"/>
                        </font>
 
-        <font kerning="yes" embed-url="/home/ahzch/fonts/arialuni.ttf" embedding-mode="full">
-                                   <font-triplet name="Arial Unicode MS" style="normal" weight="normal"/>
-                               </font>
 
         <!-- auto-detect fonts -->
         <auto-detect/>

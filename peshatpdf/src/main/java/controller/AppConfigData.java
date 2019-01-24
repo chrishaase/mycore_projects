@@ -3,12 +3,15 @@ package main.java.controller;
 import main.java.util.ClassLoaderUtil;
 
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class AppConfigData {
 
 
     // APP DATA
-    private final String outFilePath = "/mycore";
+    private final Path outFilePathP = Paths.get("/pdf/output");
+    private final String outFilePath = outFilePathP.toString();
     private final String urlPath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
     private final String resourcePath ="main/resources/";
 
