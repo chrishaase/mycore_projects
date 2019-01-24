@@ -55,9 +55,11 @@ public class XmlFile_dao {
 
     public void getLinkedFilesinPath(File xmlLinksFile, File xmlFile) {
 
-        //1. CallTransformerFactory xml2xmlLinkFile
+        //1. CallTransformerFactory xml2xmlLinkFile to get Definition-Links extracted from Lemma in xmlFile to xmlLinksFile
 
-        this.extractDefinitionLinksfromMcrXML2XmlDefLinkFile(xmlLinksFile, xmlFile);
+        String DefLinkExtract = "mcrXml2Xml_deflinkExtract.xsl";
+
+        this.extractLinks(xmlLinksFile, DefLinkExtract, xmlFile);
 
         //2. Unmarshal to Object-Array
 
@@ -79,14 +81,14 @@ public class XmlFile_dao {
     }
 
 
-    private void extractDefinitionLinksfromMcrXML2XmlDefLinkFile(File xmlLinksFile, File xmlFile){
+    private void extractLinks(File xmlLinksFile, String xslExtractFileName, File xmlFile){
 
         /* Die Methode extrahiert die DefinitionsLinks aus dem xml-document des requests
         mithilfe  des XSL-Stylesheets mcrXml2Xml_deflinkExtract.xsl (der in resources zu finden ist)
         und speichert sie in dem file xmlLinksFile.xml im outpath (spezifiziert in Web.xml)
         */
 
-        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream("main/resources/mcrXml2Xml_deflinkExtract.xsl", this.getClass());
+        InputStream stylesheet = ClassLoaderUtil.getResourceAsStream(appConfigData.getResourcePath()+ xslExtractFileName, this.getClass());
 
         try{
             Source xslt        = new StreamSource(stylesheet);
