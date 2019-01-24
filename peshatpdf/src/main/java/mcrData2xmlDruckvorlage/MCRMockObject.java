@@ -6,6 +6,8 @@ public class MCRMockObject {
 
     public static MCRLemma createMockLemma(){
 
+        // Create Bib-Sources, Quotations and Definitions in reverse order
+
         MCRBibliographicalSource MCRBibliographicalSource0149 = new MCRBibliographicalSource();
         MCRBibliographicalSource0149.setMycoreid("peshat_bibliographical-sources_00000149");
         MCRBibliographicalSource0149.setAuthor("ha-Levi");
@@ -21,7 +23,6 @@ public class MCRMockObject {
         MCRBibliographicalSource0012.setTitle("ספר האמונה הרמה");
         MCRBibliographicalSource0012.setPlace("Frankfurt am Main");
         MCRBibliographicalSource0012.setPublisher("Typographische Anstalt");
-
 
         MCRQuotation MCRQuotation0028 = new MCRQuotation();
         MCRQuotation0028.setMycoreid("peshat_quotations_00000028");
@@ -53,6 +54,8 @@ public class MCRMockObject {
         MCRDefinition0013.setMCRQuotations(new HashSet<MCRQuotation>());
         MCRDefinition0013.getMCRQuotations().add(MCRQuotation0028);
 
+        // Create Lemma and add base Data
+
         MCRLemma MCRLemma1 = new MCRLemma();
         MCRLemma1.setMycoreid("peshat_lemmas_00000002");
         MCRLemma1.setGender("M");
@@ -60,14 +63,14 @@ public class MCRMockObject {
         MCRLemma1.setRoot("אבי");
         MCRLemma1.setVerbStem("Noun");
 
-        // Add all Definitions
+        // Add all Definitions to Lemma
 
         MCRLemma1.setListMCRDefinitions(new HashSet<MCRDefinition>());
         MCRLemma1.getListMCRDefinitions().add(MCRDefinition4668);
         MCRLemma1.getListMCRDefinitions().add(MCRDefinition4669);
         MCRLemma1.getListMCRDefinitions().add(MCRDefinition0013);
 
-        // add all bib sources
+        // add all bib sources to extra List at the end of the Lemma
 
 
         MCRLemma1.setListMCRBibliographicalSources(new HashSet<MCRBibliographicalSource>());

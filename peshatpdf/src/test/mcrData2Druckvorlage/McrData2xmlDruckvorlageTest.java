@@ -15,31 +15,13 @@ import static org.mockito.Mockito.when;
 
 public class McrData2xmlDruckvorlageTest {
 
-    private final String urlpath = "https://peshat.gwiss.uni-hamburg.de/api/v1/objects/";
-    private final String xmlfilepath = "/mycore";
-    private final String outfilepath = "/mycore";
-    private final String mycoreid = "peshat_bibliographical-sources_00000002";
-    private final String mycoreidwrong = "peshat_bibliographical-sources_00000003";
 
-    private String xmlFileName;
-    private File xmlFile;
-
-    private RequestData requestData;
-    private XmlGetRest restService;
-    private AppConfigData appConfigData;
     private FileHandler fileHandler;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
 
-        //requestData = new RequestData(mycoreid, outfilepath, urlpath, xmlfilepath);
-        requestData = mock(RequestData.class);
-        appConfigData = mock(AppConfigData.class);
-        when(requestData.getMycoreId()).thenReturn(mycoreid);
-        when(appConfigData.getOutFilePath()).thenReturn(outfilepath);
-        when(appConfigData.getUrlPath()).thenReturn(urlpath);
 
-        restService = new XmlGetRest(new FileHandler(), appConfigData);
         fileHandler = new FileHandler();
     }
 
