@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  * gibt PDF aus bei Erfolg, ansonsten eine Fehler-HTML
  * Vorbedingung: App konfiguriert (see Readme), RequestData (mycoreID, pdfEngine) valide
  * Nachbedingung: PDF ausgegeben oder Fehler-HTML ausgegeben
+ * HIER: wählt Methode zur Engine
  * @author chase
  */
 
@@ -29,13 +30,20 @@ public class AppControllerServlet extends HttpServlet {
         String pdfEngine = request.getParameter("pdfEngine");
         AppConfigData appConfigData = new AppConfigData();
         RequestData requestData = new RequestData(mycoreId, pdfEngine, appConfigData);
-
         RequestController requestController = new RequestController(requestData);
 
        // 2. kreiere pdf und checke, dass pdf kreiert wurde und ausgabe
-        // TODO replace Mock Object
-        Boolean erfolg = requestController.createPDFFromHelperObject();
-       if (erfolg) {
+        // ZWEI METHODEN - ZWEI PDF ENGINES (nicht alle vier Moeglichkeiten implementiert)
+        Boolean erfolg = false;
+        // WEG 1: MCR xml lemma 2 tex 2 pdf
+        if (pdfEngine.matches("tex") ){
+            erfolg = requestController.createPDFFromSingleLemmaID();}
+        // WEG 2: Data (noch zu uebergeben daher hier helper object) and Druckvorlage XML to fop to pdf
+        if (pdfEngine.matches("fop")){
+            erfolg = requestController.createPDFFromHelperObject();
+        }
+
+        if (erfolg) {
         sendPDFResponse(response, requestData);
        } else {
         sendErrorHTMLResponse(response);
